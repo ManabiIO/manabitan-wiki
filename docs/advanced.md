@@ -38,13 +38,13 @@ Shortcuts are configurable in the "Shortcuts" section of the settings page.
 
 ### Scanning local files
 
-To enable Yomitan scanning on local files, go to `Settings` > `Security` > `Configure Yomitan Permissions`, and navigate to the `Allow access to file URLs` option. From there, follow the link to the browser's settings pages, and check `Allow access to file URLs` on Chrome/Edge, or `Access your data for all websites` for Firefox.
+To enable Manabitan scanning on local files, go to `Settings` > `Security` > `Configure Manabitan Permissions`, and navigate to the `Allow access to file URLs` option. From there, follow the link to the browser's settings pages, and check `Allow access to file URLs` on Chrome/Edge, or `Access your data for all websites` for Firefox.
 
-Yomitan may not work on PDF files. When that happens, drag and drop your PDF file into [our PDF Viewer](yomitan-pdf-viewer/index.html).
+Manabitan may not work on PDF files. When that happens, drag and drop your PDF file into [our PDF Viewer](manabitan-pdf-viewer/index.html).
 
 ### Scanning in private windows
 
-To enable Yomitan scanning in private/incognito web browser windows, go to `Settings` > `Security` > `Configure Yomitan Permissions`, and navigate to the `Allow in private windows` option. From there, follow the link to the browser's settings pages, and check `Allow in private windows` on Chrome/Edge, or `Run in Private Windows` for Firefox.
+To enable Manabitan scanning in private/incognito web browser windows, go to `Settings` > `Security` > `Configure Manabitan Permissions`, and navigate to the `Allow in private windows` option. From there, follow the link to the browser's settings pages, and check `Allow in private windows` on Chrome/Edge, or `Run in Private Windows` for Firefox.
 
 ---
 
@@ -81,7 +81,7 @@ To enable this, just add a new playback source with the `Text-to-speech` type an
 
 - TTS voices vary between browsers and so might not support all languages. For instance, [Microsoft Edge](https://www.microsoft.com/en-us/edge) offers a wide selection of free Azure natural voices for a variety of languages. Edge provides over 300 voices, compared to around 25 in Google Chrome (see [here](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=stt) for a list of supported languages).
 - TTS audio can be inaccurate for languages with complex pronunciation such as Japanese, where words can have multiple possible readings and pitch accents.
-- ⚠️ Note that the TTS voices cannot be sent to Anki; this is a [limitation of the browser SpeechSynthesis API](https://github.com/yomidevs/yomitan/issues/864).
+- ⚠️ Note that the TTS voices cannot be sent to Anki; this is a [limitation of the browser SpeechSynthesis API](https://github.com/ManabiIO/manabitan/issues/864).
 
 #### Custom URL
 
@@ -97,7 +97,7 @@ Custom URL supports the following replacement patterns:
 
 Recommended audio sources:
 
-* **Local Audio Server for Yomichan**: This is the most reliable way to get Forvo audio in Yomitan. To read the pros and cons and set it up, see the [instructions](https://github.com/yomidevs/local-audio-yomichan).
+* **Local Audio Server for Yomichan**: This is the most reliable way to get Forvo audio in Manabitan. To read the pros and cons and set it up, see the [instructions](https://github.com/yomidevs/local-audio-yomichan).
 
 * **Yomichan Forvo Server**: 
   - 🚨 Not working currently 
@@ -109,7 +109,7 @@ Recommended audio sources:
 ### Custom "Send to Anki" button
 
 If you want a custom "send to Anki" button for example to send audio only cards or sentence cards:
-1. In the bottom right hand corner of Yomitan settings, click the "Advanced" toggle
+1. In the bottom right hand corner of Manabitan settings, click the "Advanced" toggle
 2. Go to Anki section in settings
 3. Click "Configure Anki Flashcards..."
 4. At the top of the screen click "➕" to add a new send to Anki card format.
@@ -127,7 +127,7 @@ Click the `Advanced` toggle switch in the bottom left corner of the Settings pag
 
 ### Parse sentences using MeCab
 
-[MeCab](https://taku910.github.io/mecab/) is a third-party program which uses its own dictionaries and parsing algorithm to decompose sentences into individual words. MeCab may provide more accurate parsing results than Yomitan's internal parser.
+[MeCab](https://taku910.github.io/mecab/) is a third-party program which uses its own dictionaries and parsing algorithm to decompose sentences into individual words. MeCab may provide more accurate parsing results than Manabitan's internal parser.
 
-In order for Yomitan to use it, both MeCab and a native messaging component must be installed.
-A setup guide can be found [here](https://github.com/yomidevs/yomitan-mecab-installer/blob/master/README.md).
+In order for Manabitan to use it, both MeCab and a native messaging component must be installed.
+A setup guide can be found [here](https://github.com/ManabiIO/manabitan-mecab-installer/blob/master/README.md).

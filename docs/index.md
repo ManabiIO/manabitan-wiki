@@ -1,7 +1,7 @@
 ---
 template: home.html
-title: Welcome to Yomitan
-description: Powerful and versatile pop-up dictionary for language learning used by 90,000+ language learners.
+title: Welcome to Manabitan
+description: Powerful and versatile pop-up dictionary for language learning.
 
 hide:
   - navigation
@@ -10,4 +10,4 @@ hide:
 
 ---
 
-Welcome to Yomitan.
+Welcome to Manabitan.

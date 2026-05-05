@@ -4,7 +4,7 @@ hide:
   - footer
 ---
 
-# Getting Started with Yomitan
+# Getting Started with Manabitan
 
 This introduction will help you quickly familiarize yourself with the basics and set you up for a smooth language learning experience.
 
@@ -28,7 +28,7 @@ This introduction will help you quickly familiarize yourself with the basics and
 
     ---
 
-    Use Yomitan on news articles, novels, subtitles, PDFs, and more.
+    Use Manabitan on news articles, novels, subtitles, PDFs, and more.
 
 -   :material-volume-high:{ .lg .middle } __Hear Pronunciation__
 
@@ -39,13 +39,13 @@ This introduction will help you quickly familiarize yourself with the basics and
 </div>
 
 !!! note "Migrating from Yomichan?"
-    Learn how to migrate to Yomitan [here](yomichan-migration.md).
+    Learn how to migrate to Manabitan [here](yomichan-migration.md).
 
 ---
 
 ## :fontawesome-solid-download: Installation
 
-To get started, get Yomitan for your browser:
+To get started, get Manabitan for your browser:
 
 === "Chrome"
 
@@ -57,7 +57,7 @@ To get started, get Yomitan for your browser:
 
         The stable release recommended for most users.
 
-        [:octicons-download-16: Install from Chrome Web Store](https://chrome.google.com/webstore/detail/yomitan/likgccmbimhjbgkjambclfkhldnlhbnn){ .md-button .md-button--primary }
+        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
 
     -   :fontawesome-brands-chrome:{ .lg .middle } __Chrome Beta__
 
@@ -65,7 +65,7 @@ To get started, get Yomitan for your browser:
 
         Try the latest features before they reach stable.
 
-        [:octicons-download-16: Install Beta Version](https://chrome.google.com/webstore/detail/yomitan-development-build/glnaenfapkkecknnmginabpmgkenenml){ .md-button }
+        [:octicons-mark-github-16: View Development Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button }
 
     </div>
 
@@ -79,7 +79,7 @@ To get started, get Yomitan for your browser:
 
         The stable release recommended for most users.
 
-        [:octicons-download-16: Install from Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/yomitan/){ .md-button .md-button--primary }
+        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
 
     -   :fontawesome-brands-firefox-browser:{ .lg .middle } __Firefox Beta/Development__
 
@@ -87,7 +87,7 @@ To get started, get Yomitan for your browser:
 
         Download and side-load manually for testing versions.
 
-        [:octicons-mark-github-16: View GitHub Releases](https://github.com/yomidevs/yomitan/releases){ .md-button }
+        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button }
 
     </div>
 
@@ -104,20 +104,20 @@ To get started, get Yomitan for your browser:
 
         The stable release for Microsoft Edge users.
 
-        [:octicons-download-16: Install from Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/yomitan/idelnfbbmikgfiejhgmddlbkfgiifnnn){ .md-button .md-button--primary }
+        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
 
     </div>
 
 ---
 
-:fontawesome-solid-mobile-screen-button:{ .md .middle } ___Mobile platform note___: You can use Yomitan on Android with Firefox, Edge, or Elixir. Chrome for mobile and iOS aren't supported.
+:fontawesome-solid-mobile-screen-button:{ .md .middle } ___Mobile platform note___: You can use Manabitan on Android with Firefox, Edge, or Elixir. Chrome for mobile and iOS aren't supported.
 
-## Yomitan Setup
+## Manabitan Setup
 
-After a successful installation, Yomitan will display a welcome page. If you don’t see it, that’s okay—you can complete setup at any time by opening `Settings` from the `Quick Actions` menu.
+After a successful installation, Manabitan will display a welcome page. If you don’t see it, that’s okay—you can complete setup at any time by opening `Settings` from the `Quick Actions` menu.
 
 !!! info "Quick Actions"
-    Click the ![yomitan icon](assets/icon/yomitan-icon.svg){ width="16" } **Yomitan** button in the browser bar to open the quick-actions popup.
+    Click the ![manabitan icon](assets/icon/manabitan-icon.svg){ width="16" } **Manabitan** button in the browser bar to open the quick-actions popup.
 
     <figure markdown="span">
         ![Browser action popup](assets/ss/browser-action-popup.webp){ width="120" }
@@ -151,7 +151,7 @@ After a successful installation, Yomitan will display a welcome page. If you don
 
         ---
 
-        See the relevant links and information about Yomitan.
+        See the relevant links and information about Manabitan.
 
     </div>
 
@@ -159,16 +159,16 @@ After a successful installation, Yomitan will display a welcome page. If you don
 ### Installing Dictionaries
 
 !!! warning "Dictionary Required"
-    Yomitan requires at least one dictionary to function. An orange exclamation mark over the icon indicates no dictionaries are enabled.
+    Manabitan requires at least one dictionary to function. An orange exclamation mark over the icon indicates no dictionaries are enabled.
 
 
 To install dictionaries:
 
-1. Navigate to Yomitan's `Welcome` or `Settings` page.
+1. Navigate to Manabitan's `Welcome` or `Settings` page.
 2. Choose your desired language from the `Language` dropdown. 
 3. Click on `Get recommended dictionaries...`
 
-You will see a list of publicly available Yomitan dictionaries for the selected language.
+You will see a list of publicly available Manabitan dictionaries for the selected language.
 Install as many as you like — you can enable, disable, or reorder them later.
 
 
@@ -177,12 +177,12 @@ Install as many as you like — you can enable, disable, or reorder them later.
     <figcaption>Dictionary management interface</figcaption>
 </figure>
 
-If you want to upload your own dictionaries to Yomitan, you can do so via `Configure installed and enabled dictionaries` → `Import`.
+If you want to upload your own dictionaries to Manabitan, you can do so via `Configure installed and enabled dictionaries` → `Import`.
 For more on dictionaries, head over to the [Dictionaries page](dictionaries.md).  
 
 ???+ note "Learning multiple languages"
 
-    To use Yomitan with multiple languages, it’s best to create a separate profile for each language.
+    To use Manabitan with multiple languages, it’s best to create a separate profile for each language.
 
     Go to `Settings` → `Profile` → `Configure Profiles…` → `Add` to create a new profile.
     When setting it up, you can:
@@ -199,7 +199,7 @@ For more on dictionaries, head over to the [Dictionaries page](dictionaries.md).
 
 ## Basic Usage
 
-Now that we have our dictionaries installed, you can now use Yomitan to read anything in your desired language. 
+Now that we have our dictionaries installed, you can now use Manabitan to read anything in your desired language. 
 
 !!! info
     Open any webpage, such as:
@@ -209,17 +209,17 @@ Now that we have our dictionaries installed, you can now use Yomitan to read any
     - Online novels or blogs
     - Social media
 
-    Yomitan works anywhere selectable text exists.
+    Manabitan works anywhere selectable text exists.
 
     ??? note "Scanning local files and PDFs"
 
-          In order to use Yomitan with local files in Chrome, you must first tick the `Allow access to file URLs` checkbox for Yomitan on the extensions page. 
+          In order to use Manabitan with local files in Chrome, you must first tick the `Allow access to file URLs` checkbox for Manabitan on the extensions page. 
           
-          In addition, to scan PDF files on your local machine, use the [Yomitan PDF Viewer](/yomitan-pdf-viewer).
+          In addition, to scan PDF files on your local machine, use the [Manabitan PDF Viewer](/manabitan-pdf-viewer).
 
 
 
-### Using Yomitan
+### Using Manabitan
 
 To read unknown words, 
 
@@ -265,7 +265,7 @@ If a definition is found, a popup window will appear.
 - :material-brain:{ .lg .middle } __Spaced Repetition__
 
     ---
-    Yomitan integrates with Anki, a spaced repetition flashcard app loved by many language learners.
+    Manabitan integrates with Anki, a spaced repetition flashcard app loved by many language learners.
     To export the word as a flashcard, click the ![add icon](assets/btn/btn-add-expression.png){ width="16" } **export to Anki button** in the popup.
 
     !!! info "Anki Integration"
@@ -294,17 +294,15 @@ If a definition is found, a popup window will appear.
 
     [:octicons-arrow-right-24: Go to FAQ](./support.md#frequently-asked-questions)
 
--   :material-file-document:{ .lg } __Community__
+-   :material-file-document:{ .lg } __Support__
 
     ---
 
-    Join our community for support and tips, or just to hang out!
+    File issues and follow development on GitHub.
 
     [:octicons-arrow-right-24: Go to Tech Support](./support.md)
 
-    or visit our home at 
-    [:fontawesome-brands-discord: Discord](#) ·
-    [:fontawesome-brands-reddit: Reddit](#) ·
-    [:fontawesome-brands-github: GitHub](#) !
+    or visit the 
+    [:fontawesome-brands-github: GitHub repository](https://github.com/ManabiIO/manabitan).
 
 </div>

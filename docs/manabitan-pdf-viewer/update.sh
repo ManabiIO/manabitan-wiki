@@ -6,8 +6,8 @@ unzip -o "pdfjs-$pdfjs_version-dist.zip" "web/*" -d "."
 unzip -o "pdfjs-$pdfjs_version-dist.zip" "build/*" -d "."
 mv "./web/viewer.html" "./web/index.html"
 
-cp "yomitan-pdf-viewer.pdf" "./web/yomitan-pdf-viewer.pdf"
-sed -i -e 's/"compressed.tracemonkey-pldi-09.pdf"/"yomitan-pdf-viewer.pdf"/g' ./web/viewer.mjs
+cp "manabitan-pdf-viewer.pdf" "./web/manabitan-pdf-viewer.pdf"
+sed -i -e 's/"compressed.tracemonkey-pldi-09.pdf"/"manabitan-pdf-viewer.pdf"/g' ./web/viewer.mjs
 rm ./web/compressed.tracemonkey-pldi-09.pdf
 
 rm "pdfjs-$pdfjs_version-dist.zip"

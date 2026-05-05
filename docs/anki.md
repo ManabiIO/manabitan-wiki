@@ -7,22 +7,22 @@ hide:
 
 ## Anki Integration
 
-Yomitan features automatic flashcard creation for [Anki](https://apps.ankiweb.net/), a free application designed to help you
+Manabitan features automatic flashcard creation for [Anki](https://apps.ankiweb.net/), a free application designed to help you
 retain knowledge. This feature requires the prior installation of an Anki plugin called [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect) ([Add-on Page](https://ankiweb.net/shared/info/2055492159)).
 Check the respective project page for more information about how to set up this software.
 
-:fontawesome-solid-mobile-screen-button:{ .md .middle }  ___Mobile platform note___: On Android, use AnkiDroid (available on [Google Play](https://play.google.com/store/apps/details?id=com.ichi2.anki) or [F-Droid](https://f-droid.org/en/packages/com.ichi2.anki/)). To connect Yomitan with AnkiDroid, you'll need [AnkiconnectAndroid](https://github.com/KamWithK/AnkiconnectAndroid), an unofficial tool that requires manual installation. Install and use it at your own risk.
+:fontawesome-solid-mobile-screen-button:{ .md .middle }  ___Mobile platform note___: On Android, use AnkiDroid (available on [Google Play](https://play.google.com/store/apps/details?id=com.ichi2.anki) or [F-Droid](https://f-droid.org/en/packages/com.ichi2.anki/)). To connect Manabitan with AnkiDroid, you'll need [AnkiconnectAndroid](https://github.com/KamWithK/AnkiconnectAndroid), an unofficial tool that requires manual installation. Install and use it at your own risk.
 
 ### Flashcard Configuration
 
 Before flashcards can be automatically created, you must configure the templates used to create term and/or kanji notes.
 If you are unfamiliar with Anki deck and model management, this would be a good time to reference the [Anki
 Manual](https://docs.ankiweb.net/#/). In short, you must specify what information should be included in the
-flashcards that Yomitan creates through AnkiConnect.
+flashcards that Manabitan creates through AnkiConnect.
 
 Flashcard fields can be configured with the following steps:
 
-1.  Open the Yomitan options page and scroll down to the section labeled _Anki Options_.
+1.  Open the Manabitan options page and scroll down to the section labeled _Anki Options_.
 2.  Tick the checkbox labeled _Enable Anki integration_ (Anki must be running with [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect) ([Add-on Page](https://ankiweb.net/shared/info/2055492159)) installed).
 3.  Select the type of template to configure by clicking on either the _Terms_ or _Kanji_ tabs.
 4.  Select the Anki deck and model to use for new creating new flashcards of this type.
@@ -38,7 +38,7 @@ Flashcard fields can be configured with the following steps:
     | `{audio}`                                   | Audio of the term's pronunciation from one of the audio sources (if available).                                                                                        |
     | `{clipboard-image}`                         | An image which is stored in the system clipboard, if present.                                                                                                          |
     | `{clipboard-text}`                          | Text which is stored in the system clipboard, if present.                                                                                                              |
-    | `{cloze-body}`                              | Raw, inflected term as it appeared before being reduced to dictionary form by Yomitan.                                                                                 |
+    | `{cloze-body}`                              | Raw, inflected term as it appeared before being reduced to dictionary form by Manabitan.                                                                                 |
     | `{cloze-body-kana}`                         | Kana reading for `{cloze-body}`.                                                                                                                                       |
     | `{cloze-prefix}`                            | Fragment of the containing `{sentence}` starting at the beginning of `{sentence}` until the beginning of `{cloze-body}`.                                               |
     | `{cloze-suffix}`                            | Fragment of the containing `{sentence}` starting at the end of `{cloze-body}` until the end of `{sentence}`.                                                           |
@@ -91,7 +91,7 @@ Flashcard fields can be configured with the following steps:
     | `{character}`                     | Unicode glyph representing the current kanji.                                                                                                                            |
     | `{clipboard-image}`               | An image which is stored in the system clipboard, if present.                                                                                                            |
     | `{clipboard-text}`                | Text which is stored in the system clipboard, if present.                                                                                                                |
-    | `{cloze-body}`                    | Raw, inflected parent term as it appeared before being reduced to dictionary form by Yomitan.                                                                            |
+    | `{cloze-body}`                    | Raw, inflected parent term as it appeared before being reduced to dictionary form by Manabitan.                                                                            |
     | `{cloze-prefix}`                  | Fragment of the containing `{sentence}` starting at the beginning of `{sentence}` until the beginning of `{cloze-body}`.                                                 |
     | `{cloze-suffix}`                  | Fragment of the containing `{sentence}` starting at the end of `{cloze-body}` until the end of `{sentence}`.                                                             |
     | `{dictionary}`                    | Original name of the dictionary from which the card is being created.                                                                                                    |
@@ -117,7 +117,7 @@ Flashcard fields can be configured with the following steps:
     | `{stroke-count}`                  | Number of strokes that the kanji character has.                                                                                                                          |
     | `{url}`                           | Address of the web page in which the kanji appeared in.                                                                                                                  |
 
-When creating your model for Yomitan, _make sure that you pick a unique field to be first_; fields that will
+When creating your model for Manabitan, _make sure that you pick a unique field to be first_; fields that will
 contain `{expression}` or `{character}` are ideal candidates for this. Anki does not allow duplicate flashcards to be
 added to a deck by default; it uses the first field in the model to check for duplicates. For example, if you have `{reading}`
 configured to be the first field in your model and <ruby>橋<rt>はし</rt></ruby> is already in your deck, you will not
@@ -125,7 +125,7 @@ be able to create a flashcard for <ruby>箸<rt>はし</rt></ruby> because they s
 
 ### Flashcard Creation
 
-Once Yomitan is configured, it becomes trivial to create new flashcards with a single click. You will see the following
+Once Manabitan is configured, it becomes trivial to create new flashcards with a single click. You will see the following
 icons next to term definitions:
 
 - Clicking ![](assets/btn/btn-add-expression.png) adds the current expression (e.g. 食べる).

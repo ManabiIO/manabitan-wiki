@@ -1,9 +1,9 @@
-site_name: Yomitan
-site_url: https://yomitan.wiki/
+site_name: Manabitan
+site_url: https://manabitan.manabi.io/
 site_description: Powerful and versatile pop-up dictionary for language learning
-site_author: Yomitan Authors
-repo_url: https://github.com/yomidevs/yomitan
-repo_name: Yomitan
+site_author: Manabitan Authors
+repo_url: https://github.com/ManabiIO/manabitan
+repo_name: Manabitan
 nav:
   - Home: 'index.md'
   - Getting started: 'getting-started.md'
@@ -13,10 +13,11 @@ nav:
   - Tools & Resources: 'tools-resources.md'
   - Tech Support: 'support.md'
   - Contributing: 'contributing.md'
+  - Credits: 'credits.md'
 theme:
   name: material
-  favicon: assets/icon/yomitan-icon64.png
-  logo: assets/icon/yomitan-icon128.png
+  favicon: assets/icon/manabitan-icon64.png
+  logo: assets/icon/manabitan-icon128.png
   icon:
     repo: fontawesome/brands/github
   features:
@@ -50,10 +51,8 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yomidevs/yomitan
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/YkQrXW6TXF
-  homepage: https://yomitan.wiki/
+      link: https://github.com/ManabiIO/manabitan
+  homepage: https://manabitan.manabi.io/
   generator: false
 
 markdown_extensions:
@@ -104,6 +103,7 @@ extra_javascript:
   - javascripts/browser-detect.js
 
 copyright: |
-  Copyright &copy; 2026 Yomitan Authors <br>
-  <a href="https://yomitan.wiki/privacy">Privacy and Permissions</a> -- 
-  Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+  Copyright &copy; 2026 Manabitan Authors <br>
+  <a href="https://manabitan.manabi.io/privacy">Privacy and Permissions</a> -- 
+  Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> -- 
+  Based on <a href="https://github.com/yomidevs/yomitan-wiki">Yomitan Wiki</a>
