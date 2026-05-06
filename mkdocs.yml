@@ -52,6 +52,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ManabiIO/manabitan
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/gvxzS93C3w
   homepage: https://manabitan.manabi.io/
   generator: false
 

@@ -5,7 +5,11 @@ hide:
   - toc
 ---
 
-Having trouble with Manabitan? If you don't find your answers here, please file an issue with enough detail to reproduce the problem.
+Having trouble with Manabitan? If you don't find your answers here, join the Manabi Discord or file an issue with enough detail to reproduce the problem.
+
+## Discord
+
+For quick support, bug reports, and discussion, join the [Manabi Discord](https://discord.gg/gvxzS93C3w).
 
 ## GitHub
 

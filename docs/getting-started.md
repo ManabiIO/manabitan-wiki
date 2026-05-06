@@ -298,11 +298,12 @@ If a definition is found, a popup window will appear.
 
     ---
 
-    File issues and follow development on GitHub.
+    Get support on Discord, or file issues and follow development on GitHub.
 
     [:octicons-arrow-right-24: Go to Tech Support](./support.md)
 
-    or visit the 
-    [:fontawesome-brands-github: GitHub repository](https://github.com/ManabiIO/manabitan).
+    or visit 
+    [:fontawesome-brands-discord: Discord](https://discord.gg/gvxzS93C3w) ·
+    [:fontawesome-brands-github: GitHub](https://github.com/ManabiIO/manabitan).
 
 </div>
