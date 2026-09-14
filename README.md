@@ -2,7 +2,9 @@
 
 Documentation and homepage for [Manabitan](https://manabi.io/manabitan/).
 
-Manabitan is a Yomitan fork with rewritten dictionary storage and query engines plus user-facing improvements around dictionary management and Anki setup. [Why use Manabitan?](https://manabi.io/manabitan/why-manabitan/) describes the product differences. [Why Manabitan is a fork](https://manabi.io/manabitan/about-manabitan/) separately explains the upstream relationship, implementation scope, and migration responsibility.
+Manabitan is a Yomitan fork that keeps the familiar reading/mining workflow while using rewritten dictionary storage and query engines for faster imports/lookups and dramatically smaller installed dictionaries. It also adds user-facing improvements around dictionary updates and management, Anki field setup, MDX, themes, and related reading workflows.
+
+[Why use Manabitan?](https://manabi.io/manabitan/why-manabitan/) covers current product differences and the general roadmap. [Why Manabitan is a fork](https://manabi.io/manabitan/about-manabitan/) separately explains the upstream relationship, implementation scope, and migration responsibility.
 
 Yomitan's primary maintainers have supported releasing this work as a separate fork, offered guidance, and reviewed our release preparations. Manabitan is maintained and released independently.
 
