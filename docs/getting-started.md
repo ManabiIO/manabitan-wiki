@@ -1,309 +1,64 @@
 ---
-hide:
-  - navigation
-  - footer
+title: Getting started with Manabitan
+description: Choose a browser package, install dictionaries, and make your first lookup.
 ---
 
-# Getting Started with Manabitan
+# Getting started with Manabitan
 
-This introduction will help you quickly familiarize yourself with the basics and set you up for a smooth language learning experience.
+Manabitan is installed separately from Yomitan. Existing users should first read [Moving from Yomitan](yomitan-migration.md) or [Moving from Yomichan](yomichan-migration.md).
 
+## Installation
 
+Get packages from [Manabitan's GitHub Releases](https://github.com/ManabiIO/manabitan/releases). Read the notes for the release you select. A package called `manabitan-chrome.zip` is a browser variant, not evidence that the release is stable. Releases marked **Pre-release** are development releases. Do not use the Playwright package for everyday reading.
 
-<div class="grid cards" markdown>
+### Chrome and Chromium-based desktop browsers
 
--   :material-book-open-page-variant:{ .lg .middle } __Learn Faster__
+Download `manabitan-chrome.zip`, extract it to a permanent folder, and open `chrome://extensions`. Enable **Developer mode**, choose **Load unpacked**, and select the extracted folder containing `manifest.json`.
 
-    ---
+Do not delete or move that folder afterwards. To update an unpacked installation, back up your data, replace its files with the intended new release, then use **Reload** on the extension's card. Keep the same installation/folder rather than removing and reinstalling it. Unpacked installation is not Chrome Web Store installation and does not provide store-managed updates.
 
-    Hover over words to see what they mean instantly.
+### Microsoft Edge on desktop
 
--   :material-cards:{ .lg .middle } __Create Flashcards__
+Use `manabitan-edge.zip` and the same procedure at `edge://extensions`. Choose the extracted folder containing `manifest.json`. The same backup and manual-update precautions apply.
 
-    ---
+### Firefox on desktop
 
-     Send words straight to Anki in one click, exactly as you encounter them while reading.
+Normal Firefox installation requires a Mozilla-signed package. Install a signed Manabitan package only when the release explicitly provides one, using **Add-ons and themes → Extensions → Install Add-on From File**. A GitHub ZIP is not automatically a signed installable add-on.
 
--   :material-web:{ .lg .middle } __Works Everywhere__
+For development testing, extract `manabitan-firefox.zip`, open `about:debugging#/runtime/this-firefox`, select **Load Temporary Add-on**, and select `manifest.json`. Temporary add-ons are removed when Firefox restarts; this is not a persistent installation or an automatic-update channel. Do not use temporary storage as your only copy of a dictionary collection.
 
-    ---
+The source has a separate Firefox development variant with an update URL. Automatic updates depend on the exact signed package, its manifest, and a working update feed. They are not promised for arbitrary ZIPs, temporary add-ons, or every Firefox package. Do not disable signature checks as an installation shortcut.
 
-    Use Manabitan on news articles, novels, subtitles, PDFs, and more.
+### Mobile and e-readers
 
--   :material-volume-high:{ .lg .middle } __Hear Pronunciation__
+See [Browser and device support](support.md#browser-and-device-support). Android Firefox and extension-capable Android Chromium browsers need package-specific testing. Desktop availability does not establish mobile support. There is no supported iOS/Safari installation documented here; use only a platform package explicitly described in a release.
 
-    ---
+## Manabitan setup
 
-    Play native audio directly from native speakers from local sources or over the internet.
+Open the extension's toolbar icon, then **Settings**. The welcome page offers the same initial setup. Grant the website permissions your browser requests; in Firefox, check **Enable recommended permissions** on the welcome page when available. Reload an already-open webpage after installation or permission changes.
 
-</div>
+### Installing dictionaries
 
-!!! note "Migrating from Yomichan?"
-    Learn how to migrate to Manabitan [here](yomichan-migration.md).
+Choose your language, then open **Get recommended dictionaries…**. Start with a definition dictionary for that language. The recommended-dictionary dialog can install recommendations together; do not install every available dictionary just because it is listed.
 
----
+To import a downloaded dictionary, open **Dictionaries → Configure installed and enabled dictionaries…**, then use **Import**. Wait for the new dictionary to finish, enable it in the profile you are using, and try a lookup. A frequency or pitch-accent dictionary adds information but does not replace a definition dictionary.
 
-## :fontawesome-solid-download: Installation
+See [Dictionaries](dictionaries.md) for MDX packages, automatic updates, profiles, and backups.
 
-To get started, get Manabitan for your browser:
+## Basic usage
 
-=== "Chrome"
+On a normal webpage with selectable text, hold **Shift** and move the pointer over a word. If a matching entry exists in an enabled dictionary, a definition popup appears. Scanning input can be changed in Settings. Browser settings pages, store pages, protected viewers, and image-only text may not allow scanning.
 
-    <div class="grid cards" markdown>
+Use the speaker button for available pronunciation audio. Availability depends on the language and configured audio sources; not every entry has a recording. [Configure audio](advanced.md#audio).
 
-    -   :fontawesome-brands-chrome:{ .lg .middle } __Chrome Stable__
+[Set up Anki](anki.md) before using the add-card controls. Anki normally needs to be running with AnkiConnect installed. Do a test lookup and create one test note before importing or updating a large collection.
 
-        ---
+### Local files and PDFs
 
-        The stable release recommended for most users.
+In Chrome or Edge, enable **Allow access to file URLs** on Manabitan's extension details page to scan local HTML. For PDFs, use the [Manabitan PDF Viewer](manabitan-pdf-viewer/index.html), then open or drop a file into it. Scanned image-only PDFs need a text layer before dictionary lookup can work.
 
-        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
+## Need help?
 
-    -   :fontawesome-brands-chrome:{ .lg .middle } __Chrome Beta__
+Use [Tech support](support.md) for permission, storage, and import troubleshooting. For Manabitan-specific questions and reproducible reports, use the [Manabi Discord](https://discord.gg/gvxzS93C3w). Do not send fork-specific bugs to Yomitan's issue tracker.
 
-        ---
-
-        Try the latest features before they reach stable.
-
-        [:octicons-mark-github-16: View Development Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button }
-
-    </div>
-
-=== "Firefox"
-
-    <div class="grid cards" markdown>
-
-    -   :fontawesome-brands-firefox-browser:{ .lg .middle } __Firefox Stable__
-
-        ---
-
-        The stable release recommended for most users.
-
-        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
-
-    -   :fontawesome-brands-firefox-browser:{ .lg .middle } __Firefox Beta/Development__
-
-        ---
-
-        Download and side-load manually for testing versions.
-
-        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button }
-
-    </div>
-
-    !!! info "Manual Installation Required"
-        Firefox doesn't allow testing extensions in the marketplace. Download your desired version and side-load it manually. You only need to do this once—updates are automatic.
-
-=== "Edge"
-
-    <div class="grid cards" markdown>
-
-    -   :fontawesome-brands-edge:{ .lg .middle } __Edge Stable__
-
-        ---
-
-        The stable release for Microsoft Edge users.
-
-        [:octicons-mark-github-16: View GitHub Releases](https://github.com/ManabiIO/manabitan/releases){ .md-button .md-button--primary }
-
-    </div>
-
----
-
-:fontawesome-solid-mobile-screen-button:{ .md .middle } ___Mobile platform note___: You can use Manabitan on Android with Firefox, Edge, or Elixir. Chrome for mobile and iOS aren't supported.
-
-## Manabitan Setup
-
-After a successful installation, Manabitan will display a welcome page. If you don’t see it, that’s okay—you can complete setup at any time by opening `Settings` from the `Quick Actions` menu.
-
-!!! info "Quick Actions"
-    Click the ![manabitan icon](assets/icon/manabitan-icon.svg){ width="16" } **Manabitan** button in the browser bar to open the quick-actions popup.
-
-    <figure markdown="span">
-        ![Browser action popup](assets/ss/browser-action-popup.webp){ width="120" }
-    </figure>
-
-    <div class="grid cards" markdown>
-
-    -   ![profile icon](assets/icon/profile.svg){ width="24" style="vertical-align: middle;" } __Profile__
-
-        ---
-
-        Quickly switch between profiles with different settings or languages.
-
-        <small>To create new profiles, head to `Settings`.</small>
-
-    -   ![cog](assets/icon/cog.svg){ width="24" style="vertical-align: middle;" } __Settings__
-
-        ---
-
-        Your control hub. 
-        
-        Make profiles, configure dictionaries, switch themes, and more.
-
-    -   ![magnifying glass](assets/icon/magnifying-glass.svg){ width="24" style="vertical-align: middle;" } __Search__
-
-        ---
-
-        Open the search page to easily look up whole sentences and more.
-
-    -   ![question mark](assets/icon/question-mark-circle.svg){ width="24" style="vertical-align: middle;" } __Help__
-
-        ---
-
-        See the relevant links and information about Manabitan.
-
-    </div>
-
-
-### Installing Dictionaries
-
-!!! warning "Dictionary Required"
-    Manabitan requires at least one dictionary to function. An orange exclamation mark over the icon indicates no dictionaries are enabled.
-
-
-To install dictionaries:
-
-1. Navigate to Manabitan's `Welcome` or `Settings` page.
-2. Choose your desired language from the `Language` dropdown. 
-3. Click on `Get recommended dictionaries...`
-
-You will see a list of publicly available Manabitan dictionaries for the selected language.
-Install as many as you like — you can enable, disable, or reorder them later.
-
-
-<figure markdown="span">
-    ![Custom dictionaries list](assets/ss/settings-dictionaries-popup.webp){ width="550" }
-    <figcaption>Dictionary management interface</figcaption>
-</figure>
-
-If you want to upload your own dictionaries to Manabitan, you can do so via `Configure installed and enabled dictionaries` → `Import`.
-For more on dictionaries, head over to the [Dictionaries page](dictionaries.md).  
-
-???+ note "Learning multiple languages"
-
-    To use Manabitan with multiple languages, it’s best to create a separate profile for each language.
-
-    Go to `Settings` → `Profile` → `Configure Profiles…` → `Add` to create a new profile.
-    When setting it up, you can:
-
-    - Assign a unique modifier key (for example, <kbd>Alt</kbd>)
-
-    - Add conditions so the profile activates only on specific websites or URLs
-
-    Once the profile is created, return to the same section and set `Active Profile` to the new profile. Then, install the dictionaries needed for that language.
-
-    Repeat this process for each language you want to use. After setup, you can switch languages instantly by changing profiles from the `Quick Actions` menu or by using the assigned modifier keys.
-
----
-
-## Basic Usage
-
-Now that we have our dictionaries installed, you can now use Manabitan to read anything in your desired language. 
-
-!!! info
-    Open any webpage, such as:
-
-    - News articles
-    - Wikipedia 
-    - Online novels or blogs
-    - Social media
-
-    Manabitan works anywhere selectable text exists.
-
-    ??? note "Scanning local files and PDFs"
-
-          In order to use Manabitan with local files in Chrome, you must first tick the `Allow access to file URLs` checkbox for Manabitan on the extensions page. 
-          
-          In addition, to scan PDF files on your local machine, use the [Manabitan PDF Viewer](/manabitan-pdf-viewer).
-
-
-
-### Using Manabitan
-
-To read unknown words, 
-
-1. Hold the modifier key (default: <kbd>Shift</kbd>)
-2. Move your cursor over the word.
-
-If a definition is found, a popup window will appear. 
-
-
-<figure markdown="span">
-    <a href="https://en.wikipedia.org/wiki/English_language#Classification">
-    ![Popup with search terms](assets/ss/search-popup-terms.webp){ width="850" }
-    </a>
-    <figcaption><small>:material-hand-pointing-right: Try it yourself! Hover over text while holding <kbd>Shift</kbd></small></figcaption>.
-</figure>
-
-!!! tip "Tip"
-    You can customize the modifier key in Settings to suit your preferences (e.g., <kbd>Ctrl</kbd>, <kbd>Alt</kbd>, or `No Key` to have the popup open on every word).  
-
-    :fontawesome-solid-mobile-screen-button:{ .md .middle }  ___Mobile platform note___: On mobile platforms directly touching the word brings up the popup.
-    There is no need to configure the modifier key.
-
-
-#### Listen to Audio
-
-<div class="grid cards" markdown>
-- :material-speaker:{ .lg .middle } __Audio Pronunciation__
-
-    ---
-
-    If you want to hear the word pronounced by native speakers, click the ![loudspeaker icon](assets/icon/play-audio.svg){ width="16" } **speaker button** in the popup.
-
-    !!! info "No Audio"
-        If an audio sample isn't available, you'll hear a short click. For more audio sources and configuration options, see [Audio Configuration](advanced.md#audio).
-
-    [:octicons-arrow-right-24: Set up Audio](advanced.md#audio)
-
-</div>
-
-#### Export Flashcards to Anki
-
-<div class="grid cards" markdown>
-- :material-brain:{ .lg .middle } __Spaced Repetition__
-
-    ---
-    Manabitan integrates with Anki, a spaced repetition flashcard app loved by many language learners.
-    To export the word as a flashcard, click the ![add icon](assets/btn/btn-add-expression.png){ width="16" } **export to Anki button** in the popup.
-
-    !!! info "Anki Integration"
-        If Anki is not running or the connection settings are incorrect, this button will appear grayed out.
-        If you haven't set up Anki integration this button will not appear.
-        
-        Make sure Anki is running in the background and that the integration is configured correctly. 
-        For more configuration options, see [Anki Integration](anki.md).
-
-
-    [:octicons-arrow-right-24: Set up Anki Integration](anki.md)
-
-</div>
-
----
-
-## :fontawesome-solid-circle-question: Need Help?
-
-<div class="grid cards" markdown>
-
--   :material-chat-question:{ .lg } __Frequently Asked Questions__
-
-    ---
-
-    Find answers to common questions about setup, usage, troubleshooting, and more.
-
-    [:octicons-arrow-right-24: Go to FAQ](./support.md#frequently-asked-questions)
-
--   :material-file-document:{ .lg } __Support__
-
-    ---
-
-    Get support on Discord, or file issues and follow development on GitHub.
-
-    [:octicons-arrow-right-24: Go to Tech Support](./support.md)
-
-    or visit 
-    [:fontawesome-brands-discord: Discord](https://discord.gg/gvxzS93C3w) ·
-    [:fontawesome-brands-github: GitHub](https://github.com/ManabiIO/manabitan).
-
-</div>
+Browser installation references: [Chrome's unpacked-extension instructions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked) and [Mozilla's temporary-installation guide](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/).

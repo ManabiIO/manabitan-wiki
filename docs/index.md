@@ -1,13 +1,12 @@
 ---
 template: home.html
-title: Welcome to Manabitan
-description: Powerful and versatile pop-up dictionary for language learning.
-
+title: Manabitan
+description: A Yomitan fork with faster imports and lookups, dramatically smaller installed dictionaries, background updates, MDX support, and automatic Anki field mapping.
 hide:
   - navigation
   - toc
-  - footer
-
 ---
 
-Welcome to Manabitan.
+# Manabitan
+
+Keep the Yomitan workflow, with less waiting, less storage, and less setup. [See what Manabitan improves](why-manabitan.md), [get started](getting-started.md), or [read why it is a fork and why the name changed](about-manabitan.md).

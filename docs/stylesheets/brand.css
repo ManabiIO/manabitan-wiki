@@ -1,0 +1,208 @@
+/*
+ * Manabi Reader palette: lake-of-fire/manabi at 0699eabb6f8f6bf06122507457f23cc21c14759a
+ * manabi/static/reader/css/new-age.css (blob 661433220b3455770111415759effc908b1e135d).
+ * Gold and charcoal are shared brand colors. Light surfaces and darker link
+ * shades are adaptations for readable documentation, not extra Reader colors.
+ * Keep literal colors here; other site styles consume these custom properties.
+ */
+:root {
+  --manabi-brand-gold: #d9b141;
+  --manabi-brand-gold-hover: #fcbd20;
+  --manabi-brand-charcoal: #1c1c1c;
+  --manabi-brand-surface: #222222;
+  --manabi-brand-raised: #323232;
+  --manabi-brand-deep: #0a0a0a;
+  --manabi-on-accent: var(--manabi-brand-charcoal);
+  --manabi-on-chrome: #f5f2ea;
+  --manabi-on-chrome-muted: #d1cbbf;
+  --manabi-font-text: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --manabi-font-code: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+:root,
+[data-md-color-scheme="default"] {
+  color-scheme: light;
+  --manabi-background: #faf8f3;
+  --manabi-surface: #ffffff;
+  --manabi-surface-subtle: #f0ece3;
+  --manabi-text: var(--manabi-brand-charcoal);
+  --manabi-muted: #655f53;
+  --manabi-border: #ded8cb;
+  --manabi-border-strong: #897b62;
+  --manabi-link: #7a5b0a;
+  --manabi-link-hover: #5f4506;
+  --manabi-accent-soft: #eee1be;
+  --manabi-selection: #e7cb7a;
+  --manabi-media-shadow: 0 4px 8px rgba(28, 28, 28, 0.12), 0 6px 20px rgba(28, 28, 28, 0.10);
+}
+
+[data-md-color-scheme="slate"] {
+  color-scheme: dark;
+  --manabi-background: var(--manabi-brand-charcoal);
+  --manabi-surface: var(--manabi-brand-surface);
+  --manabi-surface-subtle: var(--manabi-brand-raised);
+  --manabi-text: var(--manabi-on-chrome);
+  --manabi-muted: #bdb7ab;
+  --manabi-border: #4a453a;
+  --manabi-border-strong: #847b6b;
+  --manabi-link: var(--manabi-brand-gold);
+  --manabi-link-hover: var(--manabi-brand-gold-hover);
+  --manabi-accent-soft: #362f20;
+  --manabi-selection: var(--manabi-brand-gold);
+  --manabi-media-shadow: 0 4px 8px rgba(0, 0, 0, 0.28), 0 6px 20px rgba(0, 0, 0, 0.24);
+}
+
+/* Define the bridge on the scheme element too: inherited root aliases alone
+ * would keep their light-mode computed values after the Material theme toggle. */
+:root,
+[data-md-color-scheme] {
+  --md-text-font: var(--manabi-font-text);
+  --md-text-font-family: var(--manabi-font-text);
+  --md-code-font: var(--manabi-font-code);
+  --md-code-font-family: var(--manabi-font-code);
+  --md-default-bg-color: var(--manabi-background);
+  --md-default-fg-color: var(--manabi-text);
+  --md-default-fg-color--light: var(--manabi-muted);
+  --md-default-fg-color--lighter: var(--manabi-border-strong);
+  --md-default-fg-color--lightest: var(--manabi-border);
+  --md-primary-fg-color: var(--manabi-link);
+  --md-primary-fg-color--light: var(--manabi-brand-gold);
+  --md-primary-fg-color--dark: var(--manabi-link-hover);
+  --md-primary-bg-color: var(--manabi-surface);
+  --md-accent-fg-color: var(--manabi-link-hover);
+  --md-accent-fg-color--transparent: var(--manabi-accent-soft);
+  --md-accent-bg-color: var(--manabi-surface);
+  --md-typeset-color: var(--manabi-text);
+  --md-typeset-a-color: var(--manabi-link);
+  --md-typeset-mark-color: var(--manabi-selection);
+  --md-typeset-table-color: var(--manabi-border);
+  --md-typeset-table-color--light: var(--manabi-surface-subtle);
+  --md-code-bg-color: var(--manabi-surface-subtle);
+  --md-code-fg-color: var(--manabi-text);
+  --md-code-hl-color: var(--manabi-accent-soft);
+  --md-admonition-bg-color: var(--manabi-surface);
+  --md-admonition-fg-color: var(--manabi-text);
+  --md-footer-bg-color: var(--manabi-brand-charcoal);
+  --md-footer-bg-color--dark: var(--manabi-brand-deep);
+  --md-footer-fg-color: var(--manabi-on-chrome);
+  --md-footer-fg-color--light: var(--manabi-on-chrome-muted);
+  --md-footer-fg-color--lighter: var(--manabi-on-chrome-muted);
+}
+
+body {
+  background-color: var(--manabi-background);
+  color: var(--manabi-text);
+  font-family: var(--manabi-font-text);
+  accent-color: var(--manabi-link);
+}
+
+button, input, select, textarea {
+  font-family: var(--manabi-font-text);
+}
+
+.md-typeset h1, .md-typeset h2 {
+  color: var(--manabi-text);
+}
+
+.md-typeset mark, .md-search-result mark {
+  background-color: var(--manabi-selection);
+  color: var(--manabi-on-accent);
+}
+
+.md-nav--primary .md-nav__title[for="__drawer"] {
+  background-color: var(--manabi-brand-charcoal);
+  color: var(--manabi-on-chrome);
+}
+
+/* Dark chrome in both themes matches Reader; content follows the user's theme. */
+.md-header, .md-tabs, .md-banner {
+  --md-primary-bg-color: var(--manabi-on-chrome);
+  --md-primary-bg-color--light: var(--manabi-on-chrome-muted);
+  background-color: var(--manabi-brand-charcoal);
+  color: var(--manabi-on-chrome);
+}
+
+.md-header {
+  border-bottom: 1px solid var(--manabi-brand-gold);
+}
+
+.md-tabs__link {
+  opacity: 1;
+  color: var(--manabi-on-chrome-muted);
+}
+
+.md-tabs__item--active .md-tabs__link,
+.md-tabs__link:hover, .md-tabs__link:focus,
+.md-header__button:hover, .md-header__button:focus,
+.md-banner a, .md-footer a:hover, .md-footer a:focus {
+  color: var(--manabi-brand-gold);
+}
+
+.md-banner a:hover, .md-banner a:focus {
+  color: var(--manabi-brand-gold-hover);
+}
+
+.md-search__form {
+  background-color: var(--manabi-surface);
+  color: var(--manabi-text);
+  border: 1px solid var(--manabi-border-strong);
+}
+
+.md-search__input, .md-search__input + .md-search__icon {
+  color: var(--manabi-text);
+}
+
+.md-search__input::placeholder {
+  color: var(--manabi-muted);
+  opacity: 1;
+}
+
+.md-search__form:focus-within {
+  outline: 2px solid var(--manabi-brand-gold);
+  outline-offset: 2px;
+}
+
+.md-typeset .md-button {
+  color: var(--manabi-link);
+  border-color: var(--manabi-link);
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--manabi-brand-gold);
+  color: var(--manabi-on-accent);
+}
+
+.md-typeset .md-button:hover, .md-typeset .md-button:focus {
+  background-color: var(--manabi-brand-gold-hover);
+  border-color: var(--manabi-link);
+  color: var(--manabi-on-accent);
+}
+
+.md-typeset a:focus-visible, .md-nav__link:focus-visible,
+.md-top:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--manabi-link);
+  outline-offset: 3px;
+}
+
+.md-header__button:focus-visible, .md-tabs__link:focus-visible,
+.md-banner a:focus-visible, .md-footer a:focus-visible {
+  outline: 2px solid var(--manabi-brand-gold);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--manabi-selection);
+  color: var(--manabi-on-accent);
+}
+
+/* Retain system high-contrast colors instead of forcing the brand palette. */
+@media (forced-colors: active) {
+  .md-typeset .md-button, .md-typeset .md-button:hover, .md-typeset .md-button:focus {
+    border-color: ButtonText;
+    background-color: ButtonFace;
+    color: ButtonText;
+  }
+
+  :focus-visible { outline-color: Highlight; }
+}

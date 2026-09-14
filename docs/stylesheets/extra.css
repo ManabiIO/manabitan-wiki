@@ -1,7 +1,3 @@
-:root {
-    --md-primary-fg-color: #8560f5;
-}
-
 p {
     margin-block-start: 0.5em;
     margin-block-end: 0.5em;
@@ -22,7 +18,7 @@ p {
 .ss {
     position: relative;
     top: 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: var(--manabi-media-shadow);
     transition: top ease 0.5s;
 }
 
@@ -50,4 +46,9 @@ p {
 
 .md-typeset {
     line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ss, .icon { transition: none; }
+    .ss:hover, .icon:hover { top: 0; }
 }

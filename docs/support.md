@@ -1,66 +1,59 @@
 ---
-hide:
-  - navigation
-  - footer
-  - toc
+title: Tech support
+description: Manabitan support, compatibility status, and safe troubleshooting for permissions and dictionary storage.
 ---
 
-Having trouble with Manabitan? If you don't find your answers here, join the Manabi Discord or file an issue with enough detail to reproduce the problem.
+# Tech support
 
-## Discord
+For Manabitan-specific questions and reproducible bug reports, use the [Manabi Discord](https://discord.gg/gvxzS93C3w). The public repositories currently have Issues disabled; this guide does not send you to a nonworking issue form. Do not file fork-specific bugs against Yomitan. Documentation fixes can be submitted as pull requests to [manabitan-wiki](https://github.com/ManabiIO/manabitan-wiki/pulls).
 
-For quick support, bug reports, and discussion, join the [Manabi Discord](https://discord.gg/gvxzS93C3w).
+## Reporting a problem
 
-## GitHub
+Include the Manabitan version and installation method, browser/version, operating system and device, dictionary title/revision/format/size, steps to reproduce, expected result, and the actual error. State whether the problem is an initial import, update, lookup, or backup restore.
 
-You can [file an issue on our GitHub repository](https://github.com/ManabiIO/manabitan/issues/new/choose) and provide any context that could help us assist with your issue.
+Recent builds expose diagnostics in Settings. Inspect a diagnostic export before sharing it: error messages, URLs, dictionary names, settings, and copied text may contain information you do not want to publish. Share a minimal example and redact private material, API keys, local paths, and personal page content. Never upload proprietary dictionary contents as a public reproducer.
 
-## Frequently Asked Questions
+## Browser and device support
 
-**I can't scan text in Firefox!**
+This is a distribution/qualification matrix, not a list inferred from browser branding. The [release notes](https://github.com/ManabiIO/manabitan/releases) for the exact package take precedence.
 
-In Firefox's Manifest V3, host permissions are treated as opt-in. For Manabitan to work properly, the recommended permissions
-must be explicitly set. In the Manabitan welcome page, go to the `Recommended Permissions (Important)` section and check `Enable recommended permissions`.
+| Platform | Distribution path | What still needs checking |
+| --- | --- | --- |
+| Desktop Chrome/Chromium | Manabitan Chrome package, loaded unpacked unless a Manabitan store listing is provided | Minimum browser version, imports, lookups, persistence, and updates on the installed build |
+| Desktop Edge | Manabitan Edge package | The same checks; not an upstream Yomitan store install |
+| Desktop Firefox | Signed package when explicitly provided; otherwise temporary development testing | Signing, host permission, storage behavior, restart persistence, and the specific update channel |
+| Android Firefox | Package-specific testing | Availability of a persistent install, touch scanning, storage, audio, and AnkiDroid integration |
+| Android Edge/other extension-capable browsers, including Elixir | Unverified until a release documents a tested combination | Do not infer support from desktop compatibility; e-readers need their own tests |
+| iOS/Safari | No supported installation documented here | Source/build variants alone do not establish an available supported release |
 
-**I'm having problems importing dictionaries in Firefox, what do I do?**
+## Frequently asked questions
 
-Manabitan uses the cross-browser IndexedDB system for storing imported dictionary data into your user profile. Although
-everything "just works" in Chrome, depending on settings, Firefox users can run into problems due to browser bugs.
-Manabitan catches errors and tries to offer suggestions about how to work around Firefox issues, but in general at least
-one of the following solutions should work for you:
+### Nothing happens when I scan
 
-- Make sure you have cookies enabled. It appears that disabling them also disables IndexedDB for some reason. You
-  can still have cookies be disabled on other sites; just make sure to add the Manabitan extension to the whitelist of
-  whatever tool you are using to restrict cookies. You can get the extension "URL" by looking at the address bar when
-  you have the search page open.
-- Make sure that you have sufficient disk space available on the drive Firefox uses to store your user profile.
-  Firefox limits the amount of space that can be used by IndexedDB to a small fraction of the disk space actually
-  available on your computer.
-- Make sure that you have history set to "Remember history" enabled in your privacy settings. When this option is
-  set to "Never remember history", IndexedDB access is once again disabled for an inexplicable reason.
-- As a last resort, try using the [Refresh Firefox](https://support.mozilla.org/en-US/kb/reset-preferences-fix-problems)
-  feature to reset your user profile. It appears that the Firefox profile system can corrupt itself preventing
-  IndexedDB from being accessible to Manabitan.
+Check that Manabitan is enabled, at least one definition dictionary is enabled in the active profile, and the scanning language/input matches your setup. Grant access to the website and reload the page. In Firefox, inspect the recommended host permissions on the welcome page. Test ordinary selectable webpage text before diagnosing a protected page or PDF viewer.
 
-**Will you add support for online dictionaries?**
+Disable another dictionary extension's scanning while testing. Browser settings pages, add-on store pages, image-only text, or pages without permission can be unavailable.
 
-Online dictionaries will not be implemented because it is not possible to support them in a robust way. In order to
-perform deinflection, Manabitan must execute dozens of database queries for every single word. Factoring in
-network latency and the fragility of web scraping, it would not be possible to maintain a good and consistent user
-experience.
+### A dictionary import or update fails
 
-**Is it possible to use Manabitan with files saved locally on my computer with Chrome?**
+Record the exact error and check available disk space. Dictionary storage in Manabitan uses a different implementation from upstream Yomitan, including SQLite and origin-private file storage where supported. The old IndexedDB-only explanation and generic cookie/history fixes are not a reliable diagnosis for every Manabitan error.
 
-In order to use Manabitan with local files in Chrome, you must first tick the _Allow access to file URLs_ checkbox
-for Manabitan on the extensions page. In addition, you may use the [Manabitan PDF Viewer](https://manabitan.manabi.io/manabitan-pdf-viewer/web/) to view and scan PDF files that are on your local machine.
+Try one small known-compatible dictionary in a separate browser profile. Check whether the package downloaded completely and whether it is a dictionary package rather than a settings or database backup. Keep the original packages, settings export, and working installation.
 
-**Is it possible to delete individual dictionaries without purging the database?**
+Do not begin with Refresh Firefox, purging the database, or reinstalling the extension. Those can destroy the only copy of a working setup. Back up first; use destructive recovery only after identifying what will be lost.
 
-Manabitan is able to delete individual dictionaries, but keep in mind that this process can be _very_ slow and can
-cause the browser to become unresponsive. The time it takes to delete a single dictionary can sometimes be roughly
-the same as the time it originally took to import, which can be significant for certain large dictionaries.
+### An automatic update did not run at the scheduled time
 
-**Why aren't EPWING dictionaries bundled with Manabitan?**
+A dictionary needs a working update source, and the extension needs network access and an opportunity to run. Browser/device suspension can delay scheduled checks. Inspect the dictionary's update configuration and result. Do not delete the existing dictionary merely to retry an update.
 
-The vast majority of EPWING dictionaries are proprietary, so they are unfortunately not able to be included in
-this extension due to copyright reasons.
+### Can I scan local files and PDFs?
+
+Enable file-URL access for local HTML in Chrome/Edge. Open PDFs in the [Manabitan PDF Viewer](manabitan-pdf-viewer/index.html). The PDF needs a selectable text layer; image-only scans need OCR elsewhere first.
+
+### Is deleting a dictionary always slow?
+
+No blanket timing applies to every storage backend, dictionary, and device. Let the operation finish and report prolonged stalls with the dictionary size and diagnostics. The inherited claim that deletion necessarily blocks the browser for about as long as import is not a verified description of the current implementation.
+
+### Does Manabitan use online dictionaries for lookups?
+
+Normal dictionary lookups use installed data. Downloading dictionary updates, fetching pronunciation audio, and the optional external API are different features. See [Privacy and permissions](privacy.md). This describes current behavior rather than promising that an online lookup feature can never be added.

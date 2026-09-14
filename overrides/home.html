@@ -1,277 +1,88 @@
 {% extends "main.html" %}
 
-{% block scripts %}{{ super() }}{% endblock %}
-
 {% block extrahead %}
 {{ super() }}
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manabitan Wiki</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="{{ 'styles.css' | url }}">
 {% endblock %}
 
 {% block content %}
-{% if page.url == "" %}
+<section class="manabitan-home" aria-labelledby="manabitan-title">
+  <div class="home-intro">
+    <img class="home-logo" src="{{ 'assets/icon/manabitan-icon128.png' | url }}" width="96" height="96" alt="Manabitan">
+    <h1 id="manabitan-title">Manabitan</h1>
+    <p class="home-summary">Yomitan, with less waiting and less setup.</p>
+    <p>Keep the familiar lookup, audio, dictionary, and Anki workflow, with faster imports and lookups, dramatically smaller installed dictionaries, and less manual setup.</p>
+    <p class="home-actions"><a class="md-button md-button--primary" href="{{ 'getting-started/' | url }}">Install Manabitan</a> <a class="md-button" href="{{ 'why-manabitan/' | url }}">Why use Manabitan?</a></p>
+    <p class="home-status">Manabitan is a separate project with substantial internal changes. If you are moving from Yomitan, keep a backup and follow the migration guide.</p>
+  </div>
 
-<!-- ========== HERO ========== -->
-<section class="hero">
-    <div class="hero__bg"></div>
+  <figure class="home-media home-media--hero">
+    <img src="{{ 'assets/scanning-popup.webp' | url }}" alt="Dictionary popup while scanning text" loading="eager">
+    <figcaption>Popup lookup while reading. Screenshots and videos on this page are retained as workflow examples; some were inherited from Yomitan documentation or show an earlier UI, so exact controls may differ from the current Manabitan release.</figcaption>
+  </figure>
 
-    <div class="hero__inner">
-        <div class="hero__content">
-            <h1 class="hero__title">
-                Manabitan, a smarter way to <span class="typewriter" id="typewriter"></span>
-            </h1>
-            <p class="hero__subtitle">
-                Manabitan is a powerful, free browser extension for serious language learners.
-                Get instant dictionary lookups, native audio, and Anki integration
-                &mdash; right where you read.
-            </p>
-            <div class="hero__buttons">
-                <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
-                </a>
-                <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
-                </a>
-                <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/edge.svg" width="20" height="20" alt="">Edge
-                </a>
-            </div>
-            <a class="btn btn--ghost" href="getting-started">Getting Started Guide &rarr;</a>
-        </div>
-
-        <div class="hero__preview">
-            <img src="assets/scanning-popup.webp" alt="Manabitan popup in action">
-        </div>
+  <section aria-labelledby="why-use-title">
+    <h2 id="why-use-title">Why use Manabitan instead of Yomitan?</h2>
+    <p>The storage rewrite is the foundation, not the whole product pitch. Manabitan also removes setup and maintenance work around the same reading workflow.</p>
+    <div class="home-features">
+      <section><h2>Faster imports and lookups</h2><p>Spend less time waiting for dictionaries to import and for definitions to appear, especially with large collections or constrained devices.</p><a href="{{ 'why-manabitan/#less-waiting' | url }}">Why performance matters</a></section>
+      <section><h2>Dramatically less disk space</h2><p>Imported dictionaries take up dramatically less space than in Yomitan. This is a smaller installed footprint, not just a smaller download, making large collections more practical.</p><a href="{{ 'why-manabitan/#dramatically-less-disk-space' | url }}">Installed storage savings</a></section>
+      <section><h2>Update while you keep reading</h2><p>Installed dictionaries can stay available while new data is prepared. Dictionaries with web update sources can check on hourly, daily, weekly, or monthly schedules.</p><a href="{{ 'dictionaries/#automatic-updates' | url }}">Dictionary updates</a></section>
+      <section><h2>Anki fields that configure themselves</h2><p>Already use Kiku, Lapis, Senren/洗練, or Crop Theft Vocab? Select the existing note type and Manabitan fills its expected field markers. Package-based tests check the presets against upstream field layouts.</p><a href="{{ 'anki/#automatic-field-mapping' | url }}">Automatic Anki mapping</a></section>
+      <section><h2>More dictionary options</h2><p>Use Yomitan-format dictionaries or import MDX, install recommended dictionaries together, edit supported metadata, and use bulk update actions.</p><a href="{{ 'dictionaries/' | url }}">Manage dictionaries</a></section>
+      <section><h2>Reading quality of life</h2><p>Built-in popup themes and frequency-based recall blur add options around the existing lookup workflow without asking you to learn a different product.</p><a href="{{ 'advanced/' | url }}">Appearance and advanced features</a></section>
     </div>
-</section>
+  </section>
 
-<!-- ========== FEATURES ========== -->
-<section class="features">
-    <div class="features__grid">
-        <div class="features__header-title">
-            <span class="section-label">Features</span>
-            <h2 class="section-title">More than just<br>a dictionary.</h2>
-        </div>
-        <!-- Dynamic Popup -->
-        <article class="fcard fcard--featured reveal">
-            <div class="fcard__header">
-                <div class="fcard__icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <h3 class="fcard__title">Dynamic Popup</h3>
-            </div>
-            <div class="fcard__content">
-                <p class="fcard__text">Just <strong>hover and press a key</strong> to instantly see definitions, word frequencies, native audio, and example sentences &mdash; right where you are.</p>
-                <p class="fcard__text">Stay in the flow whether you're deep in a novel or casually scrolling.</p>
-                <a href="getting-started" class="fcard__link">Learn more <span>&rarr;</span></a>
-            </div>
-            <div class="fcard__visual">
-                <img src="assets/scanning-popup.webp" alt="Dynamic popup" loading="lazy">
-            </div>
-        </article>
+  <section aria-labelledby="roadmap-title">
+    <h2 id="roadmap-title">Where Manabitan is headed</h2>
+    <p>Nothing is set in stone. The general directions are continued maintenance and upstream Yomitan improvements, easier onboarding, faster imports and lookups, lower memory and storage use, and a much faster, more capable AnkiConnect integration. We also intend to improve AnkiConnect itself rather than forcing every limitation to be solved inside Manabitan.</p>
+    <p>We are developing a public benchmark suite comparing imports, lookups, and storage across tools compatible with Yomitan dictionaries. We have no current plans for dramatic changes to Yomitan's general functionality, design, or familiar behaviors.</p>
+    <p><a href="{{ 'why-manabitan/#roadmap' | url }}">Read the roadmap</a></p>
+  </section>
 
-        <!-- Native Audio -->
-        <article class="fcard fcard--rev reveal">
-            <div class="fcard__content">
-                <h3 class="fcard__title">Native Audio</h3>
-                <p class="fcard__text">Hear every word by <strong>real native speakers</strong>. Add custom sources like Forvo, or enable text-to-speech.</p>
-                <p class="fcard__text">Export audio straight to your <strong>Anki flashcards</strong>.</p>
-                <a href="advanced#audio" class="fcard__link">Learn more <span>&rarr;</span></a>
-            </div>
-            <div class="fcard__visual">
-                <img src="assets/audio.webp" alt="Native audio" loading="lazy">
-            </div>
-        </article>
+  <aside class="home-fork" aria-labelledby="fork-title">
+    <h2 id="fork-title">Why is Manabitan a fork?</h2>
+    <p>The storage and query rewrite is large enough that building it, reviewing it incrementally upstream, and safely migrating Yomitan's entire installed base are separate projects. Yomitan's primary maintainers have supported releasing this work as a fork, offered guidance, and reviewed our release preparations. Manabitan is maintained and released independently.</p>
+    <p><a href="{{ 'about-manabitan/' | url }}">Why the project is separate</a> · <a href="{{ 'yomitan-migration/' | url }}">Moving from Yomitan</a></p>
+  </aside>
 
-        <!-- Mobile Support -->
-        <article class="fcard fcard--rev fcard--portrait reveal">
-            <div class="fcard__content">
-                <h3 class="fcard__title">Mobile Support</h3>
-                <p class="fcard__text">Take your learning <strong>anywhere</strong>. Manabitan works on <strong>Android devices</strong>, bringing powerful lookups to your phone or tablet.</p>
-                <p class="fcard__text">Simply <strong>select any text</strong> to get instant definitions, audio, and word info &mdash; without leaving what you're reading.</p>
-                <a href="getting-started" class="fcard__link">Learn more <span>&rarr;</span></a>
-            </div>
-            <div class="fcard__visual">
-                <img src="assets/android-dict-action.webp" alt="Android mobile support" loading="lazy">
-            </div>
-        </article>
-
-        <!-- Themes -->
-        <article class="fcard reveal">
-            <div class="fcard__content">
-                <h3 class="fcard__title">Make It Yours</h3>
-                <p class="fcard__text"><strong>Full control</strong> over how your popup looks. Bold and colorful or clean and minimal.</p>
-                <p class="fcard__text">Create your own theme or pick from beautiful <strong>community themes</strong>.</p>
-                <a href="tools-resources" class="fcard__link">Learn more <span>&rarr;</span></a>
-            </div>
-            <div class="fcard__visual">
-                <div class="slideshow">
-                    <div class="slideshow__track">
-                        <div class="slide active">
-                            <div class="slide__credit">
-                                Bint's Japanese CSS
-                                <a class="ext-link" aria-label="View source" href="https://github.com/yomidevs/yomitan-featured-css/tree/main/bint's%20yomitan%20css">
-                                    <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                                </a>
-                            </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/bint-css.png" alt="Bint's theme">
-                                <img class="theme-img dark" src="assets/themes/dark/bint-css.png" alt="Bint's theme dark">
-                            </a>
-                        </div>
-                        <div class="slide">
-                            <div class="slide__credit">
-                                Colored CSS
-                                <a class="ext-link" aria-label="View source" href="https://github.com/yomidevs/yomichan-dict-css">
-                                    <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                                </a>
-                            </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/colored-css.png" alt="Colored theme">
-                                <img class="theme-img dark" src="assets/themes/dark/colored-css.png" alt="Colored theme dark">
-                            </a>
-                        </div>
-                        <div class="slide">
-                            <div class="slide__credit">
-                                Nelan's Glassy CSS
-                                <a class="ext-link" aria-label="View source" href="https://github.com/yomidevs/yomitan-featured-css/tree/main/nelan's%20yomitan%20css">
-                                    <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-                                </a>
-                            </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/nelan-css.png" alt="Nelan's theme">
-                                <img class="theme-img dark" src="assets/themes/dark/nelan-css.png" alt="Nelan's theme dark">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="slideshow__nav">
-                        <button type="button" class="slideshow__dot active" onclick="goSlide(1)" aria-label="Slide 1"></button>
-                        <button type="button" class="slideshow__dot" onclick="goSlide(2)" aria-label="Slide 2"></button>
-                        <button type="button" class="slideshow__dot" onclick="goSlide(3)" aria-label="Slide 3"></button>
-                    </div>
-                    <button type="button" class="slideshow__arrow slideshow__arrow--prev" onclick="moveSlide(-1)">&#10094;</button>
-                    <button type="button" class="slideshow__arrow slideshow__arrow--next" onclick="moveSlide(1)">&#10095;</button>
-                </div>
-            </div>
-        </article>
+  <section class="home-showcase" aria-labelledby="showcase-title">
+    <h2 id="showcase-title">What the workflow looks like</h2>
+    <div class="home-gallery">
+      <figure class="home-media">
+        <img src="{{ 'assets/audio.webp' | url }}" alt="Audio controls in a dictionary popup" loading="lazy">
+        <figcaption>Pronunciation audio and source selection.</figcaption>
+      </figure>
+      <figure class="home-media">
+        <img src="{{ 'assets/android-dict-action.webp' | url }}" alt="Dictionary lookup action on Android" loading="lazy">
+        <figcaption>A mobile lookup workflow. Mobile support still depends on the particular browser and package.</figcaption>
+      </figure>
+      <figure class="home-media">
+        <img class="theme-sample theme-sample--light" src="{{ 'assets/themes/light/bint-css.png' | url }}" alt="Bint's Yomitan CSS example" loading="lazy">
+        <img class="theme-sample theme-sample--dark" src="{{ 'assets/themes/dark/bint-css.png' | url }}" alt="Bint's Yomitan CSS dark-mode example" loading="lazy">
+        <figcaption>Community styling example: Bint's Yomitan CSS. Third-party themes keep their original names and authorship.</figcaption>
+      </figure>
     </div>
-</section>
+  </section>
 
-<!-- ========== ANKI ========== -->
-<section class="anki-section">
-    <div class="anki-section__bg"></div>
-    <div class="anki-section__inner reveal">
-        <span class="section-label">Integration</span>
-        <h2 class="section-title">Powerful Anki Integration</h2>
-        <p class="section-subtitle">Turn lookups into <strong>rich Anki flashcards</strong> and send them to your deck with a single keypress.</p>
-
-        <div class="anki-section__video">
-            <video autoplay controls muted src="https://github.com/user-attachments/assets/e3210e84-be5f-48ba-a335-ab8bbd103750"></video>
+  <section class="home-videos" aria-labelledby="videos-title">
+    <h2 id="videos-title">Video examples</h2>
+    <p class="media-note">These videos demonstrate the lookup/Anki workflow. They may show upstream Yomitan or an earlier Manabitan build rather than the exact current UI.</p>
+    <div class="home-video-grid">
+      <figure class="home-media">
+        <video controls playsinline preload="metadata" src="https://github.com/user-attachments/assets/e3210e84-be5f-48ba-a335-ab8bbd103750"></video>
+        <figcaption>Anki workflow example using BrenoAqua's <a href="https://brenoaqua.github.io/Senren/">Senren</a> note type. Current Manabitan recognizes an existing Senren model and can map its fields automatically.</figcaption>
+      </figure>
+      <figure class="home-media home-media--video">
+        <div class="video-frame">
+          <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/9DLsA94N1ZE" title="Dictionary lookup workflow demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-
-        <p class="anki-section__credit">
-            BrenoAqua's Senren Note Type
-            <a class="ext-link" aria-label="View Senren" href="https://brenoaqua.github.io/Senren/">
-                <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
-            </a>
-        </p>
-        <a href="anki" class="fcard__link">Learn more about Anki <span>&rarr;</span></a>
+        <figcaption>Existing lookup workflow demonstration. See the current release notes and guides for exact controls.</figcaption>
+      </figure>
     </div>
+  </section>
+
+  <p class="home-help"><a href="{{ 'support/' | url }}">Get help</a> · <a href="{{ 'supported-languages/' | url }}">Language support</a> · <a href="{{ 'credits/' | url }}">Credits</a></p>
 </section>
-
-<!-- ========== DEMO ========== -->
-<section class="demo-section">
-    <div class="demo-section__inner reveal">
-        <span class="section-label">Demo</span>
-        <h2 class="section-title">See Manabitan in Action</h2>
-        <p class="section-subtitle">Watch how quickly Manabitan simplifies your reading.</p>
-        <div class="demo-section__frame">
-            <iframe src="https://www.youtube.com/embed/9DLsA94N1ZE" allowfullscreen title="Manabitan demo"></iframe>
-        </div>
-    </div>
-</section>
-
-<!-- ========== FINAL CTA ========== -->
-<section class="final-cta">
-    <div class="final-cta__bg"></div>
-    <div class="final-cta__inner reveal">
-        <h2 class="section-title">Ready to transform your reading?</h2>
-        <p class="section-subtitle">Get instant dictionary lookups, native audio, and Anki integration where you read.</p>
-        <div class="hero__buttons">
-            <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
-            </a>
-            <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
-            </a>
-            <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/edge.svg" width="20" height="20" alt="">Edge
-            </a>
-        </div>
-        <a class="btn btn--ghost" href="getting-started">Getting Started Guide &rarr;</a>
-    </div>
-</section>
-
-<script>
-// Slideshow
-let idx = 1;
-function moveSlide(n) { showSlide(idx += n); }
-function goSlide(n)   { showSlide(idx = n); }
-function showSlide(n) {
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.slideshow__dot');
-    if (n > slides.length) idx = 1;
-    if (n < 1) idx = slides.length;
-    slides.forEach(s => s.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    slides[idx - 1].classList.add('active');
-    dots[idx - 1].classList.add('active');
-}
-setInterval(() => moveSlide(1), 5000);
-
-// Typewriter
-(function() {
-    const words = ['read。', '読む。', 'lesen。', 'lire。', '읽다。', 'leer。', '閱讀。'];
-    const el = document.getElementById('typewriter');
-    let wordIdx = 0, charIdx = 0, deleting = false;
-    const typeSpeed = 200, deleteSpeed = 120, pauseEnd = 5000, pauseEmpty = 600;
-
-    function tick() {
-        const word = words[wordIdx];
-        if (!deleting) {
-            el.textContent = word.slice(0, ++charIdx);
-            if (charIdx === word.length) {
-                deleting = true;
-                setTimeout(tick, pauseEnd);
-            } else {
-                setTimeout(tick, typeSpeed);
-            }
-        } else {
-            el.textContent = word.slice(0, --charIdx);
-            if (charIdx === 0) {
-                deleting = false;
-                wordIdx = (wordIdx + 1) % words.length;
-                setTimeout(tick, pauseEmpty);
-            } else {
-                setTimeout(tick, deleteSpeed);
-            }
-        }
-    }
-    tick();
-})();
-
-// Scroll reveal
-const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
-
-{% else %}
-{{ super() }}
-{% endif %}
 {% endblock %}

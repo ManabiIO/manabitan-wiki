@@ -1,21 +1,34 @@
 site_name: Manabitan
-site_url: https://manabitan.manabi.io/
-site_description: Powerful and versatile pop-up dictionary for language learning
-site_author: Manabitan Authors
-repo_url: https://github.com/ManabiIO/manabitan
-repo_name: Manabitan
+site_url: https://manabi.io/manabitan/
+site_description: Yomitan's familiar reading workflow with faster imports and lookups, dramatically smaller installed dictionaries, background updates, MDX support, and easier Anki setup.
+site_author: Manabitan contributors
+repo_url: https://github.com/ManabiIO/manabitan-wiki
+repo_name: Edit the documentation
+edit_uri: edit/master/docs/
 nav:
-  - Home: 'index.md'
-  - Getting started: 'getting-started.md'
-  - Dictionaries: 'dictionaries.md'
-  - Anki: 'anki.md'
-  - Advanced Features: 'advanced.md'
-  - Tools & Resources: 'tools-resources.md'
-  - Tech Support: 'support.md'
-  - Contributing: 'contributing.md'
-  - Credits: 'credits.md'
+  - Home: index.md
+  - Why Manabitan?: why-manabitan.md
+  - Getting started:
+      - Installation and setup: getting-started.md
+      - Moving from Yomitan: yomitan-migration.md
+      - Moving from Yomichan: yomichan-migration.md
+  - Using Manabitan:
+      - Dictionaries: dictionaries.md
+      - Anki: anki.md
+      - Advanced features: advanced.md
+      - Tools and resources: tools-resources.md
+      - Language support: supported-languages.md
+  - Support: support.md
+  - About:
+      - Why Manabitan is a fork: about-manabitan.md
+      - Contributing: contributing.md
+      - Privacy and permissions: privacy.md
+      - Credits: credits.md
 theme:
   name: material
+  custom_dir: overrides
+  language: en
+  font: false
   favicon: assets/icon/manabitan-icon64.png
   logo: assets/icon/manabitan-icon128.png
   icon:
@@ -28,84 +41,65 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
-    - content.code.annotate
+    - content.action.edit
     - content.code.copy
-    - content.tabs.link
-    - announce.dismiss
-  language: en
-  custom_dir: overrides
   palette:
-    - media: "(prefers-color-scheme: light)"
+    - media: '(prefers-color-scheme: light)'
       scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-      primary: custom
-    - media: "(prefers-color-scheme: dark)"
+    - media: '(prefers-color-scheme: dark)'
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/white-balance-sunny
-        name: Switch to light mode    
-      primary: custom
-
+        name: Switch to light mode
 extra:
+  homepage: https://manabi.io/manabitan/
+  generator: false
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/ManabiIO/manabitan
+      name: Manabitan extension source
     - icon: fontawesome/brands/discord
       link: https://discord.gg/gvxzS93C3w
-  homepage: https://manabitan.manabi.io/
-  generator: false
-
+      name: Manabi community and support
 markdown_extensions:
   - admonition
   - attr_list
   - def_list
   - footnotes
   - md_in_html
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.caret
-  - pymdownx.critic
   - pymdownx.details
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
-  - pymdownx.tilde
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
+      alternate_style: true
 plugins:
-  - git-revision-date-localized
-  - social
   - search:
-      lang:
-        - en
-        - ja
-  - glightbox:
-      manual: true
-      width: 70%
-      effect: none
-
-
+      lang: [en, ja]
+validation:
+  nav:
+    omitted_files: warn
+  links:
+    not_found: warn
+    anchors: warn
+exclude_docs: |
+  manabitan-pdf-viewer/*.sh
+  manabitan-pdf-viewer/*.odt
 extra_css:
+  - stylesheets/brand.css
   - stylesheets/extra.css
-  - stylesheets/homepage.css
-
-extra_javascript:
-  - javascripts/browser-detect.js
-
 copyright: |
-  Copyright &copy; 2026 Manabitan Authors <br>
-  <a href="https://manabitan.manabi.io/privacy">Privacy and Permissions</a> -- 
-  Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> -- 
-  Based on <a href="https://github.com/yomidevs/yomitan-wiki">Yomitan Wiki</a>
+  Manabitan documentation, adapted from <a href="https://github.com/yomidevs/yomitan-wiki">Yomitan Wiki</a>.<br>
+  Content: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> ·
+  <a href="https://manabi.io/manabitan/privacy/">Privacy and permissions</a> ·
+  <a href="https://manabi.io/manabitan/credits/">Credits</a>

@@ -1,177 +1,115 @@
 ---
-hide:
-  - navigation
-  - footer
+title: Anki integration
+description: Connect Manabitan to Anki, automatically map popular note types, understand tested versions, and check note creation.
 ---
 
+# Anki integration
 
-## Anki Integration
+Manabitan sends notes to [Anki](https://apps.ankiweb.net/) through [AnkiConnect](https://ankiweb.net/shared/info/2055492159). Install AnkiConnect in desktop Anki and restart Anki when required. Keep Anki running while using the integration.
 
-Manabitan features automatic flashcard creation for [Anki](https://apps.ankiweb.net/), a free application designed to help you
-retain knowledge. This feature requires the prior installation of an Anki plugin called [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect) ([Add-on Page](https://ankiweb.net/shared/info/2055492159)).
-Check the respective project page for more information about how to set up this software.
+## Flashcard configuration
 
-:fontawesome-solid-mobile-screen-button:{ .md .middle }  ___Mobile platform note___: On Android, use AnkiDroid (available on [Google Play](https://play.google.com/store/apps/details?id=com.ichi2.anki) or [F-Droid](https://f-droid.org/en/packages/com.ichi2.anki/)). To connect Manabitan with AnkiDroid, you'll need [AnkiconnectAndroid](https://github.com/KamWithK/AnkiconnectAndroid), an unofficial tool that requires manual installation. Install and use it at your own risk.
+Enable **Anki integration** in Manabitan Settings. Open **Configure Anki card format…**, choose the format, deck, and note type, and inspect its field mapping. Labels can differ in older releases; do not look for the obsolete separate “Anki Options” page shown in old screenshots.
 
-### Flashcard Configuration
+For a minimal term card, put `{expression}` in the headword field, `{reading}` in a reading field, and `{glossary}` in the definition field. Add `{sentence}` and `{audio}` where appropriate. Use `{character}` as the identifier for a kanji card. A first field containing only a reading can make distinct words with the same reading appear to be duplicates.
 
-Before flashcards can be automatically created, you must configure the templates used to create term and/or kanji notes.
-If you are unfamiliar with Anki deck and model management, this would be a good time to reference the [Anki
-Manual](https://docs.ankiweb.net/#/). In short, you must specify what information should be included in the
-flashcards that Manabitan creates through AnkiConnect.
+## Automatic field mapping
 
-Flashcard fields can be configured with the following steps:
+Manabitan reduces one of the more tedious parts of Anki setup: wiring note-type fields to dictionary information and sentence context.
 
-1.  Open the Manabitan options page and scroll down to the section labeled _Anki Options_.
-2.  Tick the checkbox labeled _Enable Anki integration_ (Anki must be running with [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect) ([Add-on Page](https://ankiweb.net/shared/info/2055492159)) installed).
-3.  Select the type of template to configure by clicking on either the _Terms_ or _Kanji_ tabs.
-4.  Select the Anki deck and model to use for new creating new flashcards of this type.
-5.  Fill the model fields with markers corresponding to the information you wish to include (several can be used at
-    once).
-6.  _(optional, advanced)_ Users can also configure the actual [Handlebars](https://handlebarsjs.com/) templates used to create
-    the flashcard contents.
+The note type must already exist in Anki. Manabitan does **not** install Kiku, Lapis, Senren, or Crop Theft Vocab. When you select an existing model, Manabitan asks AnkiConnect for its field names and builds the mapping for the selected card format. This configures future note creation; it does not populate or migrate existing Anki notes.
 
-??? note "Markers for Term Cards"
+### Recognized note types
 
-    | Marker                                      | Description                                                                                                                                                            |
-    | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `{audio}`                                   | Audio of the term's pronunciation from one of the audio sources (if available).                                                                                        |
-    | `{clipboard-image}`                         | An image which is stored in the system clipboard, if present.                                                                                                          |
-    | `{clipboard-text}`                          | Text which is stored in the system clipboard, if present.                                                                                                              |
-    | `{cloze-body}`                              | Raw, inflected term as it appeared before being reduced to dictionary form by Manabitan.                                                                                 |
-    | `{cloze-body-kana}`                         | Kana reading for `{cloze-body}`.                                                                                                                                       |
-    | `{cloze-prefix}`                            | Fragment of the containing `{sentence}` starting at the beginning of `{sentence}` until the beginning of `{cloze-body}`.                                               |
-    | `{cloze-suffix}`                            | Fragment of the containing `{sentence}` starting at the end of `{cloze-body}` until the end of `{sentence}`.                                                           |
-    | `{conjugation}`                             | Conjugation path from the raw inflected term to the source term.                                                                                                       |
-    | `{dictionary}`                              | Original name of the dictionary from which the card is being created (unavailable in _grouped_ mode).                                                                  |
-    | `{dictionary-alias}`                        | Display name of the dictionary from which the card is being created (unavailable in _grouped_ mode).                                                                   |
-    | `{document-title}`                          | Title of the web page that the term appeared in.                                                                                                                       |
-    | `{expression}`                              | Term expressed as kanji (will be displayed in kana if kanji is not available).                                                                                         |
-    | `{frequencies}`                             | Frequency information for the term.                                                                                                                                    |
-    | `{frequency-harmonic-rank}`                 | The harmonic mean of frequency data for the current term. Defaults to rank 9999999 when frequency data is not found, indicating extremely low rank-based term usage.   |
-    | `{frequency-harmonic-occurrence}`           | The harmonic mean of frequency data for the current term. Defaults to 0 occurrences when frequency data is not found, the lowest possible occurrence-based term usage. |
-    | `{frequency-average-rank}`                  | The average of frequency data for the current term. Defaults to rank 9999999 when frequency data is not found, indicating extremely low rank-based term usage.         |
-    | `{frequency-average-occurrence}`            | The average of frequency data for the current term. Defaults to 0 occurrences when frequency data is not found, the lowest possible occurrence-based term usage.       |
-    | `{single-frequency-DICT-NAME}`              | All frequencies from the selected dictionary put in a list.                                                                                                              |
-    | `{single-frequency-number-DICT-NAME}`       | A single frequency number from the selected dictionary with no formatting data.    
-    | `{furigana}`                                | Term expressed as kanji with furigana displayed above it (e.g. <ruby>日本語<rt>にほんご</rt></ruby>).                                                                  |
-    | `{furigana-plain}`                          | Term expressed as kanji with furigana displayed next to it in brackets (e.g. 日本語[にほんご]).                                                                        |
-    | `{glossary}`                                | List of definitions for the term (output format depends on whether running in _grouped_ mode).                                                                         |
-    | `{glossary-brief}`                          | List of definitions for the term in a more compact format.                                                                                                             |
-    | `{glossary-no-dictionary}`                  | List of definitions for the term, except the dictionary tag is omitted.                                                                                                |
-    | `{glossary-plain}`                          | List of definitions for the term with html only used for line breaks. This may break the formatting of some dictionaries.                                              |
-    | `{glossary-plain-no-dictionary}`            | `{glossary-plain}` except the dictionary tag is omitted.                                                                                                               |
-    | `{glossary-first}`                          | First definition for the term (output format depends on whether running in _grouped_ mode).                                                                            |
-    | `{glossary-first-brief}`                    | First definition for the term in a more compact format.                                                                                                                |
-    | `{glossary-first-no-dictionary}`            | First definition for the term, except the dictionary tag is omitted.                                                                                                   |
-    | `{part-of-speech}`                          | Part of speech information for the term.                                                                                                                               |
-    | `{phonetic-transcriptions}`                 | List of phonetic transcriptions for the term.                                                                                                                          |
-    | `{pitch-accents}`                           | List of pitch accent downstep notations for the term.                                                                                                                  |
-    | `{pitch-accent-graphs}`                     | List of pitch accent graphs for the term.                                                                                                                              |
-    | `{pitch-accent-graphs-jj}`                  | List of pitch accent graphs for the term (styled after Jidoujisho).                                                                                                    |
-    | `{pitch-accent-positions}`                  | List of accent downstep positions for the term as a number.                                                                                                            |
-    | `{pitch-accent-categories}`                 | List of pitch accent categories for the term (e.g. heiban, kifuku, atamadaka, odaka, nakadaka).                                                                        |
-    | `{reading}`                                 | Kana reading for the term (empty for terms where the expression is the reading).                                                                                       |
-    | `{screenshot}`                              | Screenshot of the web page taken at the time the term was added.                                                                                                       |
-    | `{search-query}`                            | The full search query shown on the search page.                                                                                                                        |
-    | `{popup-selection-text}`                    | The selected text on the search page or popup.                                                                                                                         |
-    | `{sentence}`                                | Sentence, quote, or phrase that the term appears in from the source content.                                                                                           |
-    | `{sentence-furigana}`                       | Sentence, quote, or phrase that the term appears in from the source content, with furigana added.                                                                      |
-    | `{sentence-furigana-plain}`                 | Sentence, quote, or phrase that the term appears in from the source content, with furigana added in brackets.                                                          |
-    | `{single-glossary-DICT-NAME}`               | Same as `{glossary}`, but with entries from only a single dictionary. The dictionary name will likely be modified, use the options from the ▼ dropdown.                |
-    | `{single-glossary-DICT-NAME-brief}`         | See `{single-glossary-DICT-NAME}` and `{glossary-brief}`.                                                                                                              |
-    | `{single-glossary-DICT-NAME-no-dictionary}` | See `{single-glossary-DICT-NAME}` and `{glossary-no-dictionary}`.                                                                                                      |
-    | `{tags}`                                    | Grammar and usage tags providing information about the term (unavailable in _grouped_ mode).                                                                           |
-    | `{url}`                                     | Address of the web page in which the term appeared in.                                                                                                                 |
+The following upstream packages were downloaded and their complete field schemas inspected on **September 14, 2026**. They were the latest published stable packages at that check; Crop Theft distributes its package directly from its repository rather than through numbered releases. These versions identify the packages reviewed, not versions detected automatically in your Anki collection.
 
-??? note "Markers for Kanji Cards"
+| Note type | Reviewed package | Fields | Important mapping detail |
+| --- | --- | --- | --- |
+| **Kiku** | [v2.1.0](https://github.com/youyoumu/kiku/releases/tag/v2.1.0) | 24 | `ExpressionFurigana` uses `{furigana-plain}`; `SentenceFurigana` uses `{sentence-furigana-plain}`. |
+| **Lapis** | [1.7.0](https://github.com/donkuri/lapis/releases/tag/1.7.0) | 22 | `ExpressionFurigana` uses `{furigana-plain}`, but `SentenceFurigana` is deliberately blank. |
+| **Senren** / **Senren 洗練** | [v5.1.0](https://github.com/BrenoAqua/Senren/releases/tag/v5.1.0) | 22 | Sentence fields retain Senren's grouping/highlight markup; `hint` is explicitly blank. |
+| **Crop Theft Vocab** | [Package at revision 88865e6](https://github.com/Kuuuube/crop-theft/blob/88865e6209251b1baaaca7219be0dd6073e74cb8/crop_theft_vocab/Crop%20Theft%20Vocab.apkg) | 9 | `Definition` uses `{glossary-brief}`, `Example Target` uses `{search-query}`, and `Frequency` uses `{frequency-harmonic-rank}`. |
 
-    | Marker                            | Description                                                                                                                                                              |
-    | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | `{character}`                     | Unicode glyph representing the current kanji.                                                                                                                            |
-    | `{clipboard-image}`               | An image which is stored in the system clipboard, if present.                                                                                                            |
-    | `{clipboard-text}`                | Text which is stored in the system clipboard, if present.                                                                                                                |
-    | `{cloze-body}`                    | Raw, inflected parent term as it appeared before being reduced to dictionary form by Manabitan.                                                                            |
-    | `{cloze-prefix}`                  | Fragment of the containing `{sentence}` starting at the beginning of `{sentence}` until the beginning of `{cloze-body}`.                                                 |
-    | `{cloze-suffix}`                  | Fragment of the containing `{sentence}` starting at the end of `{cloze-body}` until the end of `{sentence}`.                                                             |
-    | `{dictionary}`                    | Original name of the dictionary from which the card is being created.                                                                                                    |
-    | `{dictionary-alias}`              | Display name of the dictionary from which the card is being created.                                                                                                     |
-    | `{document-title}`                | Title of the web page that the kanji appeared in.                                                                                                                        |
-    | `{frequencies}`                   | Frequency information for the kanji.                                                                                                                                     |
-    | `{frequency-harmonic-rank}`       | The harmonic mean of frequency data for the current kanji. Defaults to rank 9999999 when frequency data is not found, indicating extremely low rank-based kanji usage.   |
-    | `{frequency-harmonic-occurrence}` | The harmonic mean of frequency data for the current kanji. Defaults to 0 occurrences when frequency data is not found, the lowest possible occurrence-based kanji usage. |
-    | `{frequency-average-rank}`        | The average of frequency data for the current kanji. Defaults to rank 9999999 when frequency data is not found, indicating extremely low rank-based kanji usage.         |
-    | `{frequency-average-occurrence}`  | The average of frequency data for the current kanji. Defaults to 0 occurrences when frequency data is not found, the lowest possible occurrence-based kanji usage.       |
-    | `{single-frequency-DICT-NAME}`    | All frequencies from the selected dictionary put in a list.                                                                                                              |
-    | `{single-frequency-number-DICT-NAME}` | A single frequency number from the selected dictionary with no formatting data.                                                                                      |
-    | `{glossary}`                      | List of definitions for the kanji.                                                                                                                                       |
-    | `{kunyomi}`                       | Kunyomi (Japanese reading) for the kanji expressed as hiragana.                                                                                                          |
-    | `{onyomi}`                        | Onyomi (Chinese reading) for the kanji expressed as katakana.                                                                                                            |
-    | `{onyomi-hiragana}`               | Onyomi (Chinese reading) for the kanji expressed as hiragana.                                                                                                            |
-    | `{screenshot}`                    | Screenshot of the web page taken at the time the kanji was added.                                                                                                        |
-    | `{search-query}`                  | The full search query shown on the search page.                                                                                                                          |
-    | `{popup-selection-text}`          | The selected text on the search page or popup.                                                                                                                           |
-    | `{sentence}`                      | Sentence, quote, or phrase that the character appears in from the source content.                                                                                        |
-    | `{sentence-furigana}`             | Sentence, quote, or phrase that the character appears in from the source content, with furigana added.                                                                   |
-    | `{sentence-furigana-plain}`       | Sentence, quote, or phrase that the term appears in from the source content, with furigana added in brackets.                                                  |
-    | `{stroke-count}`                  | Number of strokes that the kanji character has.                                                                                                                          |
-    | `{url}`                           | Address of the web page in which the kanji appeared in.                                                                                                                  |
+Presets map the expression/reading, available word audio, definitions, sentence context, pitch, frequency, and source fields appropriate to each note type. Optional media, translations, hints, and card-mode switches are intentionally left blank where no automatic source is specified. Automatic mapping is not automatic creation of missing recordings, images, translations, or pitch data.
 
-When creating your model for Manabitan, _make sure that you pick a unique field to be first_; fields that will
-contain `{expression}` or `{character}` are ideal candidates for this. Anki does not allow duplicate flashcards to be
-added to a deck by default; it uses the first field in the model to check for duplicates. For example, if you have `{reading}`
-configured to be the first field in your model and <ruby>橋<rt>はし</rt></ruby> is already in your deck, you will not
-be able to create a flashcard for <ruby>箸<rt>はし</rt></ruby> because they share the same reading.
+For Kiku, Lapis, and Senren, the main-definition field uses the **first available dictionary-specific `single-glossary-*` marker** supplied by the enabled dictionary configuration. It is not a guarantee that this is your preferred dictionary. Review that choice. If no eligible marker is available, including when dictionary information cannot be loaded during setup, that field stays blank; select a marker from the dropdown afterwards. The separate glossary field still has its own mapping.
 
-### Flashcard Creation
+### Differences that matter
 
-Once Manabitan is configured, it becomes trivial to create new flashcards with a single click. You will see the following
-icons next to term definitions:
+**Kiku and Lapis are not interchangeable.** [Kiku's current instructions](https://kiku.youyoumu.my.id/installation.html) use plain sentence furigana; Kiku 2.1 can transfer the target-word emphasis from the sentence field. [Lapis's instructions](https://github.com/donkuri/lapis#how-to-use-lapis) still recommend leaving its sentence-furigana field empty. Both use a sentence with the target surrounded by `<b>` tags. Kiku's `RelatedExpression` and `SentenceTranslation` fields remain blank for manual or external population.
 
-- Clicking ![](assets/btn/btn-add-expression.png) adds the current expression (e.g. 食べる).
-- Clicking ![](assets/btn/btn-add-reading.png) adds the current expression's reading (e.g. たべる).
+AnkiConnect exposes the model name and fields here, not a reliable community-template release version. A model called `Kiku` is therefore not proof that it is Kiku 2.1. Use the reviewed version for the current defaults; with an older Kiku template, upgrade it or keep `SentenceFurigana` blank until you have checked its rendering. Existing saved Manabitan mappings are not silently rewritten by this preset change. To adopt the correction on an existing Kiku format, set `SentenceFurigana` to `{sentence-furigana-plain}` explicitly and inspect a test note.
 
-If _Check for card duplicates_ is on, and a card for the current definition already exists in the deck, you will see the book icon.
-If _When a duplicate is detected_ is set to `Prevent adding`, the icons will appear grayed out. If set to `Allow adding`, the icons will change to:
+**Senren keeps its scene-grouping structure.** Its sentence contains an outer `group` span and a `highlight` span around the target, while sentence furigana is wrapped in a `group` span. The actual v5.1.0 package also contains `hint`, even though the upstream field-setup table omits that row; Manabitan leaves it blank rather than inventing a source. For a multi-dictionary glossary, enable **Group term-reading pairs** or **Group related terms** as described in the [Senren setup guide](https://brenoaqua.github.io/Senren/yomitan/). Review `miscInfo` when using other mining tools that supply their own source information.
 
-- ![](assets/btn/btn-add-duplicate-expression.png): to add the expression
-- ![](assets/btn/btn-add-duplicate-reading.png): to add the reading
+**Crop Theft Vocab uses its own nine-field layout.** Its [publisher's field table](https://github.com/Kuuuube/crop-theft#field-setup) is the basis for the mapping. `Notes` remains blank.
 
-Below are some troubleshooting tips you can try if you are unable to create new flashcards:
+### Customization and other note types
 
-- If all of the buttons appear grayed out, then you should double-check your deck and model configuration settings.
-- If no icons appear at all, make sure that Anki is running in the background and that [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect) ([Add-on Page](https://ankiweb.net/shared/info/2055492159)) has been installed.
+Model-name recognition tolerates case, spacing, and punctuation differences, including `Senren・洗練`. It does not treat every name containing “Kiku” or “Lapis” as that preset. Preset field names are exact and case-sensitive. A renamed model or customized field layout may need manual configuration.
 
-### Anki Note Generation
+Selecting a recognized preset applies its defaults, including intentionally blank fields and blank unknown extra fields. Back up customized settings before changing note types. Newly generated mappings use the `coalesce` overwrite mode; inspect overwrite controls along with the field values.
 
-Using the `Generate Anki Notes (Experimental)...` feature in the settings page it is possible to easily generate and export large amounts of Anki cards.
+Unrecognized models retain best-effort mapping from common field names and aliases: for example `Word`, `Term`, or `Phrase`; `Definition` or `Meaning`; `Sound` or `Audio`; and familiar sentence, pitch, frequency, dictionary, URL, title, and selection-text names. Existing values for the same-named fields can be reused, but overwrite modes are still initialized to `coalesce`. Otherwise the first field defaults to `{expression}` for a term card or `{character}` for a kanji card. Community presets apply to term formats, not kanji formats.
 
-!!! WARNING "This feature is experimental!"
+### Compatibility checks
 
-First, get a newline separated list of terms. For example:
+The extension repository has three complementary checks: offline tests using field schemas captured from real APKGs, downloads of checksum-pinned reviewed packages, and downloads of the latest stable upstream packages. Crop Theft's latest check resolves the repository's current default branch to a commit before downloading its package.
 
-```
-雪
-雨
-竜巻
-```
+The checks compare every field—including intentional blanks—with independently reviewed expected mappings, verify that the output uses available markers, and check the identifying first field. Added, removed, renamed, or duplicate fields fail the contract check. Missing downloads, ambiguous packages, and missing models fail rather than being reported as compatible. Fixtures are not automatically rewritten to accept drift.
 
-Enter this list into the large text box in the `Anki Note Generator` popup window.
+The workflow runs on relevant pull requests and, once present on the default branch, weekly and by manual dispatch. Reports record package revisions, hashes, and extracted schemas. They do not import anything into your Anki collection, execute downloaded card templates, or retain package media.
 
-Next, select either `Send to Anki` or `Export to File`.
+These are **field-contract checks**, not complete Anki rendering or browser-integration tests. A template can change behavior without renaming its fields. New releases, custom templates, available dictionary data, audio sources, and device-specific behavior still require a real test note. See the [compatibility maintenance guide](https://github.com/ManabiIO/manabitan/blob/main/docs/development/anki-note-type-compatibility.md), [production mapper](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js), and [original mapper tests](https://github.com/ManabiIO/manabitan/blob/main/test/anki-note-type-field-util.test.js).
 
-**Send to Anki:**
+## Roadmap: faster, more capable AnkiConnect
 
-`Send to Anki` will send all the terms to the active Anki deck using the active Anki model specified on the page. To change the active Anki deck or Anki model, edit them in the `Configure Anki card format...` setting.
+The automatic field mapping above is a **current Manabitan feature**. Broader Anki performance work is separate roadmap work.
 
-Make sure to confirm you are exporting to the correct deck and with the correct Anki model. After the notes are sent to Anki there is no way to automatically undo the changes.
+We intend to make Manabitan's AnkiConnect integration substantially faster, reducing avoidable waiting and overhead around configuration and note creation. We also intend to work on AnkiConnect itself so the bridge can become faster and support more capable workflows instead of forcing every improvement into the browser extension.
 
-To include media in notes sent to Anki, make sure to enable the `Add media to notes` option. Media includes audio, images, and svgs. Exporting with media may take significantly longer than without it.
+The exact design is not set yet, and this is not a claim that current Manabitan ships a faster replacement for AnkiConnect. More to come. See the [Manabitan roadmap](why-manabitan.md#roadmap).
 
-To prevent duplicate notes being sent to Anki, enable the `Prevent sending duplicate notes` option. This will check for duplicate notes that already exist. The `Check for duplicates across all models` and `Duplicate card scope` settings are used to determine what is considered a duplicate card. **This does not remove duplicates in the term list.**
+## Field markers
 
-**Export to File:**
+Use the field selector in **your installed build** as the authoritative list of available markers. The [template documentation in the Manabitan repository](https://github.com/ManabiIO/manabitan/blob/main/docs/templates.md) covers helpers and customization. Do not rename a marker because it contains an upstream name or a dictionary title.
 
-`Export to File` will export all the terms to an Anki deck file using the active Anki card format specified on the page and in Anki's `Notes in plain text (.txt)` format. After exporting completes you will be prompted to save the file. This file can later be imported into Anki.
+| Information | Common markers |
+| --- | --- |
+| Headword and reading | `{expression}`, `{reading}`, `{furigana}`, `{furigana-plain}` |
+| Definitions | `{glossary}`, `{glossary-brief}`, `{glossary-no-dictionary}`, `{glossary-plain}`, `{glossary-first}` |
+| Sentence context | `{sentence}`, `{sentence-furigana}`, `{sentence-furigana-plain}`, `{cloze-prefix}`, `{cloze-body}`, `{cloze-body-kana}`, `{cloze-suffix}` |
+| Source | `{url}`, `{document-title}`, `{search-query}`, `{popup-selection-text}` |
+| Dictionary metadata | `{dictionary}`, `{dictionary-alias}`, `{tags}`, `{part-of-speech}`, `{conjugation}` |
+| Audio and images | `{audio}`, `{screenshot}`, `{clipboard-image}`, `{clipboard-text}` |
+| Frequency | `{frequencies}`, `{frequency-harmonic-rank}`, `{frequency-harmonic-occurrence}`, `{frequency-average-rank}`, `{frequency-average-occurrence}` |
+| Pronunciation | `{phonetic-transcriptions}`, `{pitch-accents}`, `{pitch-accent-graphs}`, `{pitch-accent-graphs-jj}`, `{pitch-accent-positions}`, `{pitch-accent-categories}` |
+| Kanji | `{character}`, `{kunyomi}`, `{onyomi}`, `{onyomi-hiragana}`, `{stroke-count}` |
 
-Media cannot be included when exporting in this format.
+Availability depends on the entry, dictionary, display mode, and permissions. Dictionary-specific markers should be selected from the dropdown rather than assembled by guessing an internal dictionary name. A template marker is not a promise that the requested data exists.
+
+## Flashcard creation
+
+Start with one test entry. Use the expression, reading, or kanji add control corresponding to the format you configured. Open the note in Anki and inspect its fields, audio, and formatting.
+
+Check the duplicate settings deliberately. Depending on the configuration, a matching note can show a browse/book control, disable adding, or allow another note. The deck scope, note type, and identifying field matter; “same reading” is not always “same word.”
+
+If controls are absent, confirm integration is enabled. If they are disabled or fail, check that Anki and AnkiConnect are running, the endpoint is correct, and a valid deck/note type/field mapping is selected. Do not expose AnkiConnect to the public internet to solve a local connection problem.
+
+## Anki note generation
+
+**Generate Anki Notes (Experimental)…** accepts a newline-separated list of terms. Test a short list before a large export. Confirm the deck and card format before using **Send to Anki**.
+
+**Add media to notes** can include available recordings and images and can substantially increase work. Duplicate prevention checks the configured scope; it does not necessarily deduplicate the input list. Back up Anki and do not assume Manabitan provides a batch rollback.
+
+**Export to File** produces the supported text-note export for later Anki import; it is not a packaged Anki collection and does not include media in that mode. Browser TTS is not downloadable audio; see [Audio](advanced.md#audio).
+
+## Android
+
+[AnkiDroid](https://ankidroid.org/) and [AnkiConnectAndroid](https://github.com/KamWithK/AnkiconnectAndroid) are separate third-party projects. The latter requires its own installation and permissions. Treat this as a compatibility path to test with a specific browser/build, not desktop AnkiConnect running unchanged on Android. See [device support](support.md#browser-and-device-support).
+
+## Custom templates
+
+Export your settings before editing Handlebars. Prefer the current default template unless a customization is needed. Old Yomichan helpers can require migration; see [Yomichan migration](yomichan-migration.md#custom-anki-templates).
+
+The previous upstream-derived marker table is retained in the repository's `archive/anki-upstream.md` for attribution and historical comparison. It is not a supported-version contract.

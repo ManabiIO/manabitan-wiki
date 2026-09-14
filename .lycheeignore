@@ -1,9 +1,4 @@
-^https://forvo\.com/$
-^https://discord.gg/YkQrXW6TXF$
-^.*%7B%7B.*%7D%7D$
-^https://www.reddit.com/r/yomidevs/$
-^https://git.sr.ht/~foosoft/anki-connect$
-^file:///home/runner/work/yomitan-wiki/yomitan-wiki/overrides/anki$
-^file:///home/runner/work/yomitan-wiki/yomitan-wiki/overrides/advanced#audio$
-^file:///home/runner/work/yomitan-wiki/yomitan-wiki/overrides/tools-resources$
-^file:///home/runner/work/yomitan-wiki/yomitan-wiki/overrides/getting-started$
+# Invite pages can deny automated requests; verify the invite manually before release.
+^https://discord\.gg/gvxzS93C3w$
+# Local and generated links are checked against the actual built /manabitan/ tree.
+# Do not add runner-specific checkout paths or suppress entire GitHub repositories.
