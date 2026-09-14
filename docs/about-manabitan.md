@@ -11,6 +11,14 @@ Manabitan is based on [Yomitan](https://github.com/yomidevs/yomitan), which cont
 
 Yomitan's primary maintainers have supported releasing this work as a separate fork, offered guidance, and reviewed our release preparations. Manabitan is maintained and released independently. That support is important context for why this project exists where it does; it is not a claim that Yomitan formally endorses every Manabitan release or has audited Manabitan's code.
 
+## Why the name Manabitan?
+
+A fork this substantial needs its own name. Using a separate name makes it clear which project a user is installing, who is responsible for maintaining it, and where bugs and support requests belong. It also avoids presenting a separately maintained fork as though it were an official Yomitan release, while respecting Yomitan's name, branding, authorship, copyright, and licensing.
+
+The **Manabi** part also comes from the naming scheme I already use for my projects. I'm the developer behind **Manabi Reader** and **Manabi Flashcards**, so Manabitan belongs to the same project family rather than being a random rename of Yomitan.
+
+The new name does not mean moving away from open source. **Manabitan will remain free and open source.** I also hope to release more open-source tools under the Manabi name, including original projects rather than only forks, soon.
+
 ## The change is foundational
 
 This is not a small optimization patch. Manabitan replaces dictionary storage and much of the query path, with related changes to imports, updates, compression, caching, migration, compatibility, tests, and performance work.
