@@ -47,12 +47,14 @@ theme:
     - media: '(prefers-color-scheme: light)'
       scheme: default
       primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: '(prefers-color-scheme: dark)'
       scheme: slate
       primary: custom
+      accent: custom
       toggle:
         icon: material/white-balance-sunny
         name: Switch to light mode
@@ -94,6 +96,7 @@ exclude_docs: |
   manabitan-pdf-viewer/*.sh
   manabitan-pdf-viewer/*.odt
 extra_css:
+  - stylesheets/brand.css
   - stylesheets/extra.css
 copyright: |
   Manabitan documentation, adapted from <a href="https://github.com/yomidevs/yomitan-wiki">Yomitan Wiki</a>.<br>
