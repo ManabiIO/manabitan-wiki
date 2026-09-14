@@ -21,7 +21,15 @@ For PDFs, use the [Manabitan PDF Viewer](manabitan-pdf-viewer/index.html). It is
 
 [Backfill Anki Yomitan](https://ankiweb.net/shared/info/1184164376) and [Generate Batch Audio](https://ankiweb.net/shared/info/1156270186) retain their upstream add-on identities. Check API compatibility and back up Anki before bulk changes. Calling an add-on “Manabitan” does not make it discover or support this fork automatically.
 
-[Local Audio Server for Yomichan](https://github.com/yomidevs/local-audio-yomichan) is an upstream local-audio option. The older Yomichan Forvo Server is not a current recommendation here; follow [audio configuration](advanced.md#audio) and verify the service rather than relying on inherited claims about availability.
+### Forvo and local audio
+
+[Local Audio Server for Yomichan](https://github.com/yomidevs/local-audio-yomichan) is the preferred documented local Forvo path. Configure it as a custom Manabitan audio source using the URL/type described by that project.
+
+[Yomichan Forvo Server](https://github.com/jamesmaa/yomitan-forvo-server) / [AnkiWeb 580654285](https://ankiweb.net/shared/info/580654285) is a second option that serves JSON from Anki, normally on port 8770. The upstream Yomitan wiki currently marks it as not working, so treat it as an optional compatibility route and verify the add-on's current status first rather than removing the documentation entirely.
+
+### MeCab
+
+[Yomitan MeCab Installer](https://github.com/yomidevs/yomitan-mecab-installer) can register custom extension IDs. For Manabitan, follow the installer but add Manabitan's actual extension origin/ID instead of assuming the Yomitan store ID. See [MeCab setup](advanced.md#mecab) for the Manabitan-specific step.
 
 ## Themes
 

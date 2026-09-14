@@ -11,7 +11,7 @@ Manabitan stores dictionaries and settings locally in the browser's extension st
 
 Dictionary installation and update checks contact the configured dictionary publishers or download hosts. Scheduled updates can make those requests without a fresh click when enabled. The destination receives the request and normal network metadata, including an IP address; custom URLs can contain account-specific information.
 
-Audio requests can send the term, reading, and language to configured sources such as JapanesePod101/LanguagePod101, Jisho, Lingua Libre/Wikimedia, Wiktionary/Wikimedia, or a custom service. Autoplay settings can trigger audio without pressing the speaker for each entry. Browser TTS follows the browser and selected voice provider's behavior; do not assume every voice is processed locally.
+Audio requests can send the term, reading, and language to configured sources such as JapanesePod101/LanguagePod101, Jisho, Lingua Libre/Wikimedia, Wiktionary/Wikimedia, Forvo-compatible local services, or a custom service. Autoplay settings can trigger audio without pressing the speaker for each entry. Browser TTS follows the browser and selected voice provider's behavior; do not assume every voice is processed locally.
 
 With Anki enabled, Manabitan communicates with the configured AnkiConnect endpoint. Depending on the configured fields and actions, this can include dictionary data, sentence text, the page URL/title, screenshots, clipboard contents, and settings needed to create/check notes. The usual endpoint is local, but a user-configured remote endpoint changes where that information goes. Anki's own synchronization is a separate service.
 
@@ -40,6 +40,6 @@ Review settings/diagnostic exports before sharing. URLs, dictionary names, error
 
 ## This website
 
-The documentation site is separate from the extension. Its server and any configured delivery proxy receive normal web requests. This homepage does not automatically embed YouTube demonstrations or load Google Fonts; it uses local assets and system fonts. Following an external project, community, store, or audio link subjects that visit to the destination's own practices.
+The documentation site is separate from the extension. Its server and any configured delivery proxy receive normal web requests. The site uses a local/system font stack rather than requesting Google Fonts. The homepage includes local screenshots and two optional workflow demonstrations: a GitHub-hosted video and a privacy-enhanced YouTube embed. Loading those external media resources can contact GitHub or YouTube/Google and expose normal request metadata. The YouTube iframe is lazy-loaded, but it is still third-party content when loaded.
 
-The [extension privacy policy](https://github.com/ManabiIO/manabitan/blob/main/PRIVACY-POLICY.md) describes the corresponding app behavior. Neither page is a promise that third-party services receive no identifying network metadata.
+Following an external project, community, store, audio, MeCab, or Forvo link subjects that visit to the destination's own practices. The [extension privacy policy](https://github.com/ManabiIO/manabitan/blob/main/PRIVACY-POLICY.md) describes the corresponding app behavior. Neither page is a promise that third-party services receive no identifying network metadata.

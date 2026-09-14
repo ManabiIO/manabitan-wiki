@@ -16,6 +16,11 @@
     <p class="home-status">Manabitan is a separate project with substantial internal changes. Check the package's release notes and keep a backup before migrating.</p>
   </div>
 
+  <figure class="home-media home-media--hero">
+    <img src="{{ 'assets/scanning-popup.webp' | url }}" alt="Dictionary popup while scanning text" loading="eager">
+    <figcaption>Popup lookup while reading. Screenshots and videos on this page are retained as workflow examples; some were inherited from Yomitan documentation or show an earlier UI, so exact controls may differ from the current Manabitan release.</figcaption>
+  </figure>
+
   <aside class="home-fork" aria-labelledby="fork-title">
     <h2 id="fork-title">Built on Yomitan</h2>
     <p>Manabitan is a Yomitan fork with rewritten dictionary storage and query engines, built for faster imports, background updates, and quicker lookups. Yomitan's primary maintainers have supported releasing this work as a separate fork, offered guidance, and reviewed our release preparations. We maintain and release Manabitan independently, so we can prove the new internals without making Yomitan's existing users take on a major data migration.</p>
@@ -28,6 +33,43 @@
     <section><h2>Keep the lookup workflow</h2><p>Look up words where you read, hear available pronunciation audio, and send entries to Anki. The goal is less waiting and fewer rough edges, not a different way to use Yomitan.</p><a href="{{ 'anki/' | url }}">Set up Anki</a></section>
     <section><h2>Adjust it to your reading</h2><p>Use built-in themes, choose scanning inputs, or try frequency-based blur to recall a word before checking the definition.</p><a href="{{ 'advanced/' | url }}">Appearance and advanced features</a></section>
   </div>
+
+  <section class="home-showcase" aria-labelledby="showcase-title">
+    <h2 id="showcase-title">What the workflow looks like</h2>
+    <div class="home-gallery">
+      <figure class="home-media">
+        <img src="{{ 'assets/audio.webp' | url }}" alt="Audio controls in a dictionary popup" loading="lazy">
+        <figcaption>Pronunciation audio and source selection.</figcaption>
+      </figure>
+      <figure class="home-media">
+        <img src="{{ 'assets/android-dict-action.webp' | url }}" alt="Dictionary lookup action on Android" loading="lazy">
+        <figcaption>A mobile lookup workflow. Mobile support still depends on the particular browser and package.</figcaption>
+      </figure>
+      <figure class="home-media">
+        <img class="theme-sample theme-sample--light" src="{{ 'assets/themes/light/bint-css.png' | url }}" alt="Bint's Yomitan CSS example" loading="lazy">
+        <img class="theme-sample theme-sample--dark" src="{{ 'assets/themes/dark/bint-css.png' | url }}" alt="Bint's Yomitan CSS dark-mode example" loading="lazy">
+        <figcaption>Community styling example: Bint's Yomitan CSS. Third-party themes keep their original names and authorship.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-videos" aria-labelledby="videos-title">
+    <h2 id="videos-title">Video examples</h2>
+    <p class="media-note">These videos demonstrate the lookup/Anki workflow. They may show upstream Yomitan or an earlier Manabitan build rather than the exact current UI.</p>
+    <div class="home-video-grid">
+      <figure class="home-media">
+        <video controls playsinline preload="metadata" src="https://github.com/user-attachments/assets/e3210e84-be5f-48ba-a335-ab8bbd103750"></video>
+        <figcaption>Anki workflow example using BrenoAqua's <a href="https://brenoaqua.github.io/Senren/">Senren</a> note type.</figcaption>
+      </figure>
+      <figure class="home-media home-media--video">
+        <div class="video-frame">
+          <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/9DLsA94N1ZE" title="Dictionary lookup workflow demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <figcaption>Existing lookup workflow demonstration. See the current release notes and guides for exact controls.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <p class="home-help"><a href="{{ 'support/' | url }}">Get help</a> · <a href="{{ 'supported-languages/' | url }}">Language support</a> · <a href="{{ 'credits/' | url }}">Credits</a></p>
 </section>
 {% endblock %}

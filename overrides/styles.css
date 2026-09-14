@@ -1,15 +1,28 @@
-.manabitan-home { max-width: 58rem; margin-inline: auto; padding: 1.5rem 0 3rem; }
-.manabitan-home .home-intro { max-width: 40rem; margin: 0 auto 2rem; }
+html, body, button, input, select, textarea {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.manabitan-home { max-width: 64rem; margin-inline: auto; padding: 1.5rem 0 3rem; }
+.manabitan-home .home-intro { max-width: 42rem; margin: 0 auto 2rem; }
 .manabitan-home .home-logo { display: block; margin-bottom: 1rem; }
 .manabitan-home h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 700; margin-bottom: .5rem; }
 .manabitan-home .home-summary { font-size: 1.3rem; }
 .manabitan-home .home-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.5rem; }
-.manabitan-home .home-status { font-size: .8rem; color: var(--md-default-fg-color--light); }
-.manabitan-home .home-fork { padding: 1rem 1.4rem; border-left: .2rem solid var(--md-primary-fg-color); background: var(--md-code-bg-color); }
-.manabitan-home .home-fork h2 { margin-top: 0; }
+.manabitan-home .home-status, .manabitan-home .media-note { font-size: .85rem; color: var(--md-default-fg-color--light); }
+.manabitan-home .home-fork { margin-block: 2rem; padding: 1rem 1.4rem; border-left: .2rem solid var(--md-primary-fg-color); background: var(--md-code-bg-color); }
+.manabitan-home .home-fork h2, .manabitan-home .home-features h2, .manabitan-home .home-showcase h2, .manabitan-home .home-videos h2 { margin-top: 0; }
 .manabitan-home .home-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; margin-block: 2rem; }
-.manabitan-home .home-features h2 { margin-top: 0; }
 .manabitan-home .home-features section { padding-block: 1rem; border-top: 1px solid var(--md-default-fg-color--lightest); }
-.manabitan-home .home-help { text-align: center; }
+.manabitan-home .home-gallery, .manabitan-home .home-video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.manabitan-home .home-showcase, .manabitan-home .home-videos { margin-block: 2.5rem; }
+.manabitan-home .home-media { margin: 0; }
+.manabitan-home .home-media img, .manabitan-home .home-media video { display: block; width: 100%; height: auto; border-radius: .5rem; border: 1px solid var(--md-default-fg-color--lightest); background: var(--md-code-bg-color); }
+.manabitan-home .home-media--hero { max-width: 52rem; margin: 0 auto 2rem; }
+.manabitan-home figcaption { margin-top: .55rem; font-size: .78rem; line-height: 1.45; color: var(--md-default-fg-color--light); }
+.manabitan-home .theme-sample--dark { display: none; }
+[data-md-color-scheme="slate"] .manabitan-home .theme-sample--light { display: none; }
+[data-md-color-scheme="slate"] .manabitan-home .theme-sample--dark { display: block; }
+.manabitan-home .video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: .5rem; background: #000; }
+.manabitan-home .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.manabitan-home .home-help { text-align: center; margin-top: 2rem; }
 .manabitan-home a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 @media (max-width: 480px) { .manabitan-home .home-actions a { width: 100%; text-align: center; } }

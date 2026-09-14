@@ -1,6 +1,6 @@
 ---
 title: Advanced features
-description: Scanning, appearance, audio, and optional integrations in Manabitan.
+description: Scanning, appearance, audio, MeCab, and optional integrations in Manabitan.
 ---
 
 # Advanced features
@@ -43,11 +43,13 @@ Browser text-to-speech can fill gaps in recorded audio. Voices and availability 
 
 Browser SpeechSynthesis audio cannot be exported to Anki through the normal audio-download path. The [upstream discussion](https://github.com/yomidevs/yomitan/issues/864) documents that limitation. A browser TTS voice and a downloadable custom audio URL are different source types.
 
-### Custom audio sources
+### Custom audio sources and Forvo
 
 Custom URLs can use `{term}`, `{reading}`, and `{language}` replacement patterns. Only send lookup data to services you trust. See [Privacy and permissions](privacy.md).
 
-[Local Audio Server for Yomichan](https://github.com/yomidevs/local-audio-yomichan) is an upstream tool that can provide local audio. Follow its actual installation instructions and check compatibility with your Manabitan build. The old Yomichan Forvo Server add-on is not a maintained recommendation here: third-party scraping/services can stop working, and the previous wiki contradicted itself about its status.
+[Local Audio Server for Yomichan](https://github.com/yomidevs/local-audio-yomichan) remains the preferred documented route for local Forvo audio. Despite the historical name, it is used as a custom audio source; follow its current setup instructions and point Manabitan at the local URL it provides.
+
+[Yomichan Forvo Server](https://github.com/jamesmaa/yomitan-forvo-server) is another Anki add-on option and is also available from [AnkiWeb](https://ankiweb.net/shared/info/580654285). Its documented custom JSON endpoint is `http://localhost:8770/?term={term}&reading={reading}` with optional language parameters. The current upstream Yomitan wiki flags this option as not working, while the add-on repository still documents installation and fixes. Keep it as a compatibility option, not the default recommendation, and check its current status before diagnosing Manabitan itself.
 
 ## Anki customization
 
@@ -55,8 +57,17 @@ Use **Anki → Configure Anki card format…** to choose formats, fields, and no
 
 Additional formats can be used for sentence-only or audio-focused notes. Custom Handlebars templates are a separate advanced feature: export your settings first, keep your previous template, and preview the result. See [Anki integration](anki.md).
 
-## MeCab and the external API
+## MeCab
 
-MeCab is an optional native integration, not part of the default installation. Its helper must authorize the actual Manabitan extension origin/ID. The previous link to a ManabiIO MeCab installer did not resolve; there is no verified Manabitan-specific installation guide to substitute yet. Do not reuse another extension's registration or rename its native-messaging protocol blindly. Use the built-in parser unless you have a tested helper configuration.
+MeCab remains an optional Japanese native integration. [Yomitan MeCab Installer](https://github.com/yomidevs/yomitan-mecab-installer) is the upstream installer and supports adding custom extension IDs, which is the part that matters for Manabitan compatibility.
+
+Install MeCab and the upstream installer as described in its README, but **do not use an upstream Yomitan store ID for Manabitan**. Add the actual Manabitan extension origin/ID when the installer asks for additional IDs:
+
+- Chrome/Chromium/Edge: open Manabitan's Settings page and copy the extension origin before `settings.html` (for Edge, use the `chrome-extension://` form expected by the installer).
+- Firefox: open `about:debugging`, find Manabitan, and copy the displayed extension ID, including braces when present.
+
+Then enable **Text Parsing → Parse sentences using MeCab** and use its **Test** control. The installer and MeCab are separate projects, and browser/native-host registration can change across installs, so repeat the ID registration when the extension ID changes. The built-in parser remains available if you do not need MeCab.
+
+## External API
 
 The optional external API can allow local tools to request lookup data. Enable it only for a tool you intend to use, and verify that tool's extension discovery and API compatibility. Keep any sanitization bypass disabled unless you understand the complete downstream handling of the returned content.
