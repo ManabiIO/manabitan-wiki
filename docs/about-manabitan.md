@@ -13,11 +13,11 @@ Yomitan's primary maintainers have supported releasing this work as a separate f
 
 ## Why the name Manabitan?
 
-A fork this substantial needs its own name. Using a separate name makes it clear which project a user is installing, who is responsible for maintaining it, and where bugs and support requests belong. It also avoids presenting a separately maintained fork as though it were an official Yomitan release, while respecting Yomitan's name, branding, authorship, copyright, and licensing.
+A separately maintained fork this substantial needs its own name. A distinct name makes it clear which project a user is installing, who is responsible for maintaining it, and where support requests belong. It also avoids presenting Manabitan as an official Yomitan release and helps preserve a clear boundary between the upstream project's identity and this fork's, while retaining the required authorship, copyright, licensing, and attribution.
 
-The **Manabi** part also comes from the naming scheme I already use for my projects. I'm the developer behind **Manabi Reader** and **Manabi Flashcards**, so Manabitan belongs to the same project family rather than being a random rename of Yomitan.
+The **Manabi** part follows the naming scheme I already use for my projects. I'm the developer behind **Manabi Reader** and **Manabi Flashcards**, so Manabitan belongs to the same project family rather than being an arbitrary rename of Yomitan.
 
-The new name does not mean moving away from open source. **Manabitan will remain free and open source.** I also hope to release more open-source tools under the Manabi name, including original projects rather than only forks, soon.
+The new name is not a move away from open source. **Manabitan will remain free and open source.** I also hope to release more open-source tools under the Manabi name, including original projects rather than only forks, soon.
 
 ## The change is foundational
 
