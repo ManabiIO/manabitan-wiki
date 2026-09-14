@@ -1,50 +1,20 @@
 ---
-hide:
-  - toc
-  - footer
+title: Language support
+description: Language selection, deinflection, and dictionary availability are distinct parts of Manabitan support.
 ---
 
-# Supported Languages
+# Language support
 
-Manabitan supports a variety of languages, although the level of support may vary depending on the extent to which deinflections and text transforms have been implemented.
+Choose the language in Settings and install appropriate dictionaries. A language appearing in the selector does not guarantee a particular dictionary, complete deinflection, pronunciation audio, or a translated interface.
 
-These are the languages currently supported by Manabitan:
+The table below is generated from `language-descriptors.js` at the extension revision recorded in `scripts/asset-sources.json`. It replaces the stale hand-maintained list. Your installed build can differ; its language selector is authoritative for that build.
 
-| Language       | Code |
-| -------------- | ---- |
-| Albanian       | sq   |
-| Ancient Greek  | grc  |
-| Arabic         | ar   |
-| Cantonese      | yue  |
-| Chinese        | zh   |
-| Danish         | da   |
-| Dutch          | nl   |
-| English        | en   |
-| Finnish        | fi   |
-| French         | fr   |
-| German         | de   |
-| Greek          | el   |
-| Hungarian      | hu   |
-| Indonesian     | id   |
-| Italian        | it   |
-| Japanese       | ja   |
-| Khmer          | km   |
-| Korean         | ko   |
-| Lao            | lo   |
-| Latin          | la   |
-| Mongolian      | mn   |
-| Old Irish      | sga  |
-| Persian        | fa   |
-| Polish         | pl   |
-| Portuguese     | pt   |
-| Romanian       | ro   |
-| Russian        | ru   |
-| Serbo-Croatian | sh   |
-| Spanish        | es   |
-| Swedish        | sv   |
-| Tagalog        | tl   |
-| Thai           | th   |
-| Turkish        | tr   |
-| Vietnamese     | vi   |
+--8<-- "_generated/languages.md"
 
-If you want to add or improve support for a language, consider looking at the [language features documentation at GitHub](https://github.com/ManabiIO/manabitan/blob/master/docs/development/language-features.md).
+## What support means
+
+Dictionary availability determines which words and definitions can be found. Language transforms determine which inflected or normalized forms lead to those entries. Audio is supplied separately and has its own coverage. These should not be conflated into a single claim of complete language support.
+
+Use separate profiles for different languages when they need different dictionaries, scanning inputs, or settings. Recheck the active profile after importing settings.
+
+For development, see [language features](https://github.com/ManabiIO/manabitan/blob/main/docs/development/language-features.md) and the [language descriptors](https://github.com/ManabiIO/manabitan/blob/main/ext/js/language/language-descriptors.js). New languages and improvements can often benefit the upstream ecosystem too.

@@ -1,13 +1,12 @@
 ---
 template: home.html
-title: Welcome to Manabitan
-description: Powerful and versatile pop-up dictionary for language learning.
-
+title: Manabitan
+description: A Yomitan fork with rewritten dictionary storage and query engines for faster imports, background updates, and quicker lookups.
 hide:
   - navigation
   - toc
-  - footer
-
 ---
 
-Welcome to Manabitan.
+# Manabitan
+
+A Yomitan fork for faster imports and lookups. [Get started](getting-started.md) or [read why the project exists](about-manabitan.md).

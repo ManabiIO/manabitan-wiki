@@ -1,3 +1,6 @@
-mkdocs-material[imaging]
-mkdocs-git-revision-date-localized-plugin
-mkdocs-glightbox
+# Deliberate direct dependency pins shared by CI, preview, and production builds.
+# Review dependency updates in PRs; deployment records the resolved pip inventory.
+mkdocs==1.6.1
+mkdocs-material==9.6.14
+Pillow==11.3.0
+reportlab==4.4.9

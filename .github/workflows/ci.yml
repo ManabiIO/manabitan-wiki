@@ -1,28 +1,30 @@
-name: ci
-
+name: Validate wiki
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+    paths: ['docs/**', 'overrides/**', 'scripts/**', 'tests/**', 'mkdocs.yml', 'requirements.txt', '.github/**']
   pull_request:
+    paths: ['docs/**', 'overrides/**', 'scripts/**', 'tests/**', 'mkdocs.yml', 'requirements.txt', '.github/**']
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
-      - uses: actions/cache@v4
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/prepare-assets.py
+      - run: python -m mkdocs build --strict
+      - run: python scripts/check-site.py site
+      - uses: actions/upload-artifact@v4
         with:
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          path: ~/.cache/pip
-      - run: pip install -r requirements.txt
-      - run: mkdocs build --strict
+          name: manabitan-wiki-preview
+          path: site/
+          retention-days: 7

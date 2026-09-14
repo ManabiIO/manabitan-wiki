@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+{{ super() }}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ (page.title if page else config.site_name) | e }}">
+<meta property="og:description" content="{{ (page.meta.description if page and page.meta.description else config.site_description) | e }}">
+<meta property="og:url" content="{{ (page.canonical_url if page else config.site_url) | e }}">
+<meta property="og:image" content="https://manabi.io/manabitan/assets/social/manabitan.png">
+<meta property="og:image:alt" content="Manabitan — your dictionaries, with less waiting">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://manabi.io/manabitan/assets/social/manabitan.png">
+{% endblock %}
+
 {% block announce %}
-    Manabitan is a Yomitan fork for a faster storage and query architecture, developed with guidance and support from Yomitan's primary maintainers. <a href="{{ 'about-manabitan/' | url }}">Why a fork?</a>
+  <a href="{{ 'yomitan-migration/' | url }}">Moving from Yomitan?</a> Keep your backups and follow the migration guide.
 {% endblock %}

@@ -1,49 +1,45 @@
 ---
-hide:
-  - toc
-  - footer
+title: Privacy and permissions
+description: Local dictionary data, optional network features, and browser permissions used by Manabitan.
 ---
 
-# Manabitan Permissions
+# Privacy and permissions
 
-- `<all_urls>` <br>
-  Manabitan requires access to all URLs in order to run scripts to scan text and show the definitions popup,
-  request audio for playback and download, and connect with Anki.
+Manabitan stores dictionaries and settings locally in the browser's extension storage. Normal dictionary lookup uses installed data. Local storage is not a backup: removing an extension or browser profile can remove its data.
 
-- `storage` and `unlimitedStorage` <br>
-  Manabitan uses storage permissions in order to save extension settings and dictionary data.
-  `unlimitedStorage` is used to help prevent web browsers from unexpectedly
-  deleting dictionary data.
+## Network and optional features
 
-- `declarativeNetRequest` <br>
-  Manabitan uses this permission to ensure certain requests have valid and secure headers.
-  This sometimes involves removing or changing the `Origin` request header,
-  as this can be used to fingerprint browser configuration.
+Dictionary installation and update checks contact the configured dictionary publishers or download hosts. Scheduled updates can make those requests without a fresh click when enabled. The destination receives the request and normal network metadata, including an IP address; custom URLs can contain account-specific information.
 
-- `scripting` <br>
-  Manabitan needs to inject content scripts and stylesheets into webpages in order to
-  properly display the search popup.
+Audio requests can send the term, reading, and language to configured sources such as JapanesePod101/LanguagePod101, Jisho, Lingua Libre/Wikimedia, Wiktionary/Wikimedia, or a custom service. Autoplay settings can trigger audio without pressing the speaker for each entry. Browser TTS follows the browser and selected voice provider's behavior; do not assume every voice is processed locally.
 
-- `contextMenus` <br>
-  Manabitan adds a context menu interface that lets you look up highlighted words.
+With Anki enabled, Manabitan communicates with the configured AnkiConnect endpoint. Depending on the configured fields and actions, this can include dictionary data, sentence text, the page URL/title, screenshots, clipboard contents, and settings needed to create/check notes. The usual endpoint is local, but a user-configured remote endpoint changes where that information goes. Anki's own synchronization is a separate service.
 
-- `offscreen` _(Chrome only)_ <br>
-  Manabitan uses this permission to create a secondary backend document that has DOM access, given that Manifest v3
-  service workers do not. Service workers can then reach out to out to this document in order to complete
-  actions that require access to DOM APIs, such as any that require clipboard access.
+The optional external API allows other applications to request data when enabled. Optional MeCab/native messaging can send text to a separately installed local helper. Enable these only for integrations you intend to use; an integration's own network behavior is not controlled by this wiki.
 
-- `clipboardWrite` <br>
-  Manabitan supports simulating the `Ctrl+C` (copy to clipboard) keyboard shortcut
-  when a definitions popup is open and focused.
+## Browser permissions
 
-- `clipboardRead` _(optional)_ <br>
-  Manabitan supports automatically opening a search window when Japanese text is copied to the clipboard
-  while the browser is running, depending on how certain settings are configured.
-  This allows Manabitan to support scanning text from external applications, provided there is a way
-  to copy text from those applications to the clipboard.
+| Permission | Why it is used |
+| --- | --- |
+| Website access / `<all_urls>` | Scan permitted webpages, show the popup, and make configured dictionary/audio/integration requests. Browser approval rules differ. |
+| `storage`, `unlimitedStorage` | Store settings and dictionary data and reduce browser storage eviction risk; physical disk space still matters. |
+| `alarms` | Schedule background work, including dictionary update checks. Browser suspension can delay it. |
+| `declarativeNetRequest` | Apply request/header rules needed by supported network operations. |
+| `scripting` | Inject extension scripts and styles on permitted pages. |
+| `contextMenus` | Offer lookup actions for selected text. |
+| `offscreen` (Chromium variants, including Edge) | Let the background service worker use a document for operations requiring DOM APIs. |
+| `clipboardWrite` | Copy supported lookup/output content to the clipboard. |
+| `clipboardRead` (optional) | Read clipboard content for enabled clipboard-search or note-field features. |
+| `nativeMessaging` (optional, platform-dependent) | Communicate with an explicitly installed native helper such as MeCab. |
 
-- `nativeMessaging` _(optional, unavailable on Firefox for Android)_ <br>
-  Manabitan has the ability to communicate with an optional native messaging component in order to support
-  parsing large blocks of Japanese text using
-  [MeCab](https://en.wikipedia.org/wiki/MeCab).
-  The installation of this component is optional and is not included by default.
+File-URL and private-window access are separate browser controls. The exact permissions are defined by the distributed package; the [manifest variants](https://github.com/ManabiIO/manabitan/blob/main/dev/data/manifest-variants.json) document the source configuration.
+
+## Diagnostics and backups
+
+Review settings/diagnostic exports before sharing. URLs, dictionary names, error text, custom templates, and local paths can reveal private information. Do not post credentials, private page content, or licensed dictionary data. Keep backups somewhere you control and check the [format limitations](dictionaries.md#backups-and-settings).
+
+## This website
+
+The documentation site is separate from the extension. Its server and any configured delivery proxy receive normal web requests. This homepage does not automatically embed YouTube demonstrations or load Google Fonts; it uses local assets and system fonts. Following an external project, community, store, or audio link subjects that visit to the destination's own practices.
+
+The [extension privacy policy](https://github.com/ManabiIO/manabitan/blob/main/PRIVACY-POLICY.md) describes the corresponding app behavior. Neither page is a promise that third-party services receive no identifying network metadata.

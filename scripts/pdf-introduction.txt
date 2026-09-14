@@ -1,0 +1,9 @@
+Manabitan PDF Viewer
+
+Open a PDF with the viewer's Open File control, or drag a file into the viewer. The document needs selectable text for dictionary lookups. Image-only scans need OCR before they can be used this way.
+
+Install Manabitan, enable a definition dictionary, and allow the extension to run on this website. Hold Shift and move the pointer over a word to look it up, or use the scanning input you configured.
+
+This viewer is based on Mozilla PDF.js. It is a separate tool from the browser's built-in PDF viewer. A local document does not need to be placed on a public website to be opened here.
+
+For setup, troubleshooting, privacy information, and source code, visit https://manabi.io/manabitan/.

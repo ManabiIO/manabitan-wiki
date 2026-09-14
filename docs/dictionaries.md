@@ -1,74 +1,58 @@
 ---
-hide:
-  - navigation
-  - footer
+title: Dictionaries
+description: Install Yomitan-format and MDX dictionaries, configure updates, and keep compatible backups.
 ---
 
+# Dictionaries
 
-You must download and import the dictionaries you wish to use in order to enable Manabitan definition lookups.
+Manabitan uses dictionaries installed in the extension's local storage. Install a definition dictionary before adding frequency, pronunciation, or pitch-accent data. Select the language and active profile before deciding which dictionaries to enable.
 
-There are several free dictionaries available for Manabitan, some of them with glossaries available in different languages.
+## Recommended dictionaries
 
-Be aware that non-English dictionaries generally contain fewer entries than their English counterparts. Even if your primary language is not English, you may consider also importing the English version for better coverage.
+Start in **Settings → Dictionaries → Get recommended dictionaries…**. Recommendations can be installed together. Availability and licensing belong to each publisher; an entry in this list is not a license to redistribute the dictionary.
 
-### Recommended Dictionaries
+For Japanese, [Jitendex](https://github.com/stephenmk/Jitendex) provides a JMdict-based definition dictionary. [JMdict, JMnedict, and KANJIDIC builds](https://github.com/yomidevs/jmdict-yomitan) provide definitions, proper names, and kanji information. Frequency dictionaries such as [BCCWJ and JPDB builds](https://github.com/Kuuuube/yomitan-dictionaries) supplement definitions.
 
-!!! note
+For other languages, see [Wiktionary-to-Yomitan](https://yomidevs.github.io/wiktionary-to-yomitan/download/), [Wikipedia Yomitan](https://github.com/MarvNC/wikipedia-yomitan), [Korean dictionary builds](https://github.com/Lyroxide/yomitan-ko-dic/releases), [CC-CEDICT Yomitan](https://github.com/MarvNC/cc-cedict-yomitan), and [words.hk Yomitan](https://github.com/MarvNC/wordshk-yomitan). These retain their real upstream names and formats; they are not Manabitan-owned projects.
 
-    If you can't find suitable Manabitan dictionaries, feel free to search the web for dictionaries in your specific language or ask your fellow community members.
+Coverage varies by dictionary and translation language. An English glossary is not necessarily a substitute for a dictionary in the language you need. See [language support](supported-languages.md).
 
-#### Multilingual
+## Importing packages
 
-  - [WTY](https://yomidevs.github.io/wiktionary-to-yomitan/download/) - Wiktionaries in various languages converted to Manabitan format.
-  - [Wikipedia for Manabitan](https://github.com/MarvNC/wikipedia-yomitan) - All of Wikipedia in Manabitan for various languages.
+Open **Configure installed and enabled dictionaries…**, then **Import**. Keep a Yomitan-format dictionary as its ZIP package. Enable the imported dictionary in the active profile and adjust its order. Dictionaries may be installed once but enabled differently across profiles.
 
-#### Japanese
+Manabitan also supports MDX import. Select the `.mdx` dictionary and include any companion `.mdd` resource files required by that dictionary through the import flow supported by your build. Check a few entries with images, sound, and formatting afterwards. MDX packages vary, and a successful text lookup does not prove every resource or publisher-specific feature works. Keep the source files and use the release notes for version-specific restrictions.
 
-- [Jitendex](https://github.com/stephenmk/Jitendex) - An improved version of JMdict for Manabitan. It features better formatting and some other improvements, and is actively being improved by its author.
-- [JMdict](https://github.com/yomidevs/jmdict-yomitan#jmdict-for-yomitan-1) - There are daily automatically updated builds of JMdict for Manabitan available in this repository. It is available in multiple languages and formats, but we recommend installing the more modern Jitendex for English users.
-- [JMnedict](https://github.com/yomidevs/jmdict-yomitan#jmnedict-for-yomitan) - Lists readings of person/place/organization names and other proper nouns.
-- [KANJIDIC](https://github.com/yomidevs/jmdict-yomitan#kanjidic-for-yomitan) - An English dictionary listing readings, meanings, and other info about kanji characters.
-- [BCCWJ Frequency Dictionary](https://github.com/Kuuuube/yomitan-dictionaries?tab=readme-ov-file#bccwj-suw-luw-combined) - A frequency dictionary based on the Balanced Corpus of Contemporary Written Japanese.
-- [JPDB Frequency Dictionary](https://github.com/Kuuuube/yomitan-dictionaries?tab=readme-ov-file#jpdb-v22-frequency) - A frequency dictionary based on the corpus from the online Japanese dictionary and SRS system at https://jpdb.io.
+EPWING is a conversion workflow: use [Yomitan Import](https://github.com/yomidevs/yomitan-import) to make a compatible package, then import that package. It is not a claim that Manabitan directly imports arbitrary EPWING files. Obtain proprietary dictionaries legitimately.
 
-??? note "EPWING Dictionaries"
+## Managing dictionaries
 
-    Manabitan supports dictionaries in the esoteric but popular [EPWING](https://ja.wikipedia.org/wiki/EPWING) format. They were often utilized in portable electronic dictionaries. These dictionaries are often sought after by language learners for their correctness and excellent coverage of the Japanese language.
+Use the installed-dictionary dialog to enable, disable, reorder, update, delete, or edit the metadata supported by the current build. Changing a dictionary's name can affect custom CSS, Anki markers, and other settings that refer to that name. Test those integrations afterwards.
 
-    Unfortunately, as most of the dictionaries released in this format are proprietary, you will need to procure these dictionaries yourself and import them using [Yomitan Import](https://github.com/yomidevs/yomitan-import), which produces a compatible dictionary format. Check the project page for additional details.
+Deletion and import time depend on the build, storage backend, dictionary size, and device. Do not close the browser in the middle of an operation. A failure should be investigated before repeatedly deleting data or reinstalling the extension.
 
-#### Korean
+## Automatic updates
 
-  - [KRDICT/STDICT](https://github.com/Lyroxide/yomitan-ko-dic/releases) - Korean dictionaries for Manabitan.
+Automatic updates require the dictionary to provide a usable web update source. A file imported from disk does not acquire an update URL just because Manabitan can read it.
 
-#### Mandarin
+In the dictionary's update controls, choose the available update schedule; supported intervals include hourly, daily, weekly, and monthly. The dictionary-management controls also provide bulk update actions. Review the source before enabling automatic downloads, particularly on metered connections or small devices.
 
-  - [CC-CEDICT for Manabitan](https://github.com/MarvNC/cc-cedict-yomitan) - A free Chinese-English dictionary for Manabitan.
+Schedules depend on the browser being able to run the extension. Closing the browser, suspending the device, or loss of network access can delay a check. They are not an exact wall-clock delivery guarantee.
 
-#### Cantonese
+The update path prepares new data while installed dictionaries can remain available. A first-time import has no previous version to use. Errors or interruptions still need to be handled: inspect the result and retry after resolving the cause rather than deleting the working dictionary first. Consult [support](support.md) when an update fails repeatedly.
 
-  - [words.hk for Manabitan](https://github.com/MarvNC/wordshk-yomitan) - A free Cantonese-English and Cantonese-Cantonese dictionary for Manabitan.
+## Backups and settings
 
-### Bulk Importing Dictionaries
+There are three different things to keep:
 
-Manabitan also supports exporting and importing your entire collection of dictionaries.
+| Data | Purpose | Compatibility |
+| --- | --- | --- |
+| Original dictionary ZIP or MDX/MDD files | Install an individual dictionary again | Depends on the format and importer |
+| Settings JSON | Profiles, preferences, custom configuration | Import validates the settings version and can warn or sanitize values |
+| Dictionary collection backup | Restore an application's database | Specific to the storage implementation and supported build |
 
-#### Importing a Dictionary Collection
+Use the **Backup** section for settings and collection export/import. In the source reviewed for this documentation, settings export is named `yomitan-settings-…json`, and collection export is named `yomitan-dictionaries-…sqlite3`. The inherited `yomitan-` filename prefix is not evidence that a SQLite backup works in Yomitan. Do not rename `.sqlite3` to `.json` or use the old wiki's `manabitan-dictionaries-…json` example.
 
-- Go to Manabitan's settings page (click on the extension's icon then click on the cog icon from the popup)
-- Click `Import Dictionary Collection` and select the database file you want to import
-- Wait for the import to finish then turn all the dictionaries back on from the `Dictionaries > Configure installed and enabled dictionaries` section
-- Refresh the browser tab to see the dictionaries in effect
+Keep the release/build version with a backup. Do not assume a whole-database backup includes every external resource used by a newer storage layout, or that it can be restored across arbitrary builds. Keep the original packages as the recovery path and test restoration in a separate browser profile before relying on a collection backup alone.
 
-#### Exporting the Dictionary Collection
-
-- Click `Export Dictionary Collection` from the backup section of Manabitan's settings page
-- It will show you a progress report as it exports the data then initiates a
-  download for a file named something like `manabitan-dictionaries-YYYY-MM-DD-HH-mm-ss.json`
-  (e.g. `manabitan-dictionaries-2023-07-05-02-42-04.json`)
-
-### Importing and Exporting Personal Configuration
-
-Note that you can also similarly export and import your Manabitan settings from the `Backup` section of the Settings page.
-
-You should be able to replicate your exact Manabitan setup across devices by exporting your settings and dictionary collection from the source device then importing those from the destination.
+A settings export does not contain the dictionary contents or back up Anki. After restoring settings, check custom templates, non-localhost audio/Anki URLs, profile selection, and enabled dictionaries. See [migration](yomitan-migration.md).

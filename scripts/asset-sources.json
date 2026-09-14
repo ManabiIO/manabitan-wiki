@@ -1,0 +1,10 @@
+{
+  "repository": "ManabiIO/manabitan",
+  "revision": "d3fc6795ccce4ba9b293c336898f3dcb32338128",
+  "files": {
+    "icon16": {"path": "ext/images/icon16.png", "blob": "6943bf7b749f6f146816b56f2f9bb8d9d350ecd9"},
+    "icon64": {"path": "ext/images/icon64.png", "blob": "399764cc6213785fde63e41546663bfc07562360"},
+    "icon128": {"path": "ext/images/icon128.png", "blob": "44e53768386481e67bdb98dd3b8a7bdb6f075d0b"},
+    "languages": {"path": "ext/js/language/language-descriptors.js", "blob": "136a6e5a94cfa3e42190caf5b6ac4f05fd564e75"}
+  }
+}

@@ -1,133 +1,62 @@
 ---
-hide:
-  - navigation
-  - footer
+title: Advanced features
+description: Scanning, appearance, audio, and optional integrations in Manabitan.
 ---
 
-## Keyboard Shortcuts
+# Advanced features
 
-The following shortcuts are globally available:
+Enable the **Advanced** toggle in Settings to reveal additional controls. Use the control's label rather than assuming a fixed screen position; the layout changes with viewport size and build.
 
-| Shortcut                           | Action                   |
-| ---------------------------------- | ------------------------ |
-| <kbd>Alt</kbd> + <kbd>Insert</kbd> | Open search page.        |
-| <kbd>Alt</kbd> + <kbd>Delete</kbd> | Toggle extension on/off. |
+## Keyboard shortcuts
 
-The following shortcuts are available on search results:
+The default global shortcuts are **Alt+Insert** for the search page and **Alt+Delete** to toggle scanning. A browser or operating system can reserve or override them; inspect the browser's extension shortcut settings when one does not work.
 
-| Shortcut                         | Action                                  |
-| -------------------------------- | --------------------------------------- |
-| <kbd>Esc</kbd>                   | Cancel current search.                  |
-| <kbd>Alt</kbd> + <kbd>PgUp</kbd> | Page up through results.                |
-| <kbd>Alt</kbd> + <kbd>PgDn</kbd> | Page down through results.              |
-| <kbd>Alt</kbd> + <kbd>End</kbd>  | Go to last result.                      |
-| <kbd>Alt</kbd> + <kbd>Home</kbd> | Go to first result.                     |
-| <kbd>Alt</kbd> + <kbd>Up</kbd>   | Go to previous result.                  |
-| <kbd>Alt</kbd> + <kbd>Down</kbd> | Go to next result.                      |
-| <kbd>Alt</kbd> + <kbd>B</kbd>    | Go to back to source term.              |
-| <kbd>Alt</kbd> + <kbd>E</kbd>    | Add current term as expression to Anki. |
-| <kbd>Alt</kbd> + <kbd>R</kbd>    | Add current term as reading to Anki.    |
-| <kbd>Alt</kbd> + <kbd>P</kbd>    | Play audio for current term.            |
-| <kbd>Alt</kbd> + <kbd>K</kbd>    | Add current kanji to Anki.              |
+Search-result shortcuts are configurable in Manabitan's **Shortcuts** section. The inherited defaults include Esc to cancel, Alt+Up/Down to move between results, Alt+PageUp/PageDown to move by pages, Alt+Home/End for first/last, Alt+B to return to the source, Alt+P for audio, and Alt+E/R/K for Anki expression/reading/kanji actions. Check the bindings in your installed build, especially on keyboards without those keys.
 
-Shortcuts are configurable in the "Shortcuts" section of the settings page.
+## Scanning
 
----
+The default input is Shift plus pointer movement. Configure a different modifier, no-key scanning, delays, or advanced inputs in Settings. No-key scanning and wildcard scanning can increase background work; change one setting at a time when diagnosing latency.
 
-## Advanced Scanning Options
+Manabitan's scan bounds are derived from dictionary information rather than requiring you to choose a fixed character limit for ordinary use. This does not make every browser surface scannable. Browser internal pages, protected viewers, images without text, and pages without permission can still prevent lookup.
 
-### Scanning local files
+For local HTML, enable the browser's file-URL permission. For local PDFs, open the [Manabitan PDF Viewer](manabitan-pdf-viewer/index.html). It needs selectable PDF text; it does not add OCR to scanned pages.
 
-To enable Manabitan scanning on local files, go to `Settings` > `Security` > `Configure Manabitan Permissions`, and navigate to the `Allow access to file URLs` option. From there, follow the link to the browser's settings pages, and check `Allow access to file URLs` on Chrome/Edge, or `Access your data for all websites` for Firefox.
+Private-window access is a separate browser permission. Private browsing can impose storage restrictions, so verify dictionary availability before relying on it and do not use a temporary/private installation as your backup.
 
-Manabitan may not work on PDF files. When that happens, drag and drop your PDF file into [our PDF Viewer](manabitan-pdf-viewer/index.html).
+## Appearance and recall
 
-### Scanning in private windows
+Choose a built-in popup theme in **Appearance** before adding custom CSS. Keep a copy of custom CSS and test it after a theme or dictionary-name change. Third-party themes retain their own project names and may depend on particular dictionary titles or fonts; see [Tools and resources](tools-resources.md#themes).
 
-To enable Manabitan scanning in private/incognito web browser windows, go to `Settings` > `Security` > `Configure Manabitan Permissions`, and navigate to the `Allow in private windows` option. From there, follow the link to the browser's settings pages, and check `Allow in private windows` on Chrome/Edge, or `Run in Private Windows` for Firefox.
-
----
+**Popup Behavior → Blur popup by frequency** can hide the first term entry until you choose to reveal it. Select the frequency dictionary and threshold in its controls. Rank-based and occurrence-based dictionaries use opposite numerical directions, so check the mode rather than assuming a smaller number always means a rarer word. This is a recall aid on popup results, not a measurement of whether you know a word.
 
 ## Audio
 
 ### Default audio sources
 
-After looking up a term, you can click on the ![](assets/icon/play-audio.svg){ width="16" } _speaker_ button to hear the term's pronunciation. When searching for audio, multiple audio sources are checked until the first source with audio for the term is found. If no audio is found, you will hear a short click instead. Right-clicking the ![](assets/icon/play-audio.svg){ width="16" } button allows choosing the source manually.
+Available sources depend on the selected language. The inherited Japanese sources include JapanesePod101 and Jisho; other language configurations can use Lingua Libre, Wiktionary, and LanguagePod101. A configured source is not a guarantee that a recording exists for every entry.
 
-#### Japanese
+Open **Audio → Configure audio playback sources…** to reorder or add sources. Right-click the popup's speaker control to choose a source when supported. If a recording is absent or a source fails, try another source and inspect the error before assuming the dictionary is broken.
 
-The default audio sources for Japanese are:
+### Text-to-speech
 
-- JapanesePod101
-- Jisho.org
+Browser text-to-speech can fill gaps in recorded audio. Voices and availability vary by browser, operating system, and installed voices. Japanese readings and pitch can be ambiguous, so do not treat synthesized audio as a reference recording.
 
-#### Other languages
+Browser SpeechSynthesis audio cannot be exported to Anki through the normal audio-download path. The [upstream discussion](https://github.com/yomidevs/yomitan/issues/864) documents that limitation. A browser TTS voice and a downloadable custom audio URL are different source types.
 
-The default audio sources for other languages are:
+### Custom audio sources
 
-- Lingua Libre
-- Wiktionary
-- LanguagePod101
+Custom URLs can use `{term}`, `{reading}`, and `{language}` replacement patterns. Only send lookup data to services you trust. See [Privacy and permissions](privacy.md).
 
-Depending on the language you need, audio coverage with the default sources may be limited, and you may want to add additional sources, as described below.
+[Local Audio Server for Yomichan](https://github.com/yomidevs/local-audio-yomichan) is an upstream tool that can provide local audio. Follow its actual installation instructions and check compatibility with your Manabitan build. The old Yomichan Forvo Server add-on is not a maintained recommendation here: third-party scraping/services can stop working, and the previous wiki contradicted itself about its status.
 
-### Configuration
+## Anki customization
 
-Audio sources can be configured in `Settings` > `Audio` > `Configure audio playback sources` to reorder them or add new ones. Besides the four sources mentioned above, you can also use your browser's inbuilt text-to-speech (TTS) engine or add a custom URL source:
+Use **Anki → Configure Anki card format…** to choose formats, fields, and note types. Builds that offer note-type installation can set up supported community note types; review what will be installed before changing an existing setup. Test a single note after changing a format.
 
-#### Text-to-speech (TTS)
+Additional formats can be used for sentence-only or audio-focused notes. Custom Handlebars templates are a separate advanced feature: export your settings first, keep your previous template, and preview the result. See [Anki integration](anki.md).
 
-To enable this, just add a new playback source with the `Text-to-speech` type and choose your desired voice. This is the simplest way to get pronunciation audio, though there a few points to keep in mind:
+## MeCab and the external API
 
-- TTS voices vary between browsers and so might not support all languages. For instance, [Microsoft Edge](https://www.microsoft.com/en-us/edge) offers a wide selection of free Azure natural voices for a variety of languages. Edge provides over 300 voices, compared to around 25 in Google Chrome (see [here](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support?tabs=stt) for a list of supported languages).
-- TTS audio can be inaccurate for languages with complex pronunciation such as Japanese, where words can have multiple possible readings and pitch accents.
-- ⚠️ Note that the TTS voices cannot be sent to Anki; this is a [limitation of the browser SpeechSynthesis API](https://github.com/ManabiIO/manabitan/issues/864).
+MeCab is an optional native integration, not part of the default installation. Its helper must authorize the actual Manabitan extension origin/ID. The previous link to a ManabiIO MeCab installer did not resolve; there is no verified Manabitan-specific installation guide to substitute yet. Do not reuse another extension's registration or rename its native-messaging protocol blindly. Use the built-in parser unless you have a tested helper configuration.
 
-#### Custom URL
-
-You can add a custom URL from which audio will be fetched. One use case for this is getting audio from [Forvo](https://forvo.com/), currently the largest online pronunciation database.
-
-Custom URL supports the following replacement patterns:
-
-- `{term}`: The current entry's headword.
-
-- `{reading}`: The reading for the headword.
-
-- `{language}`: The iso code of the current language setting.
-
-Recommended audio sources:
-
-* **Local Audio Server for Yomichan**: This is the most reliable way to get Forvo audio in Manabitan. To read the pros and cons and set it up, see the [instructions](https://github.com/yomidevs/local-audio-yomichan).
-
-* **Yomichan Forvo Server**: 
-  - 🚨 Not working currently 
-  - Fetches from Forvo, at the cost of a slight delay. After installing it in Anki, add a `Custom URL (JSON)` audio source with the URL `http://localhost:8770?term={term}&reading={reading}&language={language}`.
-
----
-
-## Advanced Anki Options
-### Custom "Send to Anki" button
-
-If you want a custom "send to Anki" button for example to send audio only cards or sentence cards:
-1. In the bottom right hand corner of Manabitan settings, click the "Advanced" toggle
-2. Go to Anki section in settings
-3. Click "Configure Anki Flashcards..."
-4. At the top of the screen click "➕" to add a new send to Anki card format.
-5. Customise this however you like.
-
-Some things you may want to do:
-* Audio only cards
-* Sentence only cards
-
----
-
-## Advanced Options
-
-Click the `Advanced` toggle switch in the bottom left corner of the Settings page to enable advanced options.
-
-### Parse sentences using MeCab
-
-[MeCab](https://taku910.github.io/mecab/) is a third-party program which uses its own dictionaries and parsing algorithm to decompose sentences into individual words. MeCab may provide more accurate parsing results than Manabitan's internal parser.
-
-In order for Manabitan to use it, both MeCab and a native messaging component must be installed.
-A setup guide can be found [here](https://github.com/ManabiIO/manabitan-mecab-installer/blob/master/README.md).
+The optional external API can allow local tools to request lookup data. Enable it only for a tool you intend to use, and verify that tool's extension discovery and API compatibility. Keep any sanitization bypass disabled unless you understand the complete downstream handling of the returned content.

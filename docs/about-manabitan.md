@@ -1,61 +1,50 @@
 ---
-hide:
-  - navigation
-  - footer
+title: Why Manabitan exists
+description: Why Manabitan rewrites Yomitan's storage and query engines, and why that work is being released as a fork.
 ---
 
 # Why Manabitan exists
 
-Manabitan is a fork of [Yomitan](https://github.com/yomidevs/yomitan). It keeps the parts of Yomitan that make it such a useful language-learning tool, while replacing some of its deepest internals so dictionaries can import, update, and answer lookups much faster.
+Manabitan is a fork of [Yomitan](https://github.com/yomidevs/yomitan) with rewritten dictionary storage and query engines. The point is to spend less time importing dictionaries and waiting for lookups, without giving up the extension that makes those dictionaries useful.
 
-This isn't a split caused by a disagreement with Yomitan. The primary Yomitan maintainers have provided guidance and support around developing and releasing Manabitan as a fork, and have reviewed the steps taken to release it this way. We think a separate fork is the responsible place to prove changes of this scale before asking Yomitan's much larger user base to migrate to them.
+Yomitan's primary maintainers have supported releasing this work as a separate fork, offered guidance, and reviewed our release preparations. Manabitan is maintained and released independently. Their help has made it easier to take this route responsibly.
 
-Yomitan itself is part of a longer line of open-source stewardship. It continues the work of Yomichan, and Manabitan is another branch of that same family rather than an attempt to erase it. We intend to keep contributing useful work back where it makes sense.
+## A different implementation, not a different idea of Yomitan
 
-## Why not make all of this a Yomitan pull request?
+This is a substantial departure from Yomitan's internals. It replaces the storage and query engines and changes how dictionaries are imported, updated, compressed, and accessed. Getting that to work quickly adds complexity. We take on that maintenance work in Manabitan rather than asking the upstream project to inherit it all at once.
 
-The short version is that the storage work is too large to land usefully one piece at a time.
+What we want to preserve is the useful part of the experience: looking up a word where you're reading, choosing your dictionaries, hearing its pronunciation, and making an Anki card. We also want to smooth out onboarding and dictionary management. We aren't trying to make people relearn Yomitan just to use a faster implementation.
 
-Manabitan replaces Yomitan's dictionary storage and much of its query path. That work also includes migration, import and update machinery, compression, caching, compatibility code, tests, and performance work around the new architecture. It is not a small optimization that can be dropped into the existing database layer.
+## Why a fork instead of upstream contributions?
 
-There have already been attempts to bring foundational pieces of this work upstream. The problem is practical: a change this large has to be split into incremental pull requests, while many of those intermediate pieces create review and maintenance work without delivering much immediate value to Yomitan users on their own. The complete change is useful; many of the steps required to get there are not especially useful in isolation.
+Contributors have already tried bringing foundational pieces of this work to Yomitan. A change of this size needs to be split into smaller, reviewable changes. That's sensible, but some of those intermediate steps add work and complexity without delivering an immediate improvement on their own. Much of the value only appears once the pieces work together.
 
-Given the amount of implementation and review work involved, there has been limited appetite for doing the whole transition incrementally inside Yomitan. That's reasonable. It also means Manabitan would simply not exist if every part of it had to be accepted upstream before we could build the next part.
+Preparing and reviewing that transition is a substantial project in its own right. There hasn't been enough sustained contributor and reviewer capacity to carry the whole thing through that way. That is a constraint on the work, not a judgment about either project's maintainers.
 
-A fork lets us finish the architecture, test it as a whole, and take responsibility for the users who deliberately choose it.
+If developing Manabitan also required completing that upstream transition, this project wouldn't exist. A fork lets us build and test the implementation together, release it to people who choose to try it, and find out what holds up in everyday use.
 
-## Why not migrate Yomitan itself now?
+## Why not move Yomitan's users over now?
 
-Because changing a database is easy compared with taking responsibility for everybody's data.
+A storage rewrite also means taking responsibility for a data migration. Yomitan users have existing dictionaries, profiles, settings, and custom Anki templates, across different browsers and devices. Faster code is not enough reason to put all of those installations through a major upgrade.
 
-Yomitan has a large installed user base with years of dictionaries, settings, profiles, Anki templates, and browser-specific state. Manabitan changes the internal representation of a substantial part of that data. Even if the new architecture is better, we do not currently want to ask the Yomitan maintainers—or ourselves—to take on the risk of migrating every existing Yomitan installation in one upgrade.
+We aren't ready to take on that migration for Yomitan's whole user base. For now, Manabitan is a separate installation and an explicit choice. Keep backups, follow the [migration guide](yomitan-migration.md), and check the release notes for the package you're installing.
 
-For now, installing Manabitan is an explicit choice. That gives us room to stabilize the new internals and migration paths without turning an architectural experiment into an involuntary migration for existing Yomitan users.
-
-Maybe that changes later. Once this has been proven in the wild, it may make sense to revisit upstreaming more of the architecture and doing the much less glamorous work of safely migrating everybody. One step at a time.
+It may make sense to revisit broader upstreaming later, including the work and responsibility of safely moving existing users' data. We're not promising that outcome. First we need to make this implementation reliable for the people using it. One step at a time.
 
 ## Why speed matters
 
-Waiting for a dictionary to import is not language learning.
+The first thing a new Yomitan user does is often import dictionaries and wait before they can start reading. It's worth the wait, but we'd like to make that first experience better. Large dictionaries make the problem harder; on older devices and e-ink readers, import times can become a serious obstacle.
 
-Yomitan is worth waiting for, but its onboarding experience can be rough when the first thing a new user has to do is import dictionaries and wait. Large dictionaries make that more obvious. On older hardware and constrained devices such as e-ink readers, an import can take an overwhelming amount of time.
+Manabitan addresses both the amount of work and how it is scheduled. Imports are optimized, and the storage architecture is designed to keep installed dictionaries available while new data is imported. A dictionary being installed for the first time still needs to finish before it can be used. Availability during an import doesn't mean that background work has no cost, especially on a small device.
 
-Manabitan attacks that problem in two ways. First, imports themselves are much faster. Second, the storage architecture is designed so an import does not have to make the rest of the extension useless while it runs. Existing dictionaries can remain available while new data is prepared and moved into place.
+This also makes automatic updates practical. Manually starting an update is easy to put off, particularly when it interrupts reading. For dictionaries that provide a web update source, Manabitan can check for and install updates on a schedule. Dictionaries without that information still need a manually obtained update. See [dictionary updates](dictionaries.md#automatic-updates).
 
-That changes what is practical. Dictionaries with a web-accessible update source can update automatically instead of making the user periodically notice an update, start it manually, and wait for the extension to become useful again. Faster imports are nice; making routine updates cheap enough to stop thinking about them is better.
+The query work improves ordinary lookups too. Waiting for a definition breaks the reading flow, and small delays are more noticeable on an e-reader. Reducing CPU and storage work should also help power consumption, but we haven't established a measured battery-life improvement. Performance varies with the device, dictionary collection, and build; benchmark results need that context.
 
-The same work also improves normal lookups. That is especially noticeable on slow devices, but reducing the amount of CPU and I/O required for a lookup matters everywhere: less latency, less battery use, and less work between pointing at a word and seeing its definition.
+## The work can go back upstream
 
-## What Manabitan is not trying to change
+Yomitan continues the work of Yomichan through successive open-source maintainers and communities. Manabitan is another branch of that history. The existing authorship and licenses stay with the work.
 
-Manabitan is not a redesign for the sake of being different. Yomitan already has an unusually capable feature set and a workflow that many language learners depend on.
+The extension remains GPL-3.0 licensed, with upstream notices and applicable third-party licenses preserved. Anyone can study it, adapt it, and contribute useful pieces back to Yomitan under those terms. Changes that stand on their own are still good candidates for upstream contributions; the fork doesn't close that door.
 
-We do want to smooth out rough edges—especially onboarding, dictionary management, updates, and performance—but the goal is to stay recognizably Yomitan-compatible rather than replace a mature product with a different opinion about how people should learn languages.
-
-## Open source goes both ways
-
-Manabitan remains open source under the same GPL family of licensing as Yomitan, and this documentation preserves the upstream wiki's CC BY licensing and attribution. The code is there to be studied, criticized, reused, and improved.
-
-Nobody needs permission to take a useful idea or implementation from Manabitan and bring it back to Yomitan. We would be happy to see that happen. We will also continue contributing improvements upstream when a change makes sense independently of Manabitan's larger storage architecture.
-
-See [Credits](credits.md) for the project's lineage and attribution.
+See [Credits](credits.md) for attribution and the distinction between the extension, documentation, and PDF viewer licenses.
