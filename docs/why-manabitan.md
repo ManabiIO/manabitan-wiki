@@ -1,13 +1,13 @@
 ---
 title: Why use Manabitan?
-description: What Manabitan improves beyond Yomitan: faster storage and lookups, non-blocking updates, dictionary management, and automatic Anki field mapping.
+description: Faster imports and lookups, dramatically smaller installed dictionaries, easier Anki setup, and the directions guiding Manabitan's roadmap.
 ---
 
 # Why use Manabitan?
 
 If Yomitan already works for you, Manabitan should earn the switch. The point is not the new name. It is to keep the same basic lookup-and-Anki workflow while removing waiting, setup work, and some rough edges around dictionaries and mining.
 
-The biggest difference is the rewritten storage and query architecture, but Manabitan is not only a performance fork. It also adds dictionary-management and Anki conveniences that are useful even on a fast computer.
+The biggest difference is the rewritten storage and query architecture, but Manabitan is not only a speed-focused fork. It also dramatically reduces the space taken up by imported dictionaries and adds dictionary-management and Anki conveniences that are useful even on a fast computer.
 
 ## Less waiting
 
@@ -16,6 +16,12 @@ Dictionary imports and normal lookups are heavily optimized. The difference is m
 The storage design also lets already-installed dictionaries stay usable while new dictionary data is being prepared. A dictionary being installed for the first time still has to finish before you can use that dictionary, and background work still consumes resources.
 
 Performance depends on the build, browser, dictionaries, and device. We benchmark the work, but this page does not turn one benchmark result into a universal speed ratio or a battery-life claim.
+
+## Dramatically less disk space
+
+Manabitan has dramatically reduced the disk space taken up by imported dictionaries compared with Yomitan. This is a reduction in the **installed dictionary footprint**, not merely the size of a downloaded ZIP. It makes large dictionary collections more practical, particularly on devices with limited storage.
+
+The amount saved depends on the dictionaries and storage implementation in the build you use; there is no single percentage that describes every collection. Imports and updates can also need temporary working space, so a smaller installed footprint does not eliminate the need for free space during an operation. Our [benchmarking direction](#public-comparable-benchmarks) includes making storage comparisons reproducible alongside import and lookup measurements.
 
 ## Dictionary updates you do not have to babysit
 
@@ -27,42 +33,53 @@ See [Dictionaries](dictionaries.md#automatic-updates).
 
 ## Better dictionary management
 
-Manabitan adds quality-of-life improvements around the same dictionary ecosystem:
+Manabitan adds quality-of-life improvements around the same dictionary ecosystem: install recommended dictionaries together, import MDX dictionaries and supported companion MDD resources, edit supported metadata after import, and update dictionaries individually or in bulk.
 
-- install recommended dictionaries together instead of working through them one by one;
-- import MDX dictionaries, including companion MDD resources where supported;
-- edit supported dictionary metadata after import;
-- update supported dictionaries individually or in bulk;
-- keep separate profiles with different enabled dictionaries and ordering.
-
-The project still supports Yomitan-format dictionaries. Third-party dictionary projects keep their existing names and licenses; Manabitan compatibility does not make them Manabitan-owned projects.
+The project still supports Yomitan-format dictionaries and familiar per-profile dictionary configuration. Third-party dictionary projects keep their existing names and licenses; Manabitan compatibility does not make them Manabitan-owned projects.
 
 ## Less Anki field setup
 
-This is a Manabitan-specific improvement that is easy to miss.
+When an Anki note type already exists in Anki and you select it in Manabitan, Manabitan asks AnkiConnect for that model's field names and builds the field mapping automatically. Purpose-built presets cover **Kiku, Lapis, Senren / Senren 洗練, and Crop Theft Vocab**.
 
-When an Anki note type already exists in Anki and you select it in Manabitan, Manabitan asks AnkiConnect for that model's field names and builds the field mapping automatically. It has explicit presets for several popular Japanese mining note types:
+These mappings cover the word, reading, available audio, definitions, sentence context, pitch, frequency, and source fields appropriate to each type. They are not all interchangeable: current Kiku gets plain sentence furigana, Lapis deliberately leaves its sentence-furigana field blank, and Senren keeps its scene-grouping markup. Kiku, Lapis, and Senren can also use an available dictionary-specific `single-glossary-*` marker for their main definition.
 
-- **Kiku**
-- **Lapis**
-- **Senren**, including the `Senren 洗練` name
-- **Crop Theft Vocab**
+The presets are reviewed against the publishers' instructions and actual downloadable note-type packages. Automated checks compare the production mapper with every field in pinned packages and the latest upstream packages, with additional offline regression tests. They flag schema drift rather than silently treating new fields as supported. See the [tested versions and scope](anki.md#compatibility-checks).
 
-For Kiku and Lapis, Manabitan maps fields such as expression, furigana, reading, audio, selection text, sentence/cloze context, glossary, pitch information, frequency, and document title. For the main definition it chooses an available dictionary-specific `single-glossary-*` marker when one exists.
+Other note types retain best-effort mapping from familiar field names and aliases such as `Word`, `Term`, `Phrase`, `Definition`, `Meaning`, `Sound`, and `Example Sentence`. Existing same-named mapping values can be reused for unrecognized models; this generic fallback is distinct from the purpose-built community presets.
 
-Senren gets the same kind of purpose-built mapping for its word, reading, sentence, sentence-furigana, selection, definition, audio, pitch, frequency, and source fields. Crop Theft Vocab has its own mapping for word, reading, pitch pattern, audio, brief definition, example sentence/target, and frequency.
+**Manabitan does not install these note types into Anki.** Install or import the note type in Anki first, then select it in Manabitan. Selecting a recognized preset applies its defaults, including intentionally blank fields. Customized or renamed fields need review before normal mining.
 
-Other note types are not ignored. Manabitan has a generic mapper for familiar field names and aliases such as `Word`, `Term`, `Phrase`, `Definition`, `Meaning`, `Sound`, `Audio`, `Example Sentence`, and frequency/pitch fields. When possible it also preserves an existing mapping for a field with the same name.
-
-**Manabitan does not install these note types into Anki.** Install or import the note type in Anki first, then select it in Manabitan. Selecting a recognized preset applies the preset mapping, and fields the preset does not know about can be left blank, so review the result before normal mining.
-
-See [Anki integration](anki.md#automatic-field-mapping) for the exact behavior and [the implementation](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js) if you want to inspect the presets.
+See [Anki integration](anki.md#automatic-field-mapping) for setup, version-specific differences, and how to inspect the result.
 
 ## More reading-oriented quality of life
 
-Manabitan also includes built-in popup themes and frequency-based recall blur. The goal is not to redesign Yomitan into a different product; these are additions around the reading workflow that already works.
+Manabitan also includes built-in popup themes and frequency-based recall blur. These are additions around the reading workflow that already works, not an attempt to turn Yomitan into a different product.
 
-The extension remains compatible with the familiar scanning, audio, custom CSS, AnkiConnect, custom templates, and installed-dictionary workflow. MeCab, local audio, Forvo integrations, and other upstream/community tools remain available where their integration requirements are satisfied.
+Familiar scanning, audio, custom CSS, AnkiConnect, custom templates, and installed-dictionary workflows remain central. MeCab, local audio, Forvo integrations, and other upstream/community tools remain available where their integration requirements are satisfied.
+
+## Roadmap
+
+Nothing here is set in stone. These are general directions, not a fixed feature list or a delivery schedule.
+
+### Continued maintenance and upstream improvements
+
+We intend to keep maintaining Manabitan and to continue bringing upstream Yomitan changes into it. Improvements from Yomitan remain important to this project; they need to be adapted and tested against Manabitan's different internals rather than copied blindly.
+
+### A better welcome for new users
+
+We will continue refining onboarding so more people can get started in the Yomitan/Manabitan ecosystem. Choosing dictionaries, importing them, understanding the popup, and setting up Anki should take less effort without taking away the flexibility experienced users rely on.
+
+### Faster and more resource-efficient
+
+We will continue making dictionary imports and lookups faster while reducing memory use and installed storage requirements. The aim is a more practical tool for everyday reading, including large collections and constrained devices—not just better numbers in an isolated benchmark.
+
+### Public, comparable benchmarks
+
+We are developing a robust benchmark suite to compare **dictionary imports, lookups, and storage requirements across tools compatible with Yomitan dictionaries**. We plan to make that suite public, with reproducible workloads and clear versions and test conditions. The suite and its publication are work in progress, not a claim that a finished cross-tool comparison is already available.
+
+### Stay true to Yomitan
+
+We have **no current plans for dramatic changes to Yomitan's general functionality, design, or familiar behaviors**. Manabitan intends to stay true to Yomitan's vision for how this tool works. Faster internals, a smaller footprint, and easier setup should improve the experience people already value, not require them to relearn it.
 
 ## Why not just make these changes in Yomitan?
 
