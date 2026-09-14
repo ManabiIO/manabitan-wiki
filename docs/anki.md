@@ -62,6 +62,14 @@ The workflow runs on relevant pull requests and, once present on the default bra
 
 These are **field-contract checks**, not complete Anki rendering or browser-integration tests. A template can change behavior without renaming its fields. New releases, custom templates, available dictionary data, audio sources, and device-specific behavior still require a real test note. See the [compatibility maintenance guide](https://github.com/ManabiIO/manabitan/blob/main/docs/development/anki-note-type-compatibility.md), [production mapper](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js), and [original mapper tests](https://github.com/ManabiIO/manabitan/blob/main/test/anki-note-type-field-util.test.js).
 
+## Roadmap: faster, more capable AnkiConnect
+
+The automatic field mapping above is a **current Manabitan feature**. Broader Anki performance work is separate roadmap work.
+
+We intend to make Manabitan's AnkiConnect integration substantially faster, reducing avoidable waiting and overhead around configuration and note creation. We also intend to work on AnkiConnect itself so the bridge can become faster and support more capable workflows instead of forcing every improvement into the browser extension.
+
+The exact design is not set yet, and this is not a claim that current Manabitan ships a faster replacement for AnkiConnect. More to come. See the [Manabitan roadmap](why-manabitan.md#roadmap).
+
 ## Field markers
 
 Use the field selector in **your installed build** as the authoritative list of available markers. The [template documentation in the Manabitan repository](https://github.com/ManabiIO/manabitan/blob/main/docs/templates.md) covers helpers and customization. Do not rename a marker because it contains an upstream name or a dictionary title.
