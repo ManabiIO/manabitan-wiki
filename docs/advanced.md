@@ -53,7 +53,7 @@ Custom URLs can use `{term}`, `{reading}`, and `{language}` replacement patterns
 
 ## Anki customization
 
-Use **Anki → Configure Anki card format…** to choose formats, fields, and note types. Builds that offer note-type installation can set up supported community note types; review what will be installed before changing an existing setup. Test a single note after changing a format.
+Use **Anki → Configure Anki card format…** to choose formats, fields, and note types. Install or import the note type in Anki first. Manabitan maps fields for existing models; it does not install note types. Review the resulting field values before changing an existing setup. Test a single note after changing a format.
 
 Additional formats can be used for sentence-only or audio-focused notes. Custom Handlebars templates are a separate advanced feature: export your settings first, keep your previous template, and preview the result. See [Anki integration](anki.md).
 

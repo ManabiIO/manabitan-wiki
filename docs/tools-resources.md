@@ -15,7 +15,7 @@ For PDFs, use the [Manabitan PDF Viewer](manabitan-pdf-viewer/index.html). It is
 
 ## Anki and external applications
 
-[JP Mining Note](https://arbyste.github.io/jp-mining-note/), [Senren](https://brenoaqua.github.io/Senren/), and [Basic Mining Deck](https://github.com/friedrich-de/Basic-Mining-Deck) are community note types. Manabitan's built-in note-type installation is described in [Anki integration](anki.md). Do not assume every third-party template supports every language or every Manabitan change.
+[JP Mining Note](https://arbyste.github.io/jp-mining-note/), [Senren](https://brenoaqua.github.io/Senren/), and [Basic Mining Deck](https://github.com/friedrich-de/Basic-Mining-Deck) are community note types. Install or import the note type in Anki first, then select it in Manabitan. Automatic field mapping for recognized models is described in [Anki integration](anki.md). Do not assume every third-party template supports every language or every Manabitan change.
 
 [Textractor](https://github.com/Artikash/Textractor) is a separate Windows text-extraction tool. A [community visual-novel guide](https://animecards.site/visualnovels/) can help connect its output to a dictionary workflow; enable clipboard access only when you need it.
 

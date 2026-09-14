@@ -15,9 +15,9 @@
 .manabitan-home .home-media img, .manabitan-home .home-media video { display: block; width: 100%; height: auto; border-radius: .5rem; border: 1px solid var(--manabi-border); background: var(--manabi-surface); }
 .manabitan-home .home-media--hero { max-width: 52rem; margin: 0 auto 2rem; }
 .manabitan-home figcaption { margin-top: .55rem; font-size: .78rem; line-height: 1.45; color: var(--manabi-muted); }
-.manabitan-home .theme-sample--dark { display: none; }
-[data-md-color-scheme="slate"] .manabitan-home .theme-sample--light { display: none; }
-[data-md-color-scheme="slate"] .manabitan-home .theme-sample--dark { display: block; }
+.manabitan-home .home-media .theme-sample--dark { display: none; }
+[data-md-color-scheme="slate"] .manabitan-home .home-media .theme-sample--light { display: none; }
+[data-md-color-scheme="slate"] .manabitan-home .home-media .theme-sample--dark { display: block; }
 .manabitan-home .video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: .5rem; background: var(--manabi-brand-deep); }
 .manabitan-home .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .manabitan-home .home-help { text-align: center; margin-top: 2rem; }
