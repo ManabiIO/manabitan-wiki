@@ -1,6 +1,6 @@
 ---
 title: Anki integration
-description: Connect Manabitan to Anki, automatically map popular note types, configure fields, and test note creation.
+description: Connect Manabitan to Anki, automatically map popular note types, understand tested versions, and check note creation.
 ---
 
 # Anki integration
@@ -15,32 +15,52 @@ For a minimal term card, put `{expression}` in the headword field, `{reading}` i
 
 ## Automatic field mapping
 
-Manabitan reduces one of the more tedious parts of Anki setup: wiring note-type fields to Manabitan markers.
+Manabitan reduces one of the more tedious parts of Anki setup: wiring note-type fields to dictionary information and sentence context.
 
-The note type must already exist in Anki. Manabitan does **not** install Kiku, Lapis, Senren, or Crop Theft Vocab. When you select an existing model, Manabitan asks AnkiConnect for the model's field names and builds the mapping for the selected card format.
+The note type must already exist in Anki. Manabitan does **not** install Kiku, Lapis, Senren, or Crop Theft Vocab. When you select an existing model, Manabitan asks AnkiConnect for its field names and builds the mapping for the selected card format. This configures future note creation; it does not populate or migrate existing Anki notes.
 
 ### Recognized note types
 
-Manabitan currently has explicit presets for these model names:
+The following upstream packages were downloaded and their complete field schemas inspected on **September 14, 2026**. They were the latest published stable packages at that check; Crop Theft distributes its package directly from its repository rather than through numbered releases.
 
-| Note type | What Manabitan maps automatically |
-| --- | --- |
-| **Kiku** | Expression, furigana, reading, audio, selection text, dictionary-specific main definition, cloze sentence, glossary, pitch position/categories, frequency/sort value, and document title. |
-| **Lapis** | The same Kiku/Lapis preset, including dictionary-specific main definition and sentence/audio/pitch/frequency fields. |
-| **Senren** / **Senren 洗練** | Word, reading, cloze sentence and sentence furigana, selection text, dictionary-specific definition, audio, glossary, pitch, frequency, and document title. |
-| **Crop Theft Vocab** | Word, reading, pitch pattern, audio, brief definition, example sentence, example target/search query, and frequency. |
+| Note type | Reviewed package | Fields | Important mapping detail |
+| --- | --- | --- | --- |
+| **Kiku** | [v2.1.0](https://github.com/youyoumu/kiku/releases/tag/v2.1.0) | 24 | `ExpressionFurigana` uses `{furigana-plain}`; `SentenceFurigana` uses `{sentence-furigana-plain}`. |
+| **Lapis** | [1.7.0](https://github.com/donkuri/lapis/releases/tag/1.7.0) | 22 | `ExpressionFurigana` uses `{furigana-plain}`, but `SentenceFurigana` is deliberately blank. |
+| **Senren** / **Senren 洗練** | [v5.1.0](https://github.com/BrenoAqua/Senren/releases/tag/v5.1.0) | 22 | Sentence fields retain Senren's grouping/highlight markup; `hint` is explicitly blank. |
+| **Crop Theft Vocab** | [Package at revision 88865e6](https://github.com/Kuuuube/crop-theft/blob/88865e6209251b1baaaca7219be0dd6073e74cb8/crop_theft_vocab/Crop%20Theft%20Vocab.apkg) | 9 | `Definition` uses `{glossary-brief}`, `Example Target` uses `{search-query}`, and `Frequency` uses `{frequency-harmonic-rank}`. |
 
-For Kiku, Lapis, and Senren, the main-definition field uses the first available dictionary-specific `single-glossary-*` marker when one is available. This makes the primary definition follow an installed dictionary rather than blindly using the full merged glossary.
+Presets map the expression/reading, available word audio, definitions, sentence context, pitch, frequency, and source fields appropriate to each note type. Optional media, translations, hints, and card-mode switches are intentionally left blank where no automatic source is specified. Automatic mapping is not automatic creation of missing recordings, images, translations, or pitch data.
 
-Preset mappings are explicit. If a recognized note type contains extra fields that the preset does not know about, those fields can be left blank. Review the mapping after selecting or changing a note type, especially if you customized that note type yourself.
+For Kiku, Lapis, and Senren, the main-definition field uses the **first available dictionary-specific `single-glossary-*` marker** supplied by the enabled dictionary configuration. It is not a guarantee that this is your preferred dictionary. Review that choice. If no eligible marker is available, including when dictionary information cannot be loaded during setup, that field stays blank; select a marker from the dropdown afterwards. The separate glossary field still has its own mapping.
 
-### Other note types
+### Differences that matter
 
-Custom models still get a best-effort mapping. Manabitan recognizes common field names and aliases—for example `Word`, `Term`, or `Phrase` for the expression; `Definition` or `Meaning` for a glossary; `Sound` or `Audio` for audio; and familiar sentence, pitch, frequency, dictionary, URL, title, and selection-text names.
+**Kiku and Lapis are not interchangeable.** [Kiku's current instructions](https://kiku.youyoumu.my.id/installation.html) use plain sentence furigana; Kiku 2.1 can transfer the target-word emphasis from the sentence field. [Lapis's instructions](https://github.com/donkuri/lapis#how-to-use-lapis) still recommend leaving its sentence-furigana field empty. Both use a sentence with the target surrounded by `<b>` tags. Kiku's `RelatedExpression` and `SentenceTranslation` fields remain blank for manual or external population.
 
-For an unrecognized model, an existing mapping for the same-named field is preserved where possible. The first field otherwise defaults to `{expression}` for a term card or `{character}` for a kanji card. This is a convenience, not a schema contract: inspect a test note before relying on an automatic mapping.
+AnkiConnect exposes the model name and fields here, not a reliable community-template release version. A model called `Kiku` is therefore not proof that it is Kiku 2.1. Use the reviewed version for the current defaults; with an older Kiku template, upgrade it or keep `SentenceFurigana` blank until you have checked its rendering. Existing saved Manabitan mappings are not silently rewritten by this preset change. To adopt the correction on an existing Kiku format, set `SentenceFurigana` to `{sentence-furigana-plain}` explicitly and inspect a test note.
 
-The preset and generic mapping code is in [`anki-note-type-field-util.js`](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js), with focused tests in [`anki-note-type-field-util.test.js`](https://github.com/ManabiIO/manabitan/blob/main/test/anki-note-type-field-util.test.js).
+**Senren keeps its scene-grouping structure.** Its sentence contains an outer `group` span and a `highlight` span around the target, while sentence furigana is wrapped in a `group` span. The actual v5.1.0 package also contains `hint`, even though the upstream field-setup table omits that row; Manabitan leaves it blank rather than inventing a source. For a multi-dictionary glossary, enable **Group term-reading pairs** or **Group related terms** as described in the [Senren setup guide](https://brenoaqua.github.io/Senren/yomitan/). Review `miscInfo` when using other mining tools that supply their own source information.
+
+**Crop Theft Vocab uses its own nine-field layout.** Its [publisher's field table](https://github.com/Kuuuube/crop-theft#field-setup) is the basis for the mapping. `Notes` remains blank.
+
+### Customization and other note types
+
+Model-name recognition tolerates case, spacing, and punctuation differences, including `Senren・洗練`. It does not treat every name containing “Kiku” or “Lapis” as that preset. Preset field names are exact and case-sensitive. A renamed model or customized field layout may need manual configuration.
+
+Selecting a recognized preset applies its defaults, including intentionally blank fields and blank unknown extra fields. Back up customized settings before changing note types. Newly generated mappings use the `coalesce` overwrite mode; inspect overwrite controls along with the field values.
+
+Unrecognized models retain best-effort mapping from common field names and aliases: for example `Word`, `Term`, or `Phrase`; `Definition` or `Meaning`; `Sound` or `Audio`; and familiar sentence, pitch, frequency, dictionary, URL, title, and selection-text names. Existing values for the same-named fields can be reused, but overwrite modes are still initialized to `coalesce`. Otherwise the first field defaults to `{expression}` for a term card or `{character}` for a kanji card. Community presets apply to term formats, not kanji formats.
+
+### Compatibility checks
+
+The extension repository has three complementary checks: offline tests using field schemas captured from real APKGs, downloads of checksum-pinned reviewed packages, and downloads of the latest stable upstream packages. Crop Theft's latest check resolves the repository's current default branch to a commit before downloading its package.
+
+The checks compare every field—including intentional blanks—with independently reviewed expected mappings, verify that the output uses available markers, and check the identifying first field. Added, removed, renamed, or duplicate fields fail the contract check. Missing downloads, ambiguous packages, and missing models fail rather than being reported as compatible. Fixtures are not automatically rewritten to accept drift.
+
+The workflow runs on relevant pull requests and, once present on the default branch, weekly and by manual dispatch. Reports record package revisions, hashes, and extracted schemas. They do not import anything into your Anki collection, execute downloaded card templates, or retain package media.
+
+These are **field-contract checks**, not complete Anki rendering or browser-integration tests. A template can change behavior without renaming its fields. New releases, custom templates, available dictionary data, audio sources, and device-specific behavior still require a real test note. See the [compatibility maintenance guide](https://github.com/ManabiIO/manabitan/blob/main/docs/development/anki-note-type-compatibility.md), [production mapper](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js), and [original mapper tests](https://github.com/ManabiIO/manabitan/blob/main/test/anki-note-type-field-util.test.js).
 
 ## Field markers
 
@@ -58,7 +78,7 @@ Use the field selector in **your installed build** as the authoritative list of 
 | Pronunciation | `{phonetic-transcriptions}`, `{pitch-accents}`, `{pitch-accent-graphs}`, `{pitch-accent-graphs-jj}`, `{pitch-accent-positions}`, `{pitch-accent-categories}` |
 | Kanji | `{character}`, `{kunyomi}`, `{onyomi}`, `{onyomi-hiragana}`, `{stroke-count}` |
 
-Availability depends on the entry, dictionary, display mode, and permissions. Dictionary-specific markers such as `single-glossary` and `single-frequency` should be selected from the dropdown rather than assembled by guessing an internal dictionary name. A template marker is not a promise that the requested data exists.
+Availability depends on the entry, dictionary, display mode, and permissions. Dictionary-specific markers should be selected from the dropdown rather than assembled by guessing an internal dictionary name. A template marker is not a promise that the requested data exists.
 
 ## Flashcard creation
 
