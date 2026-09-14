@@ -21,7 +21,7 @@ The note type must already exist in Anki. Manabitan does **not** install Kiku, L
 
 ### Recognized note types
 
-The following upstream packages were downloaded and their complete field schemas inspected on **September 14, 2026**. They were the latest published stable packages at that check; Crop Theft distributes its package directly from its repository rather than through numbered releases.
+The following upstream packages were downloaded and their complete field schemas inspected on **September 14, 2026**. They were the latest published stable packages at that check; Crop Theft distributes its package directly from its repository rather than through numbered releases. These versions identify the packages reviewed, not versions detected automatically in your Anki collection.
 
 | Note type | Reviewed package | Fields | Important mapping detail |
 | --- | --- | --- | --- |
