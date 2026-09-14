@@ -11,7 +11,7 @@
     <img class="home-logo" src="{{ 'assets/icon/manabitan-icon128.png' | url }}" width="96" height="96" alt="Manabitan">
     <h1 id="manabitan-title">Manabitan</h1>
     <p class="home-summary">Yomitan, with less waiting and less setup.</p>
-    <p>Manabitan keeps the lookup, audio, dictionary, and Anki workflow people use Yomitan for, while rewriting the storage/query engines and adding practical improvements around dictionary management and Anki setup.</p>
+    <p>Keep the familiar lookup, audio, dictionary, and Anki workflow, with faster imports and lookups, dramatically smaller installed dictionaries, and less manual setup.</p>
     <p class="home-actions"><a class="md-button md-button--primary" href="{{ 'getting-started/' | url }}">Install Manabitan</a> <a class="md-button" href="{{ 'why-manabitan/' | url }}">Why use Manabitan?</a></p>
     <p class="home-status">Manabitan is a separate project with substantial internal changes. If you are moving from Yomitan, keep a backup and follow the migration guide.</p>
   </div>
@@ -26,12 +26,19 @@
     <p>The storage rewrite is the foundation, not the whole product pitch. Manabitan also removes setup and maintenance work around the same reading workflow.</p>
     <div class="home-features">
       <section><h2>Faster imports and lookups</h2><p>Spend less time waiting for dictionaries to import and for definitions to appear, especially with large collections or constrained devices.</p><a href="{{ 'why-manabitan/#less-waiting' | url }}">Why performance matters</a></section>
+      <section><h2>Dramatically less disk space</h2><p>Imported dictionaries take up dramatically less space than in Yomitan. This is a smaller installed footprint, not just a smaller download, making large collections more practical.</p><a href="{{ 'why-manabitan/#dramatically-less-disk-space' | url }}">Installed storage savings</a></section>
       <section><h2>Update while you keep reading</h2><p>Installed dictionaries can stay available while new data is prepared. Dictionaries with web update sources can check on hourly, daily, weekly, or monthly schedules.</p><a href="{{ 'dictionaries/#automatic-updates' | url }}">Dictionary updates</a></section>
-      <section><h2>Anki fields that configure themselves</h2><p>Already use Kiku, Lapis, Senren/洗練, or Crop Theft Vocab? Select the existing note type and Manabitan fills its expected field markers. Other note types get best-effort name-based mapping too.</p><a href="{{ 'anki/#automatic-field-mapping' | url }}">Automatic Anki mapping</a></section>
+      <section><h2>Anki fields that configure themselves</h2><p>Already use Kiku, Lapis, Senren/洗練, or Crop Theft Vocab? Select the existing note type and Manabitan fills its expected field markers. Package-based tests check the presets against upstream field layouts.</p><a href="{{ 'anki/#automatic-field-mapping' | url }}">Automatic Anki mapping</a></section>
       <section><h2>More dictionary options</h2><p>Use Yomitan-format dictionaries or import MDX, install recommended dictionaries together, edit supported metadata, and use bulk update actions.</p><a href="{{ 'dictionaries/' | url }}">Manage dictionaries</a></section>
       <section><h2>Reading quality of life</h2><p>Built-in popup themes and frequency-based recall blur add options around the existing lookup workflow without asking you to learn a different product.</p><a href="{{ 'advanced/' | url }}">Appearance and advanced features</a></section>
-      <section><h2>Still recognizably Yomitan</h2><p>Scanning, audio, AnkiConnect, custom templates, CSS, MeCab, local audio, and community tooling remain part of the ecosystem. The goal is improvement, not change for its own sake.</p><a href="{{ 'why-manabitan/' | url }}">See the full comparison</a></section>
     </div>
+  </section>
+
+  <section aria-labelledby="roadmap-title">
+    <h2 id="roadmap-title">Where Manabitan is headed</h2>
+    <p>Nothing is set in stone, but the directions are clear: continued maintenance and upstream Yomitan improvements, easier onboarding, faster imports and lookups, and lower memory and storage use. We are also developing a public benchmark suite comparing imports, lookups, and storage across tools compatible with Yomitan dictionaries.</p>
+    <p>We have no current plans for dramatic changes to Yomitan's general functionality, design, or familiar behaviors. Manabitan intends to stay true to that vision while improving the internals and setup experience.</p>
+    <p><a href="{{ 'why-manabitan/#roadmap' | url }}">Read the roadmap</a></p>
   </section>
 
   <aside class="home-fork" aria-labelledby="fork-title">
