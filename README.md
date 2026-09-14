@@ -1,5 +1,10 @@
 # manabitan-wiki
-A website for [Manabitan](https://manabitan.manabi.io).
+
+Documentation and homepage for [Manabitan](https://manabi.io/manabitan/).
+
+Manabitan is a fork of Yomitan built around a substantially different storage and query architecture. This is not a hostile fork: Yomitan's primary maintainers have provided guidance and support around developing and releasing Manabitan separately. A fork gives us room to prove changes of this scale without making Yomitan's existing users take on a large data migration before the new architecture has earned that responsibility.
+
+Read [Why Manabitan exists](https://manabi.io/manabitan/about-manabitan/) for the longer explanation, including why this work is being developed separately for now and how improvements can still flow back upstream.
 
 This site is forked from the [Yomitan wiki](https://github.com/yomidevs/yomitan-wiki). Manabitan itself is based on Yomitan, which continues the work started by Yomichan. See [Credits](./docs/credits.md) for attribution notes.
 
