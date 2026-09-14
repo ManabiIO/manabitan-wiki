@@ -1,7 +1,7 @@
 ---
 template: home.html
 title: Manabitan
-description: A Yomitan fork with faster imports and lookups, background dictionary updates, MDX support, and automatic Anki field mapping.
+description: Yomitan's familiar workflow with faster imports and lookups, dramatically smaller installed dictionaries, background updates, and easier Anki setup.
 hide:
   - navigation
   - toc
@@ -9,4 +9,4 @@ hide:
 
 # Manabitan
 
-Keep the Yomitan workflow, with less waiting and less setup. [See what Manabitan improves](why-manabitan.md), [get started](getting-started.md), or [read why it is a fork](about-manabitan.md).
+Keep the familiar Yomitan workflow with less waiting, less disk use, and less setup. [See what Manabitan improves](why-manabitan.md), [get started](getting-started.md), or [read why it is a fork](about-manabitan.md).
