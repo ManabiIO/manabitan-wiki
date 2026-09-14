@@ -69,6 +69,12 @@ We intend to keep maintaining Manabitan and continue bringing upstream Yomitan i
 
 We will keep refining onboarding so more people can get started in the Yomitan/Manabitan ecosystem. Choosing dictionaries, importing them, understanding the popup, and setting up Anki should take less effort without taking away the flexibility experienced users rely on.
 
+### Easier migration in both directions
+
+We want to make it easier to move an existing setup from Yomitan to Manabitan—and back again—with less manual work carrying over settings, profiles, and dictionaries. Trying Manabitan should not make it hard to return to Yomitan.
+
+For the current process and limitations, see the [migration guide](yomitan-migration.md).
+
 ### Keep pushing performance and efficiency
 
 We will continue making dictionary imports and lookups faster while reducing memory use and installed storage requirements. The aim is a better everyday reading tool, including on large collections and constrained devices—not just better numbers in an isolated benchmark.
