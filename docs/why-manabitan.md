@@ -5,7 +5,7 @@ description: Faster imports and lookups, dramatically smaller installed dictiona
 
 # Why use Manabitan?
 
-If Yomitan already works for you, Manabitan should earn the switch. The point is not the new name. It is to keep the same basic lookup-and-Anki workflow while removing waiting, setup work, and some rough edges around dictionaries and mining.
+If Yomitan already works for you, Manabitan should earn the switch. The point is not the new name. It is to keep the familiar lookup-and-Anki workflow while removing waiting, setup work, and rough edges around dictionaries and mining.
 
 The biggest difference is the rewritten storage and query architecture, but Manabitan is not only a speed-focused fork. It also dramatically reduces the space taken up by imported dictionaries and adds dictionary-management and Anki conveniences that are useful even on a fast computer.
 
@@ -15,7 +15,7 @@ Dictionary imports and normal lookups are heavily optimized. The difference is m
 
 The storage design also lets already-installed dictionaries stay usable while new dictionary data is being prepared. A dictionary being installed for the first time still has to finish before you can use that dictionary, and background work still consumes resources.
 
-Performance depends on the build, browser, dictionaries, and device. We benchmark the work, but this page does not turn one benchmark result into a universal speed ratio or a battery-life claim.
+Performance depends on the build, browser, dictionaries, and device. We benchmark the work, but this page does not turn one result into a universal speed ratio or battery-life claim.
 
 ## Dramatically less disk space
 
@@ -27,7 +27,7 @@ The amount saved depends on the dictionaries and storage implementation in the b
 
 For dictionaries that provide a usable web update source, Manabitan can check and update them on a schedule. Current controls support hourly, daily, weekly, and monthly schedules, along with bulk update actions.
 
-That matters because manual updating is easy to neglect, especially when updating interrupts the thing you opened the extension to do. Making imports faster and keeping installed dictionaries available makes routine background updating practical instead of something you need to plan around.
+Manual updating is easy to neglect, especially when updating interrupts the thing you opened the extension to do. Faster imports plus a storage design that keeps installed dictionaries available make routine updates much easier to live with.
 
 See [Dictionaries](dictionaries.md#automatic-updates).
 
@@ -59,19 +59,27 @@ Familiar scanning, audio, custom CSS, AnkiConnect, custom templates, and install
 
 ## Roadmap
 
-Nothing here is set in stone. These are general directions, not a fixed feature list or a delivery schedule.
+Nothing here is set in stone. These are general directions, not a fixed feature list or delivery schedule.
 
-### Continued maintenance and upstream improvements
+### Keep Manabitan maintained and current with Yomitan
 
-We intend to keep maintaining Manabitan and to continue bringing upstream Yomitan changes into it. Improvements from Yomitan remain important to this project; they need to be adapted and tested against Manabitan's different internals rather than copied blindly.
+We intend to keep maintaining Manabitan and continue bringing upstream Yomitan improvements into it. Yomitan remains the foundation of this project. Upstream changes need to be adapted and tested against Manabitan's different internals rather than copied blindly, but we do not want the fork to drift away from the work happening there.
 
-### A better welcome for new users
+### Make onboarding easier
 
-We will continue refining onboarding so more people can get started in the Yomitan/Manabitan ecosystem. Choosing dictionaries, importing them, understanding the popup, and setting up Anki should take less effort without taking away the flexibility experienced users rely on.
+We will keep refining onboarding so more people can get started in the Yomitan/Manabitan ecosystem. Choosing dictionaries, importing them, understanding the popup, and setting up Anki should take less effort without taking away the flexibility experienced users rely on.
 
-### Faster and more resource-efficient
+### Keep pushing performance and efficiency
 
-We will continue making dictionary imports and lookups faster while reducing memory use and installed storage requirements. The aim is a more practical tool for everyday reading, including large collections and constrained devices—not just better numbers in an isolated benchmark.
+We will continue making dictionary imports and lookups faster while reducing memory use and installed storage requirements. The aim is a better everyday reading tool, including on large collections and constrained devices—not just better numbers in an isolated benchmark.
+
+### Make Anki integration much faster and more capable
+
+Anki is central to a large part of the Yomitan/Manabitan workflow, and the connection between the extension and Anki still has room to improve. We intend to make Manabitan's **AnkiConnect integration substantially faster**, with less avoidable waiting and less overhead in the operations that happen while configuring and creating notes.
+
+We also intend to work on **AnkiConnect itself** so that the bridge can become faster and more capable, rather than trying to solve every limitation inside Manabitan. The exact shape of that work is not set yet. More to come on this.
+
+This is a roadmap direction, not a claim that current Manabitan already contains a faster replacement for AnkiConnect. The automatic field-mapping improvements described above are a current Manabitan feature; broader AnkiConnect performance and capability work is future-facing.
 
 ### Public, comparable benchmarks
 
@@ -79,7 +87,7 @@ We are developing a robust benchmark suite to compare **dictionary imports, look
 
 ### Stay true to Yomitan
 
-We have **no current plans for dramatic changes to Yomitan's general functionality, design, or familiar behaviors**. Manabitan intends to stay true to Yomitan's vision for how this tool works. Faster internals, a smaller footprint, and easier setup should improve the experience people already value, not require them to relearn it.
+We have **no current plans for dramatic changes to Yomitan's general functionality, design, or familiar behaviors**. Manabitan intends to stay true to Yomitan's vision for how this tool works. Faster internals, a smaller footprint, easier setup, and better integrations should improve the experience people already value, not require them to relearn it.
 
 ## Why not just make these changes in Yomitan?
 
