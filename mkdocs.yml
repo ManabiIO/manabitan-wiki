@@ -1,12 +1,13 @@
 site_name: Manabitan
 site_url: https://manabi.io/manabitan/
-site_description: A Yomitan fork for faster dictionary imports, background updates, and quicker lookups.
+site_description: Yomitan's reading workflow with faster dictionary storage, background updates, MDX support, and automatic Anki field mapping.
 site_author: Manabitan contributors
 repo_url: https://github.com/ManabiIO/manabitan-wiki
 repo_name: Edit the documentation
 edit_uri: edit/master/docs/
 nav:
   - Home: index.md
+  - Why Manabitan?: why-manabitan.md
   - Getting started:
       - Installation and setup: getting-started.md
       - Moving from Yomitan: yomitan-migration.md
@@ -19,7 +20,7 @@ nav:
       - Language support: supported-languages.md
   - Support: support.md
   - About:
-      - Why Manabitan exists: about-manabitan.md
+      - Why Manabitan is a fork: about-manabitan.md
       - Contributing: contributing.md
       - Privacy and permissions: privacy.md
       - Credits: credits.md

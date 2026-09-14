@@ -10,10 +10,10 @@
   <div class="home-intro">
     <img class="home-logo" src="{{ 'assets/icon/manabitan-icon128.png' | url }}" width="96" height="96" alt="Manabitan">
     <h1 id="manabitan-title">Manabitan</h1>
-    <p class="home-summary">Your dictionaries, with less waiting.</p>
-    <p>A Yomitan fork with rewritten dictionary storage and query engines. Import dictionaries faster, keep reading while they update, and spend less time waiting for a definition.</p>
-    <p class="home-actions"><a class="md-button md-button--primary" href="{{ 'getting-started/' | url }}">Install Manabitan</a> <a class="md-button" href="{{ 'yomitan-migration/' | url }}">Move from Yomitan</a></p>
-    <p class="home-status">Manabitan is a separate project with substantial internal changes. Check the package's release notes and keep a backup before migrating.</p>
+    <p class="home-summary">Yomitan, with less waiting and less setup.</p>
+    <p>Manabitan keeps the lookup, audio, dictionary, and Anki workflow people use Yomitan for, while rewriting the storage/query engines and adding practical improvements around dictionary management and Anki setup.</p>
+    <p class="home-actions"><a class="md-button md-button--primary" href="{{ 'getting-started/' | url }}">Install Manabitan</a> <a class="md-button" href="{{ 'why-manabitan/' | url }}">Why use Manabitan?</a></p>
+    <p class="home-status">Manabitan is a separate project with substantial internal changes. If you are moving from Yomitan, keep a backup and follow the migration guide.</p>
   </div>
 
   <figure class="home-media home-media--hero">
@@ -21,18 +21,24 @@
     <figcaption>Popup lookup while reading. Screenshots and videos on this page are retained as workflow examples; some were inherited from Yomitan documentation or show an earlier UI, so exact controls may differ from the current Manabitan release.</figcaption>
   </figure>
 
-  <aside class="home-fork" aria-labelledby="fork-title">
-    <h2 id="fork-title">Built on Yomitan</h2>
-    <p>Manabitan is a Yomitan fork with rewritten dictionary storage and query engines, built for faster imports, background updates, and quicker lookups. Yomitan's primary maintainers have supported releasing this work as a separate fork, offered guidance, and reviewed our release preparations. We maintain and release Manabitan independently, so we can prove the new internals without making Yomitan's existing users take on a major data migration.</p>
-    <p><a href="{{ 'about-manabitan/' | url }}">Why a fork, and why speed matters</a></p>
-  </aside>
+  <section aria-labelledby="why-use-title">
+    <h2 id="why-use-title">Why use Manabitan instead of Yomitan?</h2>
+    <p>The storage rewrite is the foundation, not the whole product pitch. Manabitan also removes setup and maintenance work around the same reading workflow.</p>
+    <div class="home-features">
+      <section><h2>Faster imports and lookups</h2><p>Spend less time waiting for dictionaries to import and for definitions to appear, especially with large collections or constrained devices.</p><a href="{{ 'why-manabitan/#less-waiting' | url }}">Why performance matters</a></section>
+      <section><h2>Update while you keep reading</h2><p>Installed dictionaries can stay available while new data is prepared. Dictionaries with web update sources can check on hourly, daily, weekly, or monthly schedules.</p><a href="{{ 'dictionaries/#automatic-updates' | url }}">Dictionary updates</a></section>
+      <section><h2>Anki fields that configure themselves</h2><p>Already use Kiku, Lapis, Senren/洗練, or Crop Theft Vocab? Select the existing note type and Manabitan fills its expected field markers. Other note types get best-effort name-based mapping too.</p><a href="{{ 'anki/#automatic-field-mapping' | url }}">Automatic Anki mapping</a></section>
+      <section><h2>More dictionary options</h2><p>Use Yomitan-format dictionaries or import MDX, install recommended dictionaries together, edit supported metadata, and use bulk update actions.</p><a href="{{ 'dictionaries/' | url }}">Manage dictionaries</a></section>
+      <section><h2>Reading quality of life</h2><p>Built-in popup themes and frequency-based recall blur add options around the existing lookup workflow without asking you to learn a different product.</p><a href="{{ 'advanced/' | url }}">Appearance and advanced features</a></section>
+      <section><h2>Still recognizably Yomitan</h2><p>Scanning, audio, AnkiConnect, custom templates, CSS, MeCab, local audio, and community tooling remain part of the ecosystem. The goal is improvement, not change for its own sake.</p><a href="{{ 'why-manabitan/' | url }}">See the full comparison</a></section>
+    </div>
+  </section>
 
-  <div class="home-features">
-    <section><h2>Get dictionaries ready sooner</h2><p>Faster imports matter most with a large collection or a slower device. Install recommended dictionaries together, or bring your own compatible packages, including MDX.</p><a href="{{ 'dictionaries/' | url }}">Install and manage dictionaries</a></section>
-    <section><h2>Update without stopping your reading</h2><p>Schedule updates for dictionaries that provide a web update source. Installed dictionaries can remain available while new data is prepared; a first-time install must finish before you can use it.</p><a href="{{ 'dictionaries/#automatic-updates' | url }}">How automatic updates work</a></section>
-    <section><h2>Keep the lookup workflow</h2><p>Look up words where you read, hear available pronunciation audio, and send entries to Anki. The goal is less waiting and fewer rough edges, not a different way to use Yomitan.</p><a href="{{ 'anki/' | url }}">Set up Anki</a></section>
-    <section><h2>Adjust it to your reading</h2><p>Use built-in themes, choose scanning inputs, or try frequency-based blur to recall a word before checking the definition.</p><a href="{{ 'advanced/' | url }}">Appearance and advanced features</a></section>
-  </div>
+  <aside class="home-fork" aria-labelledby="fork-title">
+    <h2 id="fork-title">Why is Manabitan a fork?</h2>
+    <p>The storage and query rewrite is large enough that building it, reviewing it incrementally upstream, and safely migrating Yomitan's entire installed base are separate projects. Yomitan's primary maintainers have supported releasing this work as a fork, offered guidance, and reviewed our release preparations. Manabitan is maintained and released independently.</p>
+    <p><a href="{{ 'about-manabitan/' | url }}">Why the project is separate</a> · <a href="{{ 'yomitan-migration/' | url }}">Moving from Yomitan</a></p>
+  </aside>
 
   <section class="home-showcase" aria-labelledby="showcase-title">
     <h2 id="showcase-title">What the workflow looks like</h2>
@@ -59,7 +65,7 @@
     <div class="home-video-grid">
       <figure class="home-media">
         <video controls playsinline preload="metadata" src="https://github.com/user-attachments/assets/e3210e84-be5f-48ba-a335-ab8bbd103750"></video>
-        <figcaption>Anki workflow example using BrenoAqua's <a href="https://brenoaqua.github.io/Senren/">Senren</a> note type.</figcaption>
+        <figcaption>Anki workflow example using BrenoAqua's <a href="https://brenoaqua.github.io/Senren/">Senren</a> note type. Current Manabitan recognizes an existing Senren model and can map its fields automatically.</figcaption>
       </figure>
       <figure class="home-media home-media--video">
         <div class="video-frame">

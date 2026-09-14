@@ -6,11 +6,13 @@ Source baseline: wiki `dab60309bae27be9d64f506f2e431d9de146003d`; extension `d3f
 
 - Canonical `/manabitan/` root, prefix-aware navigation, PDF links, logo, social cards, favicon, and a true documentation edit destination.
 - Removal of Pages/Workers deployment configuration; Manabi owns conditional static publication through its existing Nginx service.
-- Direct fork explanation, visible homepage note, independent maintenance, precise maintainer guidance/release-preparation wording, migration responsibility, open-source lineage, and measured-versus-expected performance distinction.
+- Separate user-facing “Why use Manabitan?” material from the project-governance explanation of why Manabitan is a fork. The homepage leads with product improvements and keeps the fork/upstream explanation as a separate section.
+- Direct fork explanation, independent maintenance, precise maintainer guidance/release-preparation wording, migration responsibility, open-source lineage, and measured-versus-expected performance distinction.
 - Separate Yomitan migration guide, retained Yomichan helper history, and no promise of Dexie JSON / SQLite backup interchange.
 - Actual backup format and retained legacy filename prefix; settings, source dictionary packages, and whole-database backups are distinct. Original packages remain the recovery path until version-specific restore coverage is established.
 - Explicit unpacked/signed/temporary installation distinctions, no invented stable channel or marketplace listing, and a qualified mobile/device matrix.
-- MDX, dictionary management and schedules, built-in themes, recall blur, Anki note-type installation, and current controls documented with build-specific limits.
+- MDX, dictionary management and schedules, built-in themes, recall blur, and current controls documented with build-specific limits.
+- Corrected the earlier “Anki note-type installation” wording. Manabitan does not install Kiku, Lapis, Senren, or Crop Theft Vocab. It recognizes an existing selected Anki model and automatically maps its fields. Explicit presets cover Kiku, Lapis, Senren/`Senren 洗練`, and Crop Theft Vocab, while other models receive best-effort alias/name mapping and preservation of same-named existing fields where possible.
 - Real third-party names restored. TTS points to upstream #864. MeCab and Forvo remain documented with their real upstream tools and the Manabitan-specific compatibility steps/status instead of being deleted.
 - Storage troubleshooting no longer assumes IndexedDB only or recommends destructive reset before backups.
 - Privacy describes network requests, optional integrations, normal network metadata, diagnostics, alarms, Chromium offscreen permission, and the external media shown by the wiki itself.
@@ -25,6 +27,7 @@ Source baseline: wiki `dab60309bae27be9d64f506f2e431d9de146003d`; extension `d3f
 - Update both repositories' About homepage/description in GitHub administration. The connector used for this work does not provide that settings mutation. Keep Issues disabled with the documented Discord route, or enable them deliberately and then change the links.
 - Confirm the release artifacts, signing, restart persistence, and update feed before advertising a persistent Firefox channel or platform support. Test mobile browsers and e-readers on their actual devices.
 - Qualify old/new settings imports, full collection restoration including external resources, custom CSS/templates, MeCab registrations, external API integrations, Forvo/local-audio integrations, and AnkiDroid with explicit versions. Documentation does not substitute for those tests.
+- Review automatic Anki field mappings against the exact versions of community note types users install; presets are covered by focused source tests, but third-party note types can change their schemas independently.
 - Replace or supplement inherited/earlier screenshots and videos as current Manabitan release captures become available. Until then, preserve the useful workflow media with explicit provenance/status captions.
 - Establish comparable-device benchmarks before publishing a speed ratio. Battery improvements remain an expectation, not a measured claim.
 

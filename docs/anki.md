@@ -1,6 +1,6 @@
 ---
 title: Anki integration
-description: Connect Manabitan to Anki, configure note types and fields, and test note creation.
+description: Connect Manabitan to Anki, automatically map popular note types, configure fields, and test note creation.
 ---
 
 # Anki integration
@@ -9,11 +9,38 @@ Manabitan sends notes to [Anki](https://apps.ankiweb.net/) through [AnkiConnect]
 
 ## Flashcard configuration
 
-Enable **Anki integration** in Manabitan Settings. Open **Configure Anki card format…**, choose the format, deck, and note type, and map its fields to the information you want. Labels can differ in older releases; do not look for the obsolete separate “Anki Options” page shown in old screenshots.
-
-Manabitan builds with the note-type installer offer setup for supported community note types, including Kiku, Lapis, and Senren. This installs/configures a note type; it does not make all community templates equivalent. Read the selected type's requirements, protect any existing customization with an Anki backup, and check the mappings afterwards.
+Enable **Anki integration** in Manabitan Settings. Open **Configure Anki card format…**, choose the format, deck, and note type, and inspect its field mapping. Labels can differ in older releases; do not look for the obsolete separate “Anki Options” page shown in old screenshots.
 
 For a minimal term card, put `{expression}` in the headword field, `{reading}` in a reading field, and `{glossary}` in the definition field. Add `{sentence}` and `{audio}` where appropriate. Use `{character}` as the identifier for a kanji card. A first field containing only a reading can make distinct words with the same reading appear to be duplicates.
+
+## Automatic field mapping
+
+Manabitan reduces one of the more tedious parts of Anki setup: wiring note-type fields to Manabitan markers.
+
+The note type must already exist in Anki. Manabitan does **not** install Kiku, Lapis, Senren, or Crop Theft Vocab. When you select an existing model, Manabitan asks AnkiConnect for the model's field names and builds the mapping for the selected card format.
+
+### Recognized note types
+
+Manabitan currently has explicit presets for these model names:
+
+| Note type | What Manabitan maps automatically |
+| --- | --- |
+| **Kiku** | Expression, furigana, reading, audio, selection text, dictionary-specific main definition, cloze sentence, glossary, pitch position/categories, frequency/sort value, and document title. |
+| **Lapis** | The same Kiku/Lapis preset, including dictionary-specific main definition and sentence/audio/pitch/frequency fields. |
+| **Senren** / **Senren 洗練** | Word, reading, cloze sentence and sentence furigana, selection text, dictionary-specific definition, audio, glossary, pitch, frequency, and document title. |
+| **Crop Theft Vocab** | Word, reading, pitch pattern, audio, brief definition, example sentence, example target/search query, and frequency. |
+
+For Kiku, Lapis, and Senren, the main-definition field uses the first available dictionary-specific `single-glossary-*` marker when one is available. This makes the primary definition follow an installed dictionary rather than blindly using the full merged glossary.
+
+Preset mappings are explicit. If a recognized note type contains extra fields that the preset does not know about, those fields can be left blank. Review the mapping after selecting or changing a note type, especially if you customized that note type yourself.
+
+### Other note types
+
+Custom models still get a best-effort mapping. Manabitan recognizes common field names and aliases—for example `Word`, `Term`, or `Phrase` for the expression; `Definition` or `Meaning` for a glossary; `Sound` or `Audio` for audio; and familiar sentence, pitch, frequency, dictionary, URL, title, and selection-text names.
+
+For an unrecognized model, an existing mapping for the same-named field is preserved where possible. The first field otherwise defaults to `{expression}` for a term card or `{character}` for a kanji card. This is a convenience, not a schema contract: inspect a test note before relying on an automatic mapping.
+
+The preset and generic mapping code is in [`anki-note-type-field-util.js`](https://github.com/ManabiIO/manabitan/blob/main/ext/js/data/anki-note-type-field-util.js), with focused tests in [`anki-note-type-field-util.test.js`](https://github.com/ManabiIO/manabitan/blob/main/test/anki-note-type-field-util.test.js).
 
 ## Field markers
 
