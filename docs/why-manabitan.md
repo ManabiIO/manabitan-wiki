@@ -75,7 +75,7 @@ We will continue making dictionary imports and lookups faster while reducing mem
 
 ### Public, comparable benchmarks
 
-We are developing a robust benchmark suite to compare **dictionary imports, lookups, and storage requirements across tools compatible with Yomitan dictionaries**. We plan to make that suite public, with reproducible workloads and clear versions and test conditions. The suite and its publication are work in progress; no publication date or finished cross-tool comparison is being announced here.
+We are developing a robust benchmark suite to compare **dictionary imports, lookups, and storage requirements across tools compatible with Yomitan dictionaries**. We plan to make that suite public, with reproducible workloads and clear versions and test conditions. The suite and its publication are work in progress, not a finished comparison being announced here.
 
 ### Stay true to Yomitan
 
