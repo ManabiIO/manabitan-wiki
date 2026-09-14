@@ -1,6 +1,6 @@
 site_name: Manabitan
 site_url: https://manabi.io/manabitan/
-site_description: Yomitan's reading workflow with faster dictionary storage, background updates, MDX support, and automatic Anki field mapping.
+site_description: Yomitan's familiar reading workflow with faster imports and lookups, dramatically smaller installed dictionaries, background updates, MDX support, and easier Anki setup.
 site_author: Manabitan contributors
 repo_url: https://github.com/ManabiIO/manabitan-wiki
 repo_name: Edit the documentation
