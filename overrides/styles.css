@@ -22,7 +22,7 @@ body { margin: 0; font-family: "Inter", sans-serif; }
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('../assets/hero-bg.jpg') center/cover no-repeat;
+    background: url('/manabitan/assets/hero-bg.jpg') center/cover no-repeat;
 }
 
 .hero__bg::after {
@@ -596,7 +596,7 @@ h3.fcard__title {
     position: absolute; inset: 0;
     background:
         radial-gradient(ellipse 60% 50% at 50% 50%, rgba(133,96,245,0.1) 0%, transparent 70%),
-        url('../assets/hero-bg-2.jpg') center/cover no-repeat;
+        url('/manabitan/assets/hero-bg-2.jpg') center/cover no-repeat;
     filter: blur(2px) brightness(0.1);
     pointer-events: none;
 }

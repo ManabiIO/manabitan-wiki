@@ -215,7 +215,7 @@ Now that we have our dictionaries installed, you can now use Manabitan to read a
 
           In order to use Manabitan with local files in Chrome, you must first tick the `Allow access to file URLs` checkbox for Manabitan on the extensions page. 
           
-          In addition, to scan PDF files on your local machine, use the [Manabitan PDF Viewer](/manabitan-pdf-viewer).
+          In addition, to scan PDF files on your local machine, use the [Manabitan PDF Viewer](/manabitan/manabitan-pdf-viewer/).
 
 
 

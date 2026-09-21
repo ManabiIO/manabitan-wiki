@@ -52,7 +52,7 @@ experience.
 **Is it possible to use Manabitan with files saved locally on my computer with Chrome?**
 
 In order to use Manabitan with local files in Chrome, you must first tick the _Allow access to file URLs_ checkbox
-for Manabitan on the extensions page. In addition, you may use the [Manabitan PDF Viewer](https://manabitan.manabi.io/manabitan-pdf-viewer/web/) to view and scan PDF files that are on your local machine.
+for Manabitan on the extensions page. In addition, you may use the [Manabitan PDF Viewer](/manabitan/manabitan-pdf-viewer/web/) to view and scan PDF files that are on your local machine.
 
 **Is it possible to delete individual dictionaries without purging the database?**
 

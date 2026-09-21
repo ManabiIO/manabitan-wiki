@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manabitan Wiki</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="/manabitan/styles.css" />
 {% endblock %}
 
 {% block content %}
@@ -29,20 +29,20 @@
             </p>
             <div class="hero__buttons">
                 <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
+                    <img src="/manabitan/assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
                 </a>
                 <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
+                    <img src="/manabitan/assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
                 </a>
                 <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                    <img src="assets/icons/edge.svg" width="20" height="20" alt="">Edge
+                    <img src="/manabitan/assets/icons/edge.svg" width="20" height="20" alt="">Edge
                 </a>
             </div>
-            <a class="btn btn--ghost" href="getting-started">Getting Started Guide &rarr;</a>
+            <a class="btn btn--ghost" href="/manabitan/getting-started/">Getting Started Guide &rarr;</a>
         </div>
 
         <div class="hero__preview">
-            <img src="assets/scanning-popup.webp" alt="Manabitan popup in action">
+            <img src="/manabitan/assets/scanning-popup.webp" alt="Manabitan popup in action">
         </div>
     </div>
 </section>
@@ -65,10 +65,10 @@
             <div class="fcard__content">
                 <p class="fcard__text">Just <strong>hover and press a key</strong> to instantly see definitions, word frequencies, native audio, and example sentences &mdash; right where you are.</p>
                 <p class="fcard__text">Stay in the flow whether you're deep in a novel or casually scrolling.</p>
-                <a href="getting-started" class="fcard__link">Learn more <span>&rarr;</span></a>
+                <a href="/manabitan/getting-started/" class="fcard__link">Learn more <span>&rarr;</span></a>
             </div>
             <div class="fcard__visual">
-                <img src="assets/scanning-popup.webp" alt="Dynamic popup" loading="lazy">
+                <img src="/manabitan/assets/scanning-popup.webp" alt="Dynamic popup" loading="lazy">
             </div>
         </article>
 
@@ -78,10 +78,10 @@
                 <h3 class="fcard__title">Native Audio</h3>
                 <p class="fcard__text">Hear every word by <strong>real native speakers</strong>. Add custom sources like Forvo, or enable text-to-speech.</p>
                 <p class="fcard__text">Export audio straight to your <strong>Anki flashcards</strong>.</p>
-                <a href="advanced#audio" class="fcard__link">Learn more <span>&rarr;</span></a>
+                <a href="/manabitan/advanced/#audio" class="fcard__link">Learn more <span>&rarr;</span></a>
             </div>
             <div class="fcard__visual">
-                <img src="assets/audio.webp" alt="Native audio" loading="lazy">
+                <img src="/manabitan/assets/audio.webp" alt="Native audio" loading="lazy">
             </div>
         </article>
 
@@ -91,10 +91,10 @@
                 <h3 class="fcard__title">Mobile Support</h3>
                 <p class="fcard__text">Take your learning <strong>anywhere</strong>. Manabitan works on <strong>Android devices</strong>, bringing powerful lookups to your phone or tablet.</p>
                 <p class="fcard__text">Simply <strong>select any text</strong> to get instant definitions, audio, and word info &mdash; without leaving what you're reading.</p>
-                <a href="getting-started" class="fcard__link">Learn more <span>&rarr;</span></a>
+                <a href="/manabitan/getting-started/" class="fcard__link">Learn more <span>&rarr;</span></a>
             </div>
             <div class="fcard__visual">
-                <img src="assets/android-dict-action.webp" alt="Android mobile support" loading="lazy">
+                <img src="/manabitan/assets/android-dict-action.webp" alt="Android mobile support" loading="lazy">
             </div>
         </article>
 
@@ -104,7 +104,7 @@
                 <h3 class="fcard__title">Make It Yours</h3>
                 <p class="fcard__text"><strong>Full control</strong> over how your popup looks. Bold and colorful or clean and minimal.</p>
                 <p class="fcard__text">Create your own theme or pick from beautiful <strong>community themes</strong>.</p>
-                <a href="tools-resources" class="fcard__link">Learn more <span>&rarr;</span></a>
+                <a href="/manabitan/tools-resources/" class="fcard__link">Learn more <span>&rarr;</span></a>
             </div>
             <div class="fcard__visual">
                 <div class="slideshow">
@@ -116,9 +116,9 @@
                                     <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                                 </a>
                             </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/bint-css.png" alt="Bint's theme">
-                                <img class="theme-img dark" src="assets/themes/dark/bint-css.png" alt="Bint's theme dark">
+                            <a href="/manabitan/tools-resources/">
+                                <img class="theme-img" src="/manabitan/assets/themes/light/bint-css.png" alt="Bint's theme">
+                                <img class="theme-img dark" src="/manabitan/assets/themes/dark/bint-css.png" alt="Bint's theme dark">
                             </a>
                         </div>
                         <div class="slide">
@@ -128,9 +128,9 @@
                                     <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                                 </a>
                             </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/colored-css.png" alt="Colored theme">
-                                <img class="theme-img dark" src="assets/themes/dark/colored-css.png" alt="Colored theme dark">
+                            <a href="/manabitan/tools-resources/">
+                                <img class="theme-img" src="/manabitan/assets/themes/light/colored-css.png" alt="Colored theme">
+                                <img class="theme-img dark" src="/manabitan/assets/themes/dark/colored-css.png" alt="Colored theme dark">
                             </a>
                         </div>
                         <div class="slide">
@@ -140,9 +140,9 @@
                                     <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
                                 </a>
                             </div>
-                            <a href="tools-resources">
-                                <img class="theme-img" src="assets/themes/light/nelan-css.png" alt="Nelan's theme">
-                                <img class="theme-img dark" src="assets/themes/dark/nelan-css.png" alt="Nelan's theme dark">
+                            <a href="/manabitan/tools-resources/">
+                                <img class="theme-img" src="/manabitan/assets/themes/light/nelan-css.png" alt="Nelan's theme">
+                                <img class="theme-img dark" src="/manabitan/assets/themes/dark/nelan-css.png" alt="Nelan's theme dark">
                             </a>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                 <svg viewBox="0 0 512 512"><path fill="currentColor" d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"/></svg>
             </a>
         </p>
-        <a href="anki" class="fcard__link">Learn more about Anki <span>&rarr;</span></a>
+        <a href="/manabitan/anki/" class="fcard__link">Learn more about Anki <span>&rarr;</span></a>
     </div>
 </section>
 
@@ -201,16 +201,16 @@
         <p class="section-subtitle">Get instant dictionary lookups, native audio, and Anki integration where you read.</p>
         <div class="hero__buttons">
             <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
+                <img src="/manabitan/assets/icons/chrome.svg" width="20" height="20" alt="">Chrome
             </a>
             <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
+                <img src="/manabitan/assets/icons/firefox.svg" width="20" height="20" alt="">Firefox
             </a>
             <a class="btn btn--primary" href="https://github.com/ManabiIO/manabitan/releases">
-                <img src="assets/icons/edge.svg" width="20" height="20" alt="">Edge
+                <img src="/manabitan/assets/icons/edge.svg" width="20" height="20" alt="">Edge
             </a>
         </div>
-        <a class="btn btn--ghost" href="getting-started">Getting Started Guide &rarr;</a>
+        <a class="btn btn--ghost" href="/manabitan/getting-started/">Getting Started Guide &rarr;</a>
     </div>
 </section>
 

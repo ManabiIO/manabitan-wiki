@@ -1,5 +1,5 @@
 site_name: Manabitan
-site_url: https://manabitan.manabi.io/
+site_url: https://manabi.io/manabitan/
 site_description: Powerful and versatile pop-up dictionary for language learning
 site_author: Manabitan Authors
 repo_url: https://github.com/ManabiIO/manabitan
@@ -54,7 +54,7 @@ extra:
       link: https://github.com/ManabiIO/manabitan
     - icon: fontawesome/brands/discord
       link: https://discord.gg/gvxzS93C3w
-  homepage: https://manabitan.manabi.io/
+  homepage: https://manabi.io/manabitan/
   generator: false
 
 markdown_extensions:
@@ -106,6 +106,6 @@ extra_javascript:
 
 copyright: |
   Copyright &copy; 2026 Manabitan Authors <br>
-  <a href="https://manabitan.manabi.io/privacy">Privacy and Permissions</a> -- 
+  <a href="/manabitan/privacy">Privacy and Permissions</a> --
   Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> -- 
   Based on <a href="https://github.com/yomidevs/yomitan-wiki">Yomitan Wiki</a>
